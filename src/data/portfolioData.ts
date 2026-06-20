@@ -106,7 +106,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       description: "Focused on helping SaaS companies grow after the sale by combining Customer Success, RevOps, AI automation, and technical problem-solving to increase retention, expansion, and operational scale."
     }
   ],
-  
+
   coreStrengths: [
     { name: "QuickReply.ai", category: "WhatsApp Marketing" },
     { name: "Shopify", category: "Commerce Ecosystem" },
@@ -121,8 +121,8 @@ export const PORTFOLIO_DATA: PortfolioData = {
       id: "commerce",
       name: "Commerce & Checkout",
       items: [
-        "Shopify", "WooCommerce", "Magento", "Gokwik", "Shopflo", "Zecpe", 
-        "Fastrr", "Swift", "Simpl", "Ecom 360", "Blaze", "Razorpay Magic", 
+        "Shopify", "WooCommerce", "Magento", "Gokwik", "Shopflo", "Zecpe",
+        "Fastrr", "Swift", "Simpl", "Ecom 360", "Blaze", "Razorpay Magic",
         "Breeze", "ShopPass", "Nitro", "KwikPass", "Razorpay SSO", "Recharge"
       ]
     },
@@ -130,7 +130,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       id: "messaging",
       name: "WhatsApp, Messaging & Comm",
       items: [
-        "WhatsApp API", "QuickReply.ai", "Twilio", "Msg91", "Exotel", 
+        "WhatsApp API", "QuickReply.ai", "Twilio", "Msg91", "Exotel",
         "Ringg AI", "Instagram", "Facebook", "Meta Pixel"
       ]
     },
@@ -138,7 +138,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       id: "crm",
       name: "CRM & Sales Systems",
       items: [
-        "HubSpot", "Salesforce", "Zoho CRM", "Kylas", "LeadSquared", 
+        "HubSpot", "Salesforce", "Zoho CRM", "Kylas", "LeadSquared",
         "Go High Level", "SuiteCRM", "Salesmate", "TeleCRM", "Zoho Bigin"
       ]
     },
@@ -151,7 +151,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       id: "automation",
       name: "Automation, Data & Tools",
       items: [
-        "Pipedream", "Airtable", "Zapier", "Google AppScripts", 
+        "Pipedream", "Airtable", "Zapier", "Google AppScripts",
         "Google Calendar", "Calendly", "Jibble", "Jotform", "Typeform"
       ]
     },
@@ -159,7 +159,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       id: "analytics",
       name: "Analytics & Marketing Auto",
       items: [
-        "Google Analytics 4", "MoEngage", "WebEngage", "CleverTap", 
+        "Google Analytics 4", "MoEngage", "WebEngage", "CleverTap",
         "Klaviyo", "Zoho Analytics"
       ]
     },
@@ -167,7 +167,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       id: "payments",
       name: "Payments & Finance",
       items: [
-        "Razorpay", "PayU", "CashFree", "Easebuzz", "Zoho Books", 
+        "Razorpay", "PayU", "CashFree", "Easebuzz", "Zoho Books",
         "RazorpayX Payroll"
       ]
     },
@@ -175,7 +175,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       id: "logistics",
       name: "Logistics, Shipping & Returns",
       items: [
-        "Nimbus Post", "Shiprocket", "Shipio", "ClickPost", 
+        "Nimbus Post", "Shiprocket", "Shipio", "ClickPost",
         "WareIQ", "Delhivery", "Return Prime", "Vinculum"
       ]
     },
@@ -188,7 +188,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       id: "education",
       name: "Education, Health, ERP & Platforms",
       items: [
-        "NoPaperForms", "LMS", "Zenoti", "ERP", "Odoo", 
+        "NoPaperForms", "LMS", "Zenoti", "ERP", "Odoo",
         "Amoga.app", "Zentrix", "Edusprint", "Teleforce"
       ]
     }
@@ -202,8 +202,8 @@ export const PORTFOLIO_DATA: PortfolioData = {
     {
       industry: "Beauty, Personal Care & Wellness",
       brands: [
-        "Renee Cosmetics", "Shiseido Professional", "Advanced Hair Studio", 
-        "GK Hair / pH Lab", "Indus Valley", "Goodveda", "Menoveda", 
+        "Renee Cosmetics", "Shiseido Professional", "Advanced Hair Studio",
+        "GK Hair / pH Lab", "Indus Valley", "Goodveda", "Menoveda",
         "Project Serotonin", "Dermawear", "Sploot - Dog Grooming"
       ]
     },
@@ -214,15 +214,15 @@ export const PORTFOLIO_DATA: PortfolioData = {
     {
       industry: "Education",
       brands: [
-        "IDP India", "CP Goenka International School", "Spring Dale Senior School", 
+        "IDP India", "CP Goenka International School", "Spring Dale Senior School",
         "Christ University", "Manav Rachna Edu", "Bizgurukul"
       ]
     },
     {
       industry: "D2C, Lifestyle & E-commerce",
       brands: [
-        "The Next Decor", "Uptownie", "Boldfit", "Amama Jewels", "TDF Diamonds", 
-        "Aurelia Diamonds", "MyFrido", "Nestroots", "Agaro Lifestyle", 
+        "The Next Decor", "Uptownie", "Boldfit", "Amama Jewels", "TDF Diamonds",
+        "Aurelia Diamonds", "MyFrido", "Nestroots", "Agaro Lifestyle",
         "PrimeStyle.com", "The Pillow Company", "Punam Metalcrafts"
       ]
     },
@@ -335,32 +335,40 @@ export const PORTFOLIO_DATA: PortfolioData = {
     {
       client: "The Next Decor",
       country: "India",
-      duration: "9 months using the app",
-      date: "November 30, 2022",
+      // duration: "9 months using the app",
+      // date: "November 30, 2022",
+      date: "",
+      duration: "",
       rating: 5,
       quote: "We are using this app for 1 Year and it is a great experience with it. Really it's amazing and solved our many problems. The Best thing is that customer support that was very quick specially <span class='highlight'>Utkarsh</span> is very supportive. Highly Recommended !!"
     },
     {
       client: "Uptownie",
       country: "India",
-      duration: "9 months using the app",
-      date: "September 16, 2022",
+      // duration: "9 months using the app",
+      // date: "September 16, 2022",
+      date: "",
+      duration: "",
       rating: 5,
       quote: "Customer support for this app is absolutely great - especially <span class='highlight'>Utkarsh Kala</span> who is always prompt and very competent! Has helped me to increase conversions."
     },
     {
       client: "Meadbery",
       country: "India",
-      duration: "29 days using the app",
-      date: "January 27, 2024",
+      // duration: "29 days using the app",
+      // date: "January 27, 2024",
+      date: "",
+      duration: "",
       rating: 5,
       quote: "I recently started using Quickreply, and I must say, it has transformed the way I handle messages on my shopify. The app's user-friendly interface and efficient features make communication a breeze. What really stood out, though, was the exceptional customer service provided by <span class='highlight'>Utkarsh</span>. <span class='highlight'>Utkarsh</span>'s quick attention to our requests made our experience with Quickreply even more enjoyable. It's rare to find such a dedicated and responsive support team member. He not only addressed our concerns promptly but also went the extra mile to ensure that we felt valued as users. The app itself is a game-changer, streamlining the process of CTWA Ads and keeping conversations organized. Quickreply has become an integral part of my daily routine, and I highly recommend it to anyone looking for a reliable messaging solution. Big shoutout to <span class='highlight'>Utkarsh</span> and the Quickreply team for their commitment to customer satisfaction and for creating a fantastic application. Keep up the great work!"
     },
     {
       client: "PERFECTSTYLESTORE-IN",
       country: "India",
-      duration: "8 days using the app",
-      date: "November 23, 2022",
+      // duration: "8 days using the app",
+      // date: "November 23, 2022",
+      date: "",
+      duration: "",
       rating: 5,
       quote: "The app has been a complete game changer for our business. Not only it has reduced the boring manual work for us but also generated extra revenue on complete automation. Within just 2 days of using this app i could already see the difference in increase in sales and reduction in non delivereds. Their team has been very helpful and prompt with all the queries that we had. I would specially like to thank <span class='highlight'>Utkarsh</span> for really being so supportive looking after us. Lastly i would highly recommend this app to everyone who would like to increase their revenue and profits."
     }
