@@ -22,7 +22,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/journey" element={<Journey />} />
         <Route path="/customers" element={<Customers />} />
-        <Route path="/stack" element={<Stack />} />
+        <Route path="/saas-stack" element={<Stack />} />
         <Route path="/why-me" element={<WhyMe />} />
         <Route path="/connect" element={<Connect />} />
       </Routes>
