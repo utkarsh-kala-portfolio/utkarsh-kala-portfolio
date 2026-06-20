@@ -10,6 +10,7 @@ import { Customers } from "./pages/Customers";
 import { Stack } from "./pages/Stack";
 import { WhyMe } from "./pages/WhyMe";
 import { Connect } from "./pages/Connect";
+import { NotFound } from "./pages/NotFound";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/stack" element={<Stack />} />
         <Route path="/why-me" element={<WhyMe />} />
         <Route path="/connect" element={<Connect />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </Router>

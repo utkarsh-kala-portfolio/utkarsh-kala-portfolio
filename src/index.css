@@ -1496,6 +1496,41 @@ img, svg {
   width: 100%;
 }
 
+/* When the contact card is used as a merged not-found + contact block, reduce visual clutter */
+.contact-card.merged {
+  padding: 40px 32px;
+  max-width: 980px;
+}
+
+.contact-card.merged .section-tag {
+  display: none;
+}
+
+.notfound-top-content {
+  margin-bottom: 18px;
+}
+
+.notfound-top {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.notfound-top .notfound-title {
+  font-size: 2.25rem;
+  margin-bottom: 8px;
+}
+
+.notfound-top .notfound-desc {
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.notfound-actions {
+  display: inline-flex;
+  gap: 12px;
+  margin: 0 auto 8px;
+}
+
 /* ==========================================================================
    FOOTER
    ========================================================================== */
