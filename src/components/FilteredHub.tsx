@@ -59,7 +59,7 @@ export const FilteredHub: React.FC<FilteredHubProps> = ({
 
   // Determine items based on category selection and search query
   const getFilteredItems = () => {
-    let baseItems: string[] = [];
+    let baseItems: string[];
     if (activeCategoryId === "all") {
       baseItems = allUniqueItems;
     } else {

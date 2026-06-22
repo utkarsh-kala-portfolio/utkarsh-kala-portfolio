@@ -22,6 +22,7 @@ export const Loader: React.FC = () => {
 
   useEffect(() => {
     // Reset loader state for the new cycle
+    /* eslint-disable-next-line react-hooks/set-state-in-effect */
     setProgress(0);
     setIsDone(false);
     setShouldRender(true);
@@ -92,7 +93,7 @@ export const Loader: React.FC = () => {
         const currentLength = (progress / 100) * totalLength;
         const pt = pathRef.current.getPointAtLength(currentLength);
         setDotPos({ x: pt.x, y: pt.y });
-      } catch (e) {
+      } catch {
         // Fallback calculations if getPointAtLength throws or is unavailable
         setDotPos({
           x: 10 + (progress / 100) * 280,

@@ -33,7 +33,15 @@ export const Flowchart: React.FC = () => {
       </defs>
     `;
 
-    const nodes = {
+    interface FlowNode {
+      x: number;
+      y: number;
+      label: string;
+      color: string;
+      isHub?: boolean;
+    }
+
+    const nodes: Record<string, FlowNode> = {
       cs:  { x: 140, y: 60,  label: "Customer Success", color: "#3b82f6" },
       prod:{ x: 140, y: 130, label: "Product Scoping", color: "#3b82f6" },
       eng: { x: 140, y: 200, label: "Engineering", color: "#3b82f6" },
@@ -46,7 +54,7 @@ export const Flowchart: React.FC = () => {
       stick:{ x: 340, y: 320, label: "Product Stickiness", color: "#10b981" }
     };
 
-    const drawLine = (from: any, to: any, index: number) => {
+    const drawLine = (from: FlowNode, to: FlowNode, index: number) => {
       const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
       const d = `M ${from.x} ${from.y} C ${(from.x + to.x)/2} ${from.y}, ${(from.x + to.x)/2} ${to.y}, ${to.x} ${to.y}`;
       p.setAttribute("d", d);
@@ -102,7 +110,7 @@ export const Flowchart: React.FC = () => {
 
     // Render nodes
     Object.keys(nodes).forEach(key => {
-      const node = (nodes as any)[key];
+      const node = nodes[key];
       const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
       
       const glow = document.createElementNS("http://www.w3.org/2000/svg", "circle");

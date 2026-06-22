@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, type ReactNode } from "react";
 
 type ContactType = "whatsapp" | "email" | "connect" | null;
 
@@ -32,6 +32,7 @@ export const ContactModalProvider: React.FC<{ children: ReactNode }> = ({ childr
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useContactModal = () => {
   const context = useContext(ContactModalContext);
   if (!context) {

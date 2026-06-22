@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 
 interface MetricCardProps {
   target: string;
@@ -11,29 +11,7 @@ export const MetricCard: React.FC<MetricCardProps> = ({ target, label, className
   const elementRef = useRef<HTMLDivElement>(null);
   const animatedRef = useRef(false);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        if (entry.isIntersecting && !animatedRef.current) {
-          animatedRef.current = true;
-          startAnimation();
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [target]);
-
-  const startAnimation = () => {
+  const startAnimation = useCallback(() => {
     const numMatch = target.match(/[\d.]+/);
     if (!numMatch) {
       setDisplayValue(target);
@@ -70,7 +48,29 @@ export const MetricCard: React.FC<MetricCardProps> = ({ target, label, className
     };
 
     requestAnimationFrame(update);
-  };
+  }, [target]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting && !animatedRef.current) {
+          animatedRef.current = true;
+          startAnimation();
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [startAnimation]);
 
   return (
     <div ref={elementRef} className={`glass-card metric-mini-card ${className}`}>
