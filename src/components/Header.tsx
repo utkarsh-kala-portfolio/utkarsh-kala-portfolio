@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { LetterHop } from "./LetterHop";
+import { useContactModal } from "../context/ContactModalContext";
 
 export const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
+  const { openModal } = useContactModal();
 
   // Scroll effect for header background
   useEffect(() => {
@@ -78,13 +80,12 @@ export const Header: React.FC = () => {
           >
             <LetterHop text="Why Me?" />
           </NavLink>
-          <Link
-            to="/connect"
+          <button
             className="btn btn-secondary nav-cta"
-            onClick={() => setNavOpen(false)}
+            onClick={() => { setNavOpen(false); openModal('connect'); }}
           >
             Let's Connect
-          </Link>
+          </button>
         </nav>
       </div>
     </header>

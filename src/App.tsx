@@ -9,27 +9,32 @@ import { Journey } from "./pages/Journey";
 import { Customers } from "./pages/Customers";
 import { Stack } from "./pages/Stack";
 import { WhyMe } from "./pages/WhyMe";
-import { Connect } from "./pages/Connect";
+
 import { NotFound } from "./pages/NotFound";
+import { ContactModalProvider } from "./context/ContactModalContext";
+import { ContactModal } from "./components/ContactModal";
 
 function App() {
   return (
-    <Router>
-      <Loader />
-      <ScrollToTop />
-      <ScrollProgress />
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/journey" element={<Journey />} />
-        <Route path="/customers" element={<Customers />} />
-        <Route path="/stack" element={<Stack />} />
-        <Route path="/why-me" element={<WhyMe />} />
-        <Route path="/connect" element={<Connect />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <ContactModalProvider>
+      <Router>
+        <Loader />
+        <ScrollToTop />
+        <ScrollProgress />
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/journey" element={<Journey />} />
+          <Route path="/customers" element={<Customers />} />
+          <Route path="/stack" element={<Stack />} />
+          <Route path="/why-me" element={<WhyMe />} />
+
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Footer />
+        <ContactModal />
+      </Router>
+    </ContactModalProvider>
   );
 }
 
