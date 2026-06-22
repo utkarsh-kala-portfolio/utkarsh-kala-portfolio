@@ -47,6 +47,9 @@ export interface PortfolioData {
   customerPortfolio: CustomerIndustry[];
   automations: AutomationItem[];
   testimonials: TestimonialItem[];
+  brandLogoMap: Record<string, string>;
+  techStackLogos: Record<string, string>;
+  simpleIconMappings: Record<string, string>;
 }
 
 export const PORTFOLIO_DATA: PortfolioData = {
@@ -203,8 +206,8 @@ export const PORTFOLIO_DATA: PortfolioData = {
       industry: "Beauty, Personal Care & Wellness",
       brands: [
         "Renee Cosmetics", "Shiseido Professional", "Advanced Hair Studio",
-        "GK Hair / pH Lab", "Indus Valley", "Goodveda", "Menoveda",
-        "Project Serotonin", "Dermawear", "Sploot - Dog Grooming"
+        "GK Hair", "pH Laboratories", "Indus Valley", "Goodveda", "Menoveda",
+        "Project Serotonin", "Dermawear", "Sploot"
       ]
     },
     {
@@ -222,13 +225,13 @@ export const PORTFOLIO_DATA: PortfolioData = {
       industry: "D2C, Lifestyle & E-commerce",
       brands: [
         "The Next Decor", "Uptownie", "Boldfit", "Amama Jewels", "TDF Diamonds",
-        "Aurelia Diamonds", "MyFrido", "Nestroots", "Agaro Lifestyle",
+        "Aurelia Diamonds", "Frido", "Nestroots", "Agaro Lifestyle",
         "PrimeStyle.com", "The Pillow Company", "Punam Metalcrafts"
       ]
     },
     {
       industry: "Food, FMCG & Nutrition",
-      brands: ["Farmley", "Lal Sweets India", "Cornitos", "Priyagold", "Rage Coffee", "Dabur 1884"]
+      brands: ["Farmley", "Lal Sweets India", "Cornitos", "Priyagold", "Rage Coffee", "Dabur"]
     },
     {
       industry: "Auto, Mobility & Services",
@@ -244,15 +247,15 @@ export const PORTFOLIO_DATA: PortfolioData = {
     },
     {
       industry: "Technology, Finance & B2B",
-      brands: ["AlaanPay", "ExpenseOnDemand", "Ecom 360", "Blaze", "Amoga.app"]
+      brands: ["AlaanPay", "ExpenseOnDemand"]
     },
     {
       industry: "International / Cross-border",
-      brands: ["Distacart / Dista USA", "Melange Singapore"]
+      brands: ["Distacart", "Dista USA", "Melange Singapore"]
     },
     {
       industry: "Others",
-      brands: ["Revibe", "Beeaar Group", "Corvi LED", "Soham360", "Mat ALL"]
+      brands: ["Revibe", "Beeaar Group", "Corvi LED", "Soham360", "MatAll"]
     }
   ],
 
@@ -372,5 +375,135 @@ export const PORTFOLIO_DATA: PortfolioData = {
       rating: 5,
       quote: "The app has been a complete game changer for our business. Not only it has reduced the boring manual work for us but also generated extra revenue on complete automation. Within just 2 days of using this app i could already see the difference in increase in sales and reduction in non delivereds. Their team has been very helpful and prompt with all the queries that we had. I would specially like to thank <span class='highlight'>Utkarsh</span> for really being so supportive looking after us. Lastly i would highly recommend this app to everyone who would like to increase their revenue and profits."
     }
-  ]
+  ],
+
+  brandLogoMap: {
+    "aaft university": "aaft-university.png",
+    "advanced hair studio": "advanced-hair-studio.png",
+    "agaro lifestyle": "agaro-lifestyle.png",
+    "alaanpay": "alaanpay.png",
+    "amama jewels": "amama-jewels.png",
+    "astro arun pandit": "astro-arun-pandit.png",
+    "aurelia diamonds": "aurelia-diamonds.png",
+    "beeaar group": "beeaar-group.png",
+    "bizgurukul": "bizgurukul.png",
+    "carinfo": "carinfo.png",
+    "christ university": "christ-university.png",
+    "cornitos": "cornitos.png",
+    "corvi led": "corvi-led.png",
+    "cp goenka international school": "cp-goenka-international-school.png",
+    "dabur": "dabur.png",
+    "dermawear": "dermawear.png",
+    "distacart": "distacart.png",
+    "expenseondemand": "expenseondemand.png",
+    "farmley": "farmley.png",
+    "gemsmantra": "gemsmantra.png",
+    "gk hair / ph lab": "gk-hair-ph-lab.png",
+    "goodveda": "goodveda.png",
+    "gujarat titans": "gujarat-titans.png",
+    "hero homes": "hero-homes.png",
+    "idp india": "idp-india.png",
+    "indus valley": "indus-valley.png",
+    "jiva ayurveda": "jiva-ayurveda.png",
+    "lal sweets india": "lal-sweets-india.png",
+    "manav rachna edu": "manav-rachna-edu.png",
+    "menoveda": "menoveda.png",
+    "frido": "frido.png",
+    "nasacademy": "nasacademy.png",
+    "nestroots": "nestroots.png",
+    "primestyle.com": "primestyle-com.png",
+    "priyagold": "priyagold.png",
+    "project serotonin": "project-serotonin.png",
+    "renee cosmetics": "renee-cosmetics.png",
+    "shree ashtech": "shree-ashtech.png",
+    "shivam autozone": "shivam-autozone.png",
+    "sploot - dog grooming": "sploot-dog-grooming.png",
+    "suwasthi": "suwasthi.png",
+    "tdf diamonds": "tdf-diamonds.png",
+    "the akshaya patra foundation": "the-akshaya-patra-foundation.png",
+    "the next decor": "the-next-decor.png",
+    "the pillow company": "the-pillow-company.png",
+    "vehiclecare": "vehiclecare.png"
+  },
+
+  techStackLogos: {
+    "blaze": "/assets/tech-logos/blaze.svg",
+    "breeze": "/assets/tech-logos/breeze.png",
+    "cashfree": "/assets/tech-logos/cashfree.png",
+    "clickpost": "/assets/tech-logos/clickpost.png",
+    "delhivery": "/assets/tech-logos/delhivery.png",
+    "ecom 360": "/assets/tech-logos/ecom-360.png",
+    "freshdesk": "/assets/tech-logos/freshdesk.png",
+    "go high level": "/assets/tech-logos/go-high-level.svg",
+    "gokwik": "/assets/tech-logos/gokwik.png",
+    "google analytics 4": "/assets/tech-logos/google-analytics-4.png",
+    "hubspot": "/assets/tech-logos/hubspot.png",
+    "judge.me": "/assets/tech-logos/judge-me.png",
+    "kylas": "/assets/tech-logos/kylas.png",
+    "leadsquared": "/assets/tech-logos/leadsquared.png",
+    "loox": "/assets/tech-logos/loox.png",
+    "meta pixel": "/assets/tech-logos/meta-pixel.png",
+    "nector": "/assets/tech-logos/nector.png",
+    "nimbus post": "/assets/tech-logos/nimbus-post.png",
+    "nitro": "/assets/tech-logos/nitro.webp",
+    "payu": "/assets/tech-logos/payu.png",
+    "pipedream": "/assets/tech-logos/pipedream.svg",
+    "proviews": "/assets/tech-logos/proviews.png",
+    "razorpay": "/assets/tech-logos/razorpay.png",
+    "razorpay magic": "/assets/tech-logos/razorpay-magic.png",
+    "salesforce": "/assets/tech-logos/salesforce.svg",
+    "shipio": "/assets/tech-logos/shipio.svg",
+    "shiprocket": "/assets/tech-logos/shiprocket.png",
+    "shopflo": "/assets/tech-logos/shopflo.png",
+    "simpl": "/assets/tech-logos/simpl.png",
+    "swift": "/assets/tech-logos/swift.png",
+    "wareiq": "/assets/tech-logos/wareiq.png",
+    "zapier": "/assets/tech-logos/zapier.png",
+    "zenoti": "/assets/tech-logos/zenoti.svg",
+    "zoho crm": "/assets/tech-logos/zoho-crm.png",
+    "zoho desk": "/assets/tech-logos/zoho-desk.png",
+    "pabbly": "/assets/tech-logos/pabbly.svg"
+  },
+
+  simpleIconMappings: {
+    "shopify": "shopify",
+    "woocommerce": "woocommerce",
+    "magento": "magento",
+    "recharge": "recharge",
+    "whatsapp api": "whatsapp",
+    "twilio": "twilio",
+    "instagram": "instagram",
+    "facebook": "facebook",
+    "meta pixel": "meta",
+    "hubspot": "hubspot",
+    "salesforce": "salesforce",
+    "zoho crm": "zoho",
+    "zoho desk": "zoho",
+    "zoho analytics": "zoho",
+    "zoho books": "zoho",
+    "freshdesk": "freshworks",
+    "gorgias": "gorgias",
+    "asana": "asana",
+    "notion": "notion",
+    "pipedream": "pipedream",
+    "airtable": "airtable",
+    "zapier": "zapier",
+    "google appscripts": "google",
+    "google calendar": "google",
+    "calendly": "calendly",
+    "typeform": "typeform",
+    "jotform": "jotform",
+    "google analytics 4": "googleanalytics",
+    "moengage": "moengage",
+    "clevertap": "clevertap",
+    "klaviyo": "klaviyo",
+    "razorpay": "razorpay",
+    "payu": "payu",
+    "nimbus post": "nimbus",
+    "shiprocket": "shiprocket",
+    "delhivery": "delhivery",
+    "judge.me": "judgeme",
+    "odoo": "odoo",
+    "lms": "canvaslms"
+  }
 };

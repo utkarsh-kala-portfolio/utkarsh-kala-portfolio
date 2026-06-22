@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { PORTFOLIO_DATA } from "../data/portfolioData";
 import { ContactCTA } from "../components/ContactCTA";
+import { SectionHeader } from "../components/SectionHeader";
 
 export const Journey: React.FC = () => {
   // Unconditional IntersectionObserver scroll reveals
@@ -26,15 +27,12 @@ export const Journey: React.FC = () => {
       {/* Timeline Page Header */}
       <section className="section" style={{ paddingBottom: "20px" }}>
         <div className="container">
-          <div className="section-header reveal">
-            <span className="section-tag">Detailed Timeline</span>
-            <h1 className="section-title" style={{ fontSize: "3rem" }}>
-              Building growth systems, not just managing customers.
-            </h1>
-            <p className="section-desc">
-              A professional journey spanning leadership, engineering, customer success, and automation - focused on helping SaaS companies increase retention, expansion, and operational scale.
-            </p>
-          </div>
+          <SectionHeader
+            tagText="Detailed Timeline"
+            title="Building growth systems, not just managing customers."
+            description="A professional journey spanning leadership, engineering, customer success, and automation - focused on helping SaaS companies increase retention, expansion, and operational scale."
+            isMainHeader={true}
+          />
         </div>
       </section>
 

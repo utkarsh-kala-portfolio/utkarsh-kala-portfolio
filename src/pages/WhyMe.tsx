@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { PORTFOLIO_DATA } from "../data/portfolioData";
 import { ContactCTA } from "../components/ContactCTA";
+import { SectionHeader } from "../components/SectionHeader";
 
 const renderFormattedText = (text: string) => {
   const parts = text.split(/(\*\*.*?\*\*)/g);
@@ -35,15 +36,13 @@ export const WhyMe: React.FC = () => {
       <section className="section" style={{ paddingBottom: "20px" }}>
         <div className="container">
           <div className="why-hero-grid">
-            <div className="section-header why-hero-copy reveal">
-              <span className="section-tag">Proof & Systems</span>
-              <h1 className="section-title" style={{ fontSize: "3rem" }}>
-                Why Me?
-              </h1>
-              <p className="section-desc">
-                A practical record of retention systems, automation workflows, and customer outcomes built across SaaS, commerce, support, and revenue operations.
-              </p>
-            </div>
+            <SectionHeader
+              tagText="Proof & Systems"
+              title="Why Me?"
+              description="A practical record of retention systems, automation workflows, and customer outcomes built across SaaS, commerce, support, and revenue operations."
+              isMainHeader={true}
+              className="why-hero-copy"
+            />
 
             <div className="why-hero-visual reveal">
               <div className="display-photo-frame why-photo-frame">
@@ -60,13 +59,11 @@ export const WhyMe: React.FC = () => {
 
       <section className="section" style={{ paddingTop: "0" }}>
         <div className="container">
-          <div className="section-header reveal">
-            <span className="section-tag">Systems & Workflows</span>
-            <h2 className="section-title">Automation that protects revenue.</h2>
-            <p className="section-desc">
-              Detailed breakdown of software solutions, tracking triggers, and workflow automations engineered to increase retention, recovery rates, and efficiency.
-            </p>
-          </div>
+          <SectionHeader
+            tagText="Systems & Workflows"
+            title="Automation that protects revenue."
+            description="Detailed breakdown of software solutions, tracking triggers, and workflow automations engineered to increase retention, recovery rates, and efficiency."
+          />
 
           <div className="automation-grid">
             {PORTFOLIO_DATA.automations.map((item, idx) => (
@@ -107,13 +104,11 @@ export const WhyMe: React.FC = () => {
 
       <section className="section" style={{ borderTop: "1px solid rgba(255, 255, 255, 0.05)" }}>
         <div className="container">
-          <div className="section-header reveal">
-            <span className="section-tag green">What People Say</span>
-            <h2 className="section-title">Don't take my word for it.</h2>
-            <p className="section-desc">
-              Direct recommendations and reviews from e-commerce merchants, founders, and operations leaders.
-            </p>
-          </div>
+          <SectionHeader
+            tagText="What People Say"
+            title="Don't take my word for it."
+            description="Direct recommendations and reviews from e-commerce merchants, founders, and operations leaders."
+          />
 
           <div className="testimonials-grid">
             {PORTFOLIO_DATA.testimonials.map((item, idx) => (

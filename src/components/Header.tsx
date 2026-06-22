@@ -60,18 +60,18 @@ export const Header: React.FC = () => {
             <LetterHop text="SaaS Toolkit" />
           </NavLink>
           <NavLink
-            to="/journey"
-            className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
-            onClick={() => setNavOpen(false)}
-          >
-            <LetterHop text="Journey" />
-          </NavLink>
-          <NavLink
             to="/customers"
             className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
             onClick={() => setNavOpen(false)}
           >
             <LetterHop text="Customers" />
+          </NavLink>
+          <NavLink
+            to="/journey"
+            className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+            onClick={() => setNavOpen(false)}
+          >
+            <LetterHop text="Journey" />
           </NavLink>
           <NavLink
             to="/why-me"

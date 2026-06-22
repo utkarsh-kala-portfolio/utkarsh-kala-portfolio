@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { PORTFOLIO_DATA } from "../data/portfolioData";
 import { ContactCTA } from "../components/ContactCTA";
 import { FilteredHub, type HubCategory } from "../components/FilteredHub";
 import { LogoMarquee } from "../components/LogoMarquee";
+import { SectionCTA } from "../components/SectionCTA";
 import {
   customerLogoBasePath,
   techStackBannerLogos,
+  techStackBannerDurationSeconds,
 } from "../data/logoBanners";
 
 const BriefcaseIcon: React.FC = () => (
@@ -27,58 +28,8 @@ const BriefcaseIcon: React.FC = () => (
   </svg>
 );
 
-const brandLogoMap: Record<string, string> = {
-  "aaft university": "5.png",
-  "advanced hair studio": "45.png",
-  "agaro lifestyle": "48.png",
-  "alaanpay": "6.png",
-  "amama jewels": "29.png",
-  "astro arun pandit": "52.png",
-  "aurelia diamonds": "43.png",
-  "beeaar group": "24.png",
-  "bizgurukul": "53.png",
-  "carinfo": "41.png",
-  "christ university": "42.png",
-  "cornitos": "46.png",
-  "corvi led": "51.png",
-  "cp goenka international school": "39.png",
-  "dabur 1884": "40.png",
-  "dermawear": "38.png",
-  "distacart / dista usa": "50.png",
-  "expenseondemand": "47.png",
-  "farmley": "36.png",
-  "gemsmantra": "34.png",
-  "gk hair / ph lab": "37.png",
-  "goodveda": "28.png",
-  "gujarat titans": "33.png",
-  "hero homes": "4.png",
-  "idp india": "32.png",
-  "indus valley": "22.png",
-  "jiva ayurveda": "21.png",
-  "lal sweets india": "20.png",
-  "manav rachna edu": "15.png",
-  "menoveda": "14.png",
-  "myfrido": "30.png",
-  "nasacademy": "19.png",
-  "nestroots": "49.png",
-  "prime style.com": "26.png",
-  "primestyle.com": "26.png",
-  "priyagold": "12.png",
-  "project serotonin": "23.png",
-  "renee cosmetics": "10.png",
-  "shree ashtech": "8.png",
-  "shivam autozone": "25.png",
-  "sploot - dog grooming": "1.png",
-  "suwasthi": "7.png",
-  "tdf diamonds": "16.png",
-  "the akshaya patra foundation": "44.png",
-  "the next decor": "54.png",
-  "the pillow company": "17.png",
-  "vehiclecare": "2.png",
-};
-
 const getBrandLogo = (brandName: string): string | null => {
-  const logoFile = brandLogoMap[brandName.toLowerCase()];
+  const logoFile = PORTFOLIO_DATA.brandLogoMap[brandName.toLowerCase()];
   return logoFile ? `${customerLogoBasePath}/${logoFile}` : null;
 };
 
@@ -145,14 +96,19 @@ export const Customers: React.FC = () => {
       />
 
       {/* Integration Logo Banner below the filtered list */}
-      <LogoMarquee logos={techStackBannerLogos} title="Operated & Integrated Systems" />
+      <LogoMarquee
+        logos={techStackBannerLogos}
+        title="Operated & Integrated Systems"
+        animationDurationSeconds={techStackBannerDurationSeconds}
+      />
 
       {/* CTA to view complete integration stack */}
-      <div style={{ textAlign: "center", marginTop: "-10px", marginBottom: "60px" }} className="reveal active">
-        <Link to="/stack" className="btn btn-secondary">
-          View Complete Integration Stack
-        </Link>
-      </div>
+      <SectionCTA
+        to="/stack"
+        text="View Complete Integration Stack"
+        style={{ marginTop: "-10px", marginBottom: "60px" }}
+        className="active"
+      />
 
       <ContactCTA />
     </>

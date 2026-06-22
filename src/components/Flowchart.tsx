@@ -113,39 +113,74 @@ export const Flowchart: React.FC = () => {
       const node = nodes[key];
       const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
       
-      const glow = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-      glow.setAttribute("cx", node.x.toString());
-      glow.setAttribute("cy", node.y.toString());
-      glow.setAttribute("r", node.isHub ? "16" : "10");
-      glow.setAttribute("fill", node.color);
-      glow.setAttribute("opacity", "0.2");
-      glow.setAttribute("filter", node.isHub ? "url(#glow-green)" : "url(#glow-blue)");
-      group.appendChild(glow);
+      if (node.isHub) {
+        // Center the Retention Engine label inside a sleek glowing badge
+        const rectW = 120;
+        const rectH = 28;
+        
+        // Soft lime-green glow effect for the hub badge
+        const pillGlow = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        pillGlow.setAttribute("x", (node.x - rectW / 2).toString());
+        pillGlow.setAttribute("y", (node.y - rectH / 2).toString());
+        pillGlow.setAttribute("width", rectW.toString());
+        pillGlow.setAttribute("height", rectH.toString());
+        pillGlow.setAttribute("fill", node.color);
+        pillGlow.setAttribute("opacity", "0.25");
+        pillGlow.setAttribute("filter", "url(#glow-green)");
+        pillGlow.setAttribute("rx", "14");
+        pillGlow.setAttribute("ry", "14");
+        group.appendChild(pillGlow);
 
-      const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-      dot.setAttribute("cx", node.x.toString());
-      dot.setAttribute("cy", node.y.toString());
-      dot.setAttribute("r", node.isHub ? "8" : "5");
-      dot.setAttribute("fill", node.color);
-      dot.classList.add("flow-node");
-      group.appendChild(dot);
+        // Solid background pill matching container background with lime-green border
+        const pill = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        pill.setAttribute("x", (node.x - rectW / 2).toString());
+        pill.setAttribute("y", (node.y - rectH / 2).toString());
+        pill.setAttribute("width", rectW.toString());
+        pill.setAttribute("height", rectH.toString());
+        pill.setAttribute("fill", "var(--paper)");
+        pill.setAttribute("stroke", node.color);
+        pill.setAttribute("stroke-width", "2");
+        pill.setAttribute("rx", "14");
+        pill.setAttribute("ry", "14");
+        pill.classList.add("flow-node");
+        group.appendChild(pill);
+      } else {
+        const glow = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        glow.setAttribute("cx", node.x.toString());
+        glow.setAttribute("cy", node.y.toString());
+        glow.setAttribute("r", "10");
+        glow.setAttribute("fill", node.color);
+        glow.setAttribute("opacity", "0.2");
+        glow.setAttribute("filter", "url(#glow-blue)");
+        group.appendChild(glow);
+
+        const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        dot.setAttribute("cx", node.x.toString());
+        dot.setAttribute("cy", node.y.toString());
+        dot.setAttribute("r", "5");
+        dot.setAttribute("fill", node.color);
+        dot.classList.add("flow-node");
+        group.appendChild(dot);
+      }
 
       const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-      text.setAttribute("x", (node.x + (node.isHub ? 0 : (node.x > 200 ? 15 : -15))).toString());
-      text.setAttribute("y", (node.y + (node.isHub ? 32 : 4)).toString());
-      text.setAttribute("fill", node.isHub ? "var(--accent-indigo)" : "var(--ink)");
-      text.setAttribute("font-size", node.isHub ? "12px" : "10px");
-      text.setAttribute("font-family", "var(--font-family-display)");
-      text.setAttribute("font-weight", "700");
       
       if (node.isHub) {
+        text.setAttribute("x", node.x.toString());
+        text.setAttribute("y", (node.y + 4.5).toString()); // Center text vertically in the 28px tall pill
+        text.setAttribute("fill", "var(--accent-indigo)");
+        text.setAttribute("font-size", "11px");
         text.setAttribute("text-anchor", "middle");
-      } else if (node.x > 200) {
-        text.setAttribute("text-anchor", "start");
       } else {
-        text.setAttribute("text-anchor", "end");
+        text.setAttribute("x", (node.x + (node.x > 200 ? 15 : -15)).toString());
+        text.setAttribute("y", (node.y + 4).toString());
+        text.setAttribute("fill", "var(--ink)");
+        text.setAttribute("font-size", "10px");
+        text.setAttribute("text-anchor", node.x > 200 ? "start" : "end");
       }
       
+      text.setAttribute("font-family", "var(--font-family-display)");
+      text.setAttribute("font-weight", "700");
       text.textContent = node.label;
       group.appendChild(text);
       svg.appendChild(group);

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { SectionHeader } from "./SectionHeader";
 
 export interface HubCategory {
   id: string;
@@ -8,7 +9,6 @@ export interface HubCategory {
 
 interface FilteredHubProps {
   tagText: string;
-  tagColorClass?: string;
   title: string;
   subtitle?: string;
   description: string;
@@ -21,7 +21,6 @@ interface FilteredHubProps {
 
 export const FilteredHub: React.FC<FilteredHubProps> = ({
   tagText,
-  tagColorClass = "",
   title,
   subtitle,
   description,
@@ -80,18 +79,14 @@ export const FilteredHub: React.FC<FilteredHubProps> = ({
       {/* Header Banner */}
       <section className="section" style={{ paddingBottom: "30px" }}>
         <div className="container">
-          <div className="section-header reveal active">
-            <span className={`section-tag ${tagColorClass}`}>{tagText}</span>
-            <h1 className="section-title" style={{ fontSize: "3rem" }}>
-              {title}
-            </h1>
-            {subtitle && (
-              <p className="section-subtitle" style={{ fontSize: "1.25rem", fontWeight: 700, margin: "-12px 0 16px", color: "var(--ink)" }}>
-                {subtitle}
-              </p>
-            )}
-            <p className="section-desc">{description}</p>
-          </div>
+          <SectionHeader
+            tagText={tagText}
+            title={title}
+            subtitle={subtitle}
+            description={description}
+            isMainHeader={true}
+            className="active"
+          />
         </div>
       </section>
 
