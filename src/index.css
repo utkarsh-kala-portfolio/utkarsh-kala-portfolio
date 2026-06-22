@@ -467,6 +467,19 @@ img, svg {
   margin-bottom: 24px;
   transform: rotate(-1deg);
   font-family: var(--font-family-display);
+  transition: transform 0.2s var(--ease-spring), box-shadow 0.2s var(--ease-spring), background-color 0.2s, color 0.2s;
+}
+
+.signature-badge:hover {
+  transform: rotate(0deg) translate(-2px, -2px) scale(1.02);
+  box-shadow: 4px 4px 0 var(--ink);
+  background: var(--accent-indigo);
+  color: var(--paper);
+}
+
+.signature-badge:active {
+  transform: rotate(0deg) translate(2px, 2px) scale(0.98);
+  box-shadow: 0px 0px 0 var(--ink);
 }
 
 .hero-title {
