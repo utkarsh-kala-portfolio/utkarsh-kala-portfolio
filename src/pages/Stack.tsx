@@ -7,6 +7,7 @@ import { SectionCTA } from "../components/SectionCTA";
 import {
   customerBannerDurationSeconds,
   customerBannerLogos,
+  techStackLogoBasePath,
 } from "../data/logoBanners";
 
 const LayersIcon: React.FC = () => (
@@ -31,8 +32,9 @@ const LayersIcon: React.FC = () => (
 const getStackIcon = (itemName: string): string | null => {
   const name = itemName.toLowerCase().trim();
 
-  if (PORTFOLIO_DATA.techStackLogos[name]) {
-    return PORTFOLIO_DATA.techStackLogos[name];
+  const logoFile = PORTFOLIO_DATA.techStackLogos[name];
+  if (logoFile) {
+    return `${techStackLogoBasePath}/${logoFile}`;
   }
 
   const slug = PORTFOLIO_DATA.simpleIconMappings[name];

@@ -124,9 +124,9 @@ export const PORTFOLIO_DATA: PortfolioData = {
       id: "commerce",
       name: "Commerce & Checkout",
       items: [
-        "Shopify", "WooCommerce", "Magento", "Gokwik", "Shopflo", "Zecpe",
-        "Fastrr", "Swift", "Simpl", "Ecom 360", "Blaze", "Razorpay Magic",
-        "Breeze", "ShopPass", "Nitro", "KwikPass", "Razorpay SSO", "Recharge"
+        "Shopify", "WooCommerce", "Magento", "Gokwik", "Shopflo",
+        "Fastrr", "Swift", "Simpl", "Ecom 360", "Razorpay Magic Checkout",
+        "ShopPass", "Nitro", "Razorpay SSO", "Recharge Subscriptions"
       ]
     },
     {
@@ -134,7 +134,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       name: "WhatsApp, Messaging & Comm",
       items: [
         "WhatsApp API", "QuickReply.ai", "Twilio", "Msg91", "Exotel",
-        "Ringg AI", "Instagram", "Facebook", "Meta Pixel"
+        "Ringg AI", "Instagram", "Meta", "Meta Pixel"
       ]
     },
     {
@@ -142,13 +142,13 @@ export const PORTFOLIO_DATA: PortfolioData = {
       name: "CRM & Sales Systems",
       items: [
         "HubSpot", "Salesforce", "Zoho CRM", "Kylas", "LeadSquared",
-        "Go High Level", "SuiteCRM", "Salesmate", "TeleCRM", "Zoho Bigin"
+        "Go High Level", "Salesmate CRM", "TeleCRM", "Zoho Bigin"
       ]
     },
     {
       id: "support",
       name: "Support & Customer Ops",
-      items: ["Freshdesk", "Zoho Desk", "Gorgias", "Periskope", "Asana", "Notion"]
+      items: ["Freshworks", "Zoho Desk", "Gorgias", "Periskope", "Asana", "Notion"]
     },
     {
       id: "automation",
@@ -162,7 +162,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       id: "analytics",
       name: "Analytics & Marketing Auto",
       items: [
-        "Google Analytics 4", "MoEngage", "WebEngage", "CleverTap",
+        "Google Analytics", "MoEngage", "WebEngage", "CleverTap",
         "Klaviyo", "Zoho Analytics"
       ]
     },
@@ -191,8 +191,8 @@ export const PORTFOLIO_DATA: PortfolioData = {
       id: "education",
       name: "Education, Health, ERP & Platforms",
       items: [
-        "NoPaperForms", "LMS", "Zenoti", "ERP", "Odoo",
-        "Amoga.app", "Zentrix", "Edusprint", "Teleforce"
+        "NoPaperForms", "Zenoti", "Odoo",
+        "Amoga CRM", "Teleforce"
       ]
     }
   ],
@@ -217,7 +217,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     {
       industry: "Education",
       brands: [
-        "IDP India", "CP Goenka International School", "Spring Dale Senior School",
+        "IDP India", "CP Goenka International School",
         "Christ University", "Manav Rachna Edu", "Bizgurukul"
       ]
     },
@@ -226,7 +226,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       brands: [
         "The Next Decor", "Uptownie", "Boldfit", "Amama Jewels", "TDF Diamonds",
         "Aurelia Diamonds", "Frido", "Nestroots", "Agaro Lifestyle",
-        "PrimeStyle.com", "The Pillow Company", "Punam Metalcrafts"
+        "PrimeStyle.com", "The Pillow Company", "Metalkart"
       ]
     },
     {
@@ -255,7 +255,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     },
     {
       industry: "Others",
-      brands: ["Revibe", "Beeaar Group", "Corvi LED", "Soham360", "MatAll"]
+      brands: ["Revibe", "Beeaar Group", "Corvi LED", "Soham"]
     }
   ],
 
@@ -379,14 +379,24 @@ export const PORTFOLIO_DATA: PortfolioData = {
 
   brandLogoMap: {
     "aaft university": "aaft-university.png",
+    "uptownie": "uptownie.png",
+    "the art of living": "the_art_of_living.png",
+    "soham": "soham.png",
+    "boldfit": "boldfit.png",
+    "saraswat hospital": "saraswat_hospital.png",
+    "revibe": "revibe.png",
+    "shiseido professional": "shiseido.png",
     "advanced hair studio": "advanced-hair-studio.png",
+    "century real estate": "century_real_estate.png",
     "agaro lifestyle": "agaro-lifestyle.png",
     "alaanpay": "alaanpay.png",
     "amama jewels": "amama-jewels.png",
     "astro arun pandit": "astro-arun-pandit.png",
+    "rage coffee": "rage_coffee.png",
     "aurelia diamonds": "aurelia-diamonds.png",
     "beeaar group": "beeaar-group.png",
     "bizgurukul": "bizgurukul.png",
+    "metalkart": "metalkart.png",
     "carinfo": "carinfo.png",
     "christ university": "christ-university.png",
     "cornitos": "cornitos.png",
@@ -395,10 +405,12 @@ export const PORTFOLIO_DATA: PortfolioData = {
     "dabur": "dabur.png",
     "dermawear": "dermawear.png",
     "distacart": "distacart.png",
+    "dista usa": "dista_usa.png",
     "expenseondemand": "expenseondemand.png",
+    "europe emirates group": "europe_emirates_group.png",
     "farmley": "farmley.png",
     "gemsmantra": "gemsmantra.png",
-    "gk hair / ph lab": "gk-hair-ph-lab.png",
+    "gk hair": "gk_hair.png",
     "goodveda": "goodveda.png",
     "gujarat titans": "gujarat-titans.png",
     "hero homes": "hero-homes.png",
@@ -407,7 +419,10 @@ export const PORTFOLIO_DATA: PortfolioData = {
     "jiva ayurveda": "jiva-ayurveda.png",
     "lal sweets india": "lal-sweets-india.png",
     "manav rachna edu": "manav-rachna-edu.png",
+    "melange singapore": "melange_singapore.png",
     "menoveda": "menoveda.png",
+    "motherland hospital": "motherland_hospital.png",
+    "ph laboratories": "ph_laboratories.png",
     "frido": "frido.png",
     "nasacademy": "nasacademy.png",
     "nestroots": "nestroots.png",
@@ -417,7 +432,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     "renee cosmetics": "renee-cosmetics.png",
     "shree ashtech": "shree-ashtech.png",
     "shivam autozone": "shivam-autozone.png",
-    "sploot - dog grooming": "sploot-dog-grooming.png",
+    "sploot": "sploot-dog-grooming.png",
     "suwasthi": "suwasthi.png",
     "tdf diamonds": "tdf-diamonds.png",
     "the akshaya patra foundation": "the-akshaya-patra-foundation.png",
@@ -427,42 +442,82 @@ export const PORTFOLIO_DATA: PortfolioData = {
   },
 
   techStackLogos: {
-    "blaze": "/assets/tech-logos/blaze.svg",
-    "breeze": "/assets/tech-logos/breeze.png",
-    "cashfree": "/assets/tech-logos/cashfree.png",
-    "clickpost": "/assets/tech-logos/clickpost.png",
-    "delhivery": "/assets/tech-logos/delhivery.png",
-    "ecom 360": "/assets/tech-logos/ecom-360.png",
-    "freshdesk": "/assets/tech-logos/freshdesk.png",
-    "go high level": "/assets/tech-logos/go-high-level.svg",
-    "gokwik": "/assets/tech-logos/gokwik.png",
-    "google analytics 4": "/assets/tech-logos/google-analytics-4.png",
-    "hubspot": "/assets/tech-logos/hubspot.png",
-    "judge.me": "/assets/tech-logos/judge-me.png",
-    "kylas": "/assets/tech-logos/kylas.png",
-    "leadsquared": "/assets/tech-logos/leadsquared.png",
-    "loox": "/assets/tech-logos/loox.png",
-    "meta pixel": "/assets/tech-logos/meta-pixel.png",
-    "nector": "/assets/tech-logos/nector.png",
-    "nimbus post": "/assets/tech-logos/nimbus-post.png",
-    "nitro": "/assets/tech-logos/nitro.webp",
-    "payu": "/assets/tech-logos/payu.png",
-    "pipedream": "/assets/tech-logos/pipedream.svg",
-    "proviews": "/assets/tech-logos/proviews.png",
-    "razorpay": "/assets/tech-logos/razorpay.png",
-    "razorpay magic": "/assets/tech-logos/razorpay-magic.png",
-    "salesforce": "/assets/tech-logos/salesforce.svg",
-    "shipio": "/assets/tech-logos/shipio.svg",
-    "shiprocket": "/assets/tech-logos/shiprocket.png",
-    "shopflo": "/assets/tech-logos/shopflo.png",
-    "simpl": "/assets/tech-logos/simpl.png",
-    "swift": "/assets/tech-logos/swift.png",
-    "wareiq": "/assets/tech-logos/wareiq.png",
-    "zapier": "/assets/tech-logos/zapier.png",
-    "zenoti": "/assets/tech-logos/zenoti.svg",
-    "zoho crm": "/assets/tech-logos/zoho-crm.png",
-    "zoho desk": "/assets/tech-logos/zoho-desk.png",
-    "pabbly": "/assets/tech-logos/pabbly.svg"
+    "teleforce": "teleforce.png",
+    "zoho analytics": "zoho_analytics.png",
+    "zoho crm": "zoho_crm.webp",
+    "zoho books": "zoho_books.png",
+    "woocommerce": "woocommerce.png",
+    "amoga crm": "amoga_crm.png",
+    "typeform": "typeform.png",
+    "webengage": "webengage.png",
+    "vinculum": "vinculum.webp",
+    "quickreply.ai": "quickreply_ai.png",
+    "telecrm": "telecrm.png",
+    "shoppass": "shoppass.svg",
+    "zoho bigin": "zoho_bigin.webp",
+    "nopaperforms": "no_paper_forms.png",
+    "salesmate crm": "salesmate_crm.png",
+    "exotel": "exotel.png",
+    "return prime": "return_prime.png",
+    "ringg ai": "ringg_ai.png",
+    "periskope": "periskope.webp",
+    "meta": "meta.png",
+    "fastrr": "fastrr.png",
+    "magento": "magento.png",
+    "go high level": "go_high_level.webp",
+    "google appscripts": "google_app_scripts.png",
+    "google calendar": "google_calendar.png",
+    "gorgias": "gorgias.png",
+    "instagram": "instagram.webp",
+    "jibble": "jibble.webp",
+    "calendly": "calendly.png",
+    "jotform": "jotform.png",
+    "klaviyo": "klaviyo.png",
+    "asana": "asana.png",
+    "airtable": "airtable.png",
+    "easebuzz": "easebuzz.png",
+    "clevertap": "clevertap.png",
+    "breeze": "breeze.png",
+    "cashfree": "cashfree.png",
+    "clickpost": "clickpost.png",
+    "delhivery": "delhivery.png",
+    "ecom 360": "ecom360.png",
+    "nector": "nector.png",
+    "freshworks": "freshworks.png",
+    "gokwik": "gokwik.png",
+    "google analytics": "google_analytics.png",
+    "hubspot": "hubspot.png",
+    "judge.me": "judge-me.png",
+    "kylas": "kylas.png",
+    "leadsquared": "leadsquared.png",
+    "loox": "loox.png",
+    "msg91": "msg91.png",
+    "meta pixel": "meta_pixel.png",
+    "moengage": "moengage.png",
+    "nimbus post": "nimbus_post.png",
+    "nitro": "nitro.webp",
+    "payu": "payu.png",
+    "pipedream": "pipedream.png",
+    "proviews": "proviews.png",
+    "razorpay": "razorpay.svg",
+    "razorpay magic checkout": "razorpay.svg",
+    "recharge subscriptions": "recharge_subscriptions.png",
+    "razorpayx payroll": "razorpay_x_payroll.png",
+    "razorpay sso": "razorpay.svg",
+    "salesforce": "salesforce.svg",
+    "shipio": "shipio.png",
+    "shiprocket": "shiprocket.png",
+    "shopflo": "shopflo.svg",
+    "shopify": "shopify.png",
+    "simpl": "simpl.png",
+    "swift": "swift.png",
+    "whatsapp api": "whatsapp.webp",
+    "wareiq": "ware_iq.svg",
+    "zapier": "zapier.png",
+    "twilio": "twilio.png",
+    "zenoti": "zenoti.webp",
+    "zoho desk": "zoho_desk.png",
+    "pabbly": "pabbly.svg"
   },
 
   simpleIconMappings: {
@@ -473,7 +528,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     "whatsapp api": "whatsapp",
     "twilio": "twilio",
     "instagram": "instagram",
-    "facebook": "facebook",
+    "meta": "meta",
     "meta pixel": "meta",
     "hubspot": "hubspot",
     "salesforce": "salesforce",
