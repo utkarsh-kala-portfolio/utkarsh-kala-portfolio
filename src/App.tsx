@@ -13,11 +13,19 @@ import { WhyMe } from "./pages/WhyMe";
 import { NotFound } from "./pages/NotFound";
 import { ContactModalProvider } from "./context/ContactModalContext";
 import { ContactModal } from "./components/ContactModal";
+import { usePageTracking } from "./analytics/usePageTracking";
+
+/** Must live inside <Router> to access useLocation */
+function PageTracker() {
+  usePageTracking();
+  return null;
+}
 
 function App() {
   return (
     <ContactModalProvider>
       <Router>
+        <PageTracker />
         <Loader />
         <ScrollToTop />
         <ScrollProgress />
