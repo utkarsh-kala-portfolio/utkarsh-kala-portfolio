@@ -40,6 +40,12 @@ export interface TestimonialItem {
   quote: string;
 }
 
+export interface RecommendationItem {
+  author: string;
+  role: string;
+  quote: string;
+}
+
 export interface PortfolioData {
   journeyItems: JourneyItem[];
   coreStrengths: CoreStrength[];
@@ -47,6 +53,7 @@ export interface PortfolioData {
   customerPortfolio: CustomerIndustry[];
   automations: AutomationItem[];
   testimonials: TestimonialItem[];
+  recommendations: RecommendationItem[];
   brandLogoMap: Record<string, string>;
   techStackLogos: Record<string, string>;
   simpleIconMappings: Record<string, string>;
@@ -374,6 +381,38 @@ export const PORTFOLIO_DATA: PortfolioData = {
       duration: "",
       rating: 5,
       quote: "The app has been a complete game changer for our business. Not only it has reduced the boring manual work for us but also generated extra revenue on complete automation. Within just 2 days of using this app i could already see the difference in increase in sales and reduction in non delivereds. Their team has been very helpful and prompt with all the queries that we had. I would specially like to thank <span class='highlight'>Utkarsh</span> for really being so supportive looking after us. Lastly i would highly recommend this app to everyone who would like to increase their revenue and profits."
+    }
+  ],
+
+  recommendations: [
+    {
+      author: "Adarsh Singh",
+      role: "Manager - Campaign Operations @ SportzInteractive",
+      quote: "I had the pleasure of working closely with <span class='highlight'>Utkarsh</span> while supporting a common client from different stakeholder groups. Throughout our collaboration, he consistently stood out for his <span class='highlight'>sharp analytical thinking, creativity, and proactive approach to problem-solving</span>."
+    },
+    {
+      author: "Parijat Kapoor",
+      role: "Chief of Staff @ NitroCommerce",
+      quote: "<span class='highlight'>Utkarsh</span> is a <span class='highlight'>dependable and collaborative partner</span> with a <span class='highlight'>strong command of customer success and conversational commerce</span>. He brings clarity, structure, and a solutions-first approach to every engagement, making collaboration smooth and impactful. Working with him has always been a positive experience, and he’s someone <span class='highlight'>I’d strongly recommend to any team or partner ecosystem!</span>"
+    },
+    {
+      author: "Yamini Beri",
+      role: "Digital Marketing & Growth Manager @ Amama Jewels",
+      quote: "What began as an experiment in retention marketing soon grew into a strong partnership, and much of that credit goes to <span class='highlight'>Utkarsh</span>. Early on, he was closely involved himself, and as his role expanded, he continued to guide his team while stepping in whenever needed. His soft-spoken and approachable nature not only made collaboration easy but also seemed to influence his team’s own way of working.<br/><br/><span class='highlight'>Utkarsh’s mix of competence, reliability, and professionalism</span> makes him someone <span class='highlight'>I would strongly recommend for any team.</span>"
+    },
+    {
+      author: "Rahul Parihar",
+      role: "Head of Sales @ QuickReply.ai",
+      quote: "Working with <span class='highlight'>Utkarsh</span> at QuickReply was a great experience. He's a customer-facing professional with maturity well beyond his years, combining <span class='highlight'>sincerity, patience, and responsiveness</span> with a <span class='highlight'>deep understanding of the product</span> both from tech capability & customer requirement perspective.<br/><br/>What really stands out is his <span class='highlight'>ability to simplify complexity and consistently deliver</span> — no matter how demanding the requirement. I’d happily work with him again and <span class='highlight'>highly recommend him</span>."
+    },
+    {
+      author: "Shobhit Gupta",
+      role: "AI Product Manager @ QuickReply.ai",
+      quote: "I had the pleasure of working closely with <span class='highlight'>Utkarsh</span>, our Head of Customer Success at QuickReply, and he has been an incredible partner in shaping the product and customer experience. He was my go-to person whenever I wanted to brainstorm ideas, validate innovations, or understand what our customers truly needed.<br/><br/>What makes <span class='highlight'>Utkarsh</span> stand out is his <span class='highlight'>rare combination of product sense, technical knowledge, and business acumen</span>—a blend that makes every discussion with him insightful and outcome-driven. He leads the customer success team with great efficiency, always keeping customer satisfaction at the forefront while balancing internal priorities seamlessly.<br/><br/>Beyond his skills, <span class='highlight'>Utkarsh</span> is also a <span class='highlight'>fantastic team player</span> who collaborates effortlessly across functions, making him a <span class='highlight'>true asset to the organization</span>. I’ve learned a lot from working alongside him, and I’d <span class='highlight'>strongly recommend him</span> to any team looking for a leader who can bridge the gap between customers, product, and business impact."
+    }, {
+      author: "Raja Ganesan",
+      role: "Head of PLG & Customer Success @ Flowace.ai",
+      quote: "I've worked with many people in corporate, from different ages. But never seen anyone working like him. Pulling all nighter if needed to get the job done. He's one hell of a man whom you can trust to get things done. <span class='highlight'>Work first and the rest follows</span> ( that too only if he's done with the job).. He has stood out in managing multiple things at once. Specially my journey with him at Quickreply, has been a great one. <span class='highlight'>You can always count on him!</span> We built things together that would last longer than the brand itself... if you are a recruiter seeing this, <span class='highlight'>you are in the right profile for CS!</span>"
     }
   ],
 

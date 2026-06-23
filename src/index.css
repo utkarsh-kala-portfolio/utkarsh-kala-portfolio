@@ -1322,6 +1322,21 @@ h1.section-title {
   letter-spacing: 0.06em;
 }
 
+.linkedin-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: rgba(10, 102, 194, 0.08);
+  border: 1px solid rgba(10, 102, 194, 0.35);
+  border-radius: 4px;
+  color: #004182;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
 .shopify-stamp img {
   width: 14px;
   height: 14px;
