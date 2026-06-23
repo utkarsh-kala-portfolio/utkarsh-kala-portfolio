@@ -129,7 +129,7 @@ export const Home: React.FC = () => {
                 <img src="/assets/profile/home-display.png" alt="Utkarsh Kala" />
               </div>
               <p style={{ color: "var(--accent-blue)", fontSize: "0.85rem", fontWeight: "700", letterSpacing: "0.05em", marginBottom: "20px" }}>
-                The nickname stayed — and so did the approach!
+                The nickname stayed - and so did the approach!
               </p>
 
               <div style={{ borderTop: "2px dashed rgba(15, 23, 42, 0.1)", paddingTop: "20px", textAlign: "left" }}>
