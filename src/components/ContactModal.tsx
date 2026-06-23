@@ -49,12 +49,22 @@ export const ContactModal: React.FC = () => {
       trackContactSubmit("email", topic);
       const subject = `Portfolio Inquiry: ${topic}`;
       const emailBody = `Hey Utkarsh,\n\nI came across your portfolio via ${currentUrl}\n\n${message}`;
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
-        "utkarsh.kala.9@gmail.com"
-      )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
 
-      // Prefer Gmail web compose for more predictable behavior across platforms
-      window.open(gmailUrl, "_blank", "noopener,noreferrer");
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
+
+      if (isMobile) {
+        const mailtoUrl = `mailto:utkarsh.kala.9@gmail.com?subject=${encodeURIComponent(
+          subject
+        )}&body=${encodeURIComponent(emailBody)}`;
+        window.location.href = mailtoUrl;
+      } else {
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+          "utkarsh.kala.9@gmail.com"
+        )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+        window.open(gmailUrl, "_blank", "noopener,noreferrer");
+      }
     }
 
     closeModal();
@@ -129,6 +139,13 @@ export const ContactModal: React.FC = () => {
       </div>
     );
   }
+
+  const currentUrl = typeof window !== "undefined" ? window.location.href : "";
+  const subject = `Portfolio Inquiry: ${topic}`;
+  const emailBody = `Hey Utkarsh,\n\nI came across your portfolio via ${currentUrl}\n\n${message}`;
+  const mailtoUrl = `mailto:utkarsh.kala.9@gmail.com?subject=${encodeURIComponent(
+    subject
+  )}&body=${encodeURIComponent(emailBody)}`;
 
   // WhatsApp / Email form view
   return (
@@ -206,6 +223,35 @@ export const ContactModal: React.FC = () => {
               </>
             )}
           </button>
+
+          {contactType === "email" && (
+            <p className="modal-form-fallback">
+              Not using Gmail?{" "}
+              <a
+                href={mailtoUrl}
+                onClick={(e) => {
+                  if (!message.trim()) {
+                    e.preventDefault();
+                    const textarea = document.getElementById("message");
+                    if (textarea) {
+                      textarea.focus();
+                      (textarea as HTMLTextAreaElement).reportValidity();
+                    }
+                    return;
+                  }
+                  trackContactSubmit("email", topic);
+                  setTimeout(() => {
+                    closeModal();
+                    setMessage("");
+                    setTopic(TOPICS[0]);
+                  }, 100);
+                }}
+                className="fallback-link"
+              >
+                Open default email client
+              </a>
+            </p>
+          )}
         </form>
       </div>
     </div>

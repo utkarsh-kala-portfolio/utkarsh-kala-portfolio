@@ -42,21 +42,21 @@ export const Flowchart: React.FC = () => {
     }
 
     const nodes: Record<string, FlowNode> = {
-      cs:  { x: 140, y: 60,  label: "Customer Success", color: "#3b82f6" },
-      prod:{ x: 140, y: 130, label: "Product Scoping", color: "#3b82f6" },
+      cs: { x: 140, y: 60, label: "Customer Success", color: "#3b82f6" },
+      prod: { x: 140, y: 130, label: "Product Scoping", color: "#3b82f6" },
       eng: { x: 140, y: 200, label: "Engineering", color: "#3b82f6" },
-      auto:{ x: 140, y: 270, label: "CS Automation", color: "#3b82f6" },
+      auto: { x: 140, y: 270, label: "CS Automation", color: "#3b82f6" },
       rev: { x: 140, y: 340, label: "Rev Operations", color: "#3b82f6" },
       hub: { x: 240, y: 200, label: "Retention Engine", color: "#84cc16", isHub: true },
-      nrr:  { x: 340, y: 80,  label: "NRR Growth", color: "#10b981" },
-      churn:{ x: 340, y: 160, label: "Churn Reduction", color: "#10b981" },
-      eff:  { x: 340, y: 240, label: "Team Efficiency", color: "#10b981" },
-      stick:{ x: 340, y: 320, label: "Product Stickiness", color: "#10b981" }
+      nrr: { x: 340, y: 80, label: "NRR Growth", color: "#10b981" },
+      churn: { x: 340, y: 160, label: "Churn Reduction", color: "#10b981" },
+      eff: { x: 340, y: 240, label: "Team Efficiency", color: "#10b981" },
+      stick: { x: 340, y: 320, label: "Product Stickiness", color: "#10b981" },
     };
 
     const drawLine = (from: FlowNode, to: FlowNode, index: number) => {
       const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      const d = `M ${from.x} ${from.y} C ${(from.x + to.x)/2} ${from.y}, ${(from.x + to.x)/2} ${to.y}, ${to.x} ${to.y}`;
+      const d = `M ${from.x} ${from.y} C ${(from.x + to.x) / 2} ${from.y}, ${(from.x + to.x) / 2} ${to.y}, ${to.x} ${to.y}`;
       p.setAttribute("d", d);
       p.setAttribute("fill", "none");
       p.setAttribute("stroke", "rgba(15, 23, 42, 0.15)");
@@ -67,12 +67,12 @@ export const Flowchart: React.FC = () => {
       overlay.setAttribute("d", d);
       overlay.setAttribute("fill", "none");
       overlay.setAttribute("stroke-width", "2");
-      
+
       const strokeColor = from.isHub ? "url(#blue-green)" : "var(--accent-blue)";
       overlay.setAttribute("stroke", strokeColor);
       overlay.setAttribute("stroke-dasharray", "10, 50");
       overlay.setAttribute("stroke-dashoffset", "0");
-      
+
       overlay.style.animation = `flow-particle ${3 + index}s linear infinite`;
       overlay.classList.add("flow-line");
       svg.appendChild(overlay);
@@ -112,12 +112,12 @@ export const Flowchart: React.FC = () => {
     Object.keys(nodes).forEach(key => {
       const node = nodes[key];
       const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
-      
+
       if (node.isHub) {
         // Center the Retention Engine label inside a sleek glowing badge
         const rectW = 120;
         const rectH = 28;
-        
+
         // Soft lime-green glow effect for the hub badge
         const pillGlow = document.createElementNS("http://www.w3.org/2000/svg", "rect");
         pillGlow.setAttribute("x", (node.x - rectW / 2).toString());
@@ -164,7 +164,7 @@ export const Flowchart: React.FC = () => {
       }
 
       const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-      
+
       if (node.isHub) {
         text.setAttribute("x", node.x.toString());
         text.setAttribute("y", (node.y + 4.5).toString()); // Center text vertically in the 28px tall pill
@@ -178,7 +178,7 @@ export const Flowchart: React.FC = () => {
         text.setAttribute("font-size", "10px");
         text.setAttribute("text-anchor", node.x > 200 ? "start" : "end");
       }
-      
+
       text.setAttribute("font-family", "var(--font-family-display)");
       text.setAttribute("font-weight", "700");
       text.textContent = node.label;
@@ -190,10 +190,10 @@ export const Flowchart: React.FC = () => {
   }, []);
 
   return (
-    <div 
-      ref={containerRef} 
-      id="hero-flowchart" 
-      className="node-flowchart" 
+    <div
+      ref={containerRef}
+      id="hero-flowchart"
+      className="node-flowchart"
       aria-label="Interactive SaaS automation flowchart."
     />
   );

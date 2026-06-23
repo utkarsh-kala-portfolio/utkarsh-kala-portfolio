@@ -116,3 +116,40 @@ trackEvent("action_completed", {
 - **Do not introduce other analytics tools.** All tracking goes through GTM and the unified analytics module.
 - **Do not track PII as Mixpanel properties** — no emails, full names, phone numbers, IP addresses, or payment details in Mixpanel event properties.
 - **Do not hardcode the Mixpanel project token outside of `mixpanel.ts`**.
+
+---
+
+# Web & Mobile Synchronization Guidelines
+
+To ensure the portfolio works seamlessly across both desktop web and mobile devices, always adhere to the following cross-platform development rules:
+
+## 1. Native Link & Action Protocol Handlers
+- **Mobile Actions**: On mobile devices, always prefer native OS-level protocol handlers rather than web-only URLs.
+  - **Email**: Use `mailto:email@address.com` (with optional `?subject=...&body=...`) assigned to `window.location.href` to trigger the user's default native email application.
+  - **WhatsApp**: Use standard `https://wa.me/...` links which redirect natively.
+  - **Phone**: Use `tel:phone_number` to trigger the phone dialer.
+- **Desktop Actions**: On desktop browsers where native handlers (like `mailto:`) may not be configured, support web-based compose interfaces (e.g. Gmail Web compose `https://mail.google.com/mail/...`) as a fallback or default when appropriate to prevent unresponsive link behavior.
+
+## 2. Platform Detection Pattern
+Always use a reliable and uniform detection mechanism to distinguish between desktop and mobile environments:
+```typescript
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+```
+Avoid using viewport width (media queries) alone for functional logical branching, as desktop browsers with narrow windows should still receive desktop fallback handlers.
+
+## 3. Responsive Touch Targets & Spacing
+- Ensure all interactive elements (buttons, links, form inputs) have a minimum tap target size of **48x48px** on mobile viewports to prevent misclicks.
+- Use CSS Media Queries (`@media (hover: hover)`) to only apply hover states on devices that support hover. Avoid sticky hover styles on touch devices by wrapping them appropriately:
+  ```css
+  @media (hover: hover) {
+    .btn:hover {
+      background-color: var(--primary-hover);
+    }
+  }
+  ```
+
+## 4. Testing & Verification Checklist
+Whenever creating, modifying, or testing any feature:
+- [ ] Test the viewport layout using mobile responsiveness tools.
+- [ ] Test critical CTA actions on a simulated touch device (e.g., Chrome DevTools device mode) or physical device to ensure native app redirection is smooth and does not result in blank tabs or unexpected browser redirects.
+- [ ] Verify that analytics tracking fires identically on both platforms without duplication or omission.

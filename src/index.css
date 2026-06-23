@@ -2113,3 +2113,22 @@ h1.section-title {
   font-size: 0.9rem;
   padding: 12px 16px;
 }
+
+.modal-form-fallback {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 12px;
+}
+
+.fallback-link {
+  color: var(--accent-indigo);
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color var(--transition-fast);
+  cursor: pointer;
+}
+
+.fallback-link:hover {
+  color: var(--ink);
+}
