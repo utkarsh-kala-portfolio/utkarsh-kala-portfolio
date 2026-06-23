@@ -222,11 +222,11 @@ h1.section-title {
   border-radius: 12px;
   padding: 32px;
   box-shadow: var(--shadow);
-  transition: transform var(--transition-fast) var(--ease-out), box-shadow var(--transition-fast) var(--ease-out), background-color var(--transition-normal);
+  transition: transform 0.15s var(--ease-out), box-shadow 0.15s var(--ease-out), background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-card:hover {
-  background: var(--paper);
+  background: #EEF2FF;
   transform: translate(-4px, -4px);
   box-shadow: var(--shadow-lg);
 }
@@ -279,6 +279,13 @@ h1.section-title {
   font-family: var(--font-family-display);
 }
 
+.btn-sm {
+  padding: 10px 18px;
+  font-size: 0.85rem;
+  min-height: auto;
+  gap: 8px;
+}
+
 .btn:hover {
   transform: translate(3px, 3px);
   box-shadow: 3px 3px 0 var(--ink);
@@ -325,6 +332,24 @@ h1.section-title {
 
 .btn-whatsapp:hover {
   background: #1ebc5a;
+}
+
+.btn-linkedin {
+  background: #0A66C2;
+  color: #FFFFFF;
+}
+
+.btn-linkedin:hover {
+  background: #004182;
+}
+
+.btn-email {
+  background: var(--accent-coral);
+  color: #FFFFFF;
+}
+
+.btn-email:hover {
+  background: #e05333;
 }
 
 .header {
@@ -859,11 +884,11 @@ h1.section-title {
   gap: 12px;
   min-height: 150px;
   box-shadow: 2px 2px 0 var(--ink);
-  transition: transform var(--transition-fast) var(--ease-spring), box-shadow var(--transition-fast) var(--ease-spring), background-color var(--transition-fast);
+  transition: transform 0.15s var(--ease-out), box-shadow 0.15s var(--ease-out), background-color 0.15s ease;
 }
 
 .brand-card:hover {
-  background: #FAF6EE;
+  background: #EEF2FF;
   transform: translate(-2px, -2px);
   box-shadow: 4px 4px 0 var(--ink);
 }
@@ -1544,18 +1569,31 @@ h1.section-title {
 .contact-card {
   text-align: center;
   padding: 60px 40px;
-  background: var(--paper);
+  background: linear-gradient(135deg, #EEF2FF, #FAF9F6, #F5F3FF, #EEF2FF);
+  background-size: 300% 300%;
+  animation: contact-gradient-flow 12s ease infinite;
   border: var(--border);
   border-radius: 12px;
   max-width: 900px;
   margin: 0 auto;
   box-shadow: var(--shadow-lg);
-  transition: transform var(--transition-fast) var(--ease-spring), box-shadow var(--transition-fast) var(--ease-spring);
+  transition: transform 0.15s var(--ease-out), box-shadow 0.15s var(--ease-out);
 }
 
 .contact-card:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: 14px 14px 0 var(--ink);
+  transform: translate(-6px, -6px);
+  box-shadow: 16px 16px 0 var(--ink);
+}
+@keyframes contact-gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .contact-title {
@@ -1660,23 +1698,71 @@ h1.section-title {
 
 .footer-links {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 12px;
-  align-items: flex-end;
-}
-
-.footer-meta-link {
-  display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.95rem;
-  color: var(--text-main);
-  font-weight: 500;
-  transition: color var(--transition-fast);
+  justify-content: flex-end;
 }
 
-.footer-meta-link:hover {
-  color: var(--accent-indigo);
+.footer-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: var(--border);
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.12s var(--ease-out), box-shadow 0.12s var(--ease-out);
+}
+
+.footer-icon-btn:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.footer-icon-btn:active {
+  transform: translate(6px, 6px);
+  box-shadow: 0px 0px 0 var(--ink);
+}
+
+.footer-icon-btn.footer-email {
+  background: var(--accent-coral);
+  color: #FFFFFF;
+}
+
+.footer-icon-btn.footer-email:hover {
+  background: #e05333;
+}
+
+.footer-icon-btn.footer-whatsapp {
+  background: var(--accent-whatsapp);
+  color: #FFFFFF;
+}
+
+.footer-icon-btn.footer-whatsapp:hover {
+  background: #1ebc5a;
+}
+
+.footer-icon-btn.footer-linkedin {
+  background: #0A66C2;
+  color: #FFFFFF;
+}
+
+.footer-icon-btn.footer-linkedin:hover {
+  background: #004182;
+}
+
+.footer-icon-btn.footer-call {
+  background: var(--accent-indigo);
+  color: #FFFFFF;
+}
+
+.footer-icon-btn.footer-call:hover {
+  background: #4338ca;
 }
 
 .footer-bottom {
@@ -1703,6 +1789,14 @@ h1.section-title {
   .reveal.active {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Ensure active/revealed cards maintain their fast hover transition instead of using slow reveal transition */
+  .glass-card.reveal.active,
+  .automation-card.reveal.active,
+  .timeline-card.reveal.active,
+  .contact-card.reveal.active {
+    transition: transform 0.15s var(--ease-out), box-shadow 0.15s var(--ease-out), background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
   }
 }
 
@@ -1784,7 +1878,7 @@ h1.section-title {
   }
 
   .footer-links {
-    align-items: flex-start;
+    justify-content: flex-start;
   }
 }
 
@@ -2127,23 +2221,4 @@ h1.section-title {
   justify-content: center;
   font-size: 0.9rem;
   padding: 12px 16px;
-}
-
-.modal-form-fallback {
-  text-align: center;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-top: 12px;
-}
-
-.fallback-link {
-  color: var(--accent-indigo);
-  text-decoration: underline;
-  font-weight: 600;
-  transition: color var(--transition-fast);
-  cursor: pointer;
-}
-
-.fallback-link:hover {
-  color: var(--ink);
 }

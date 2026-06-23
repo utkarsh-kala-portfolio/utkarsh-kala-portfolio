@@ -65,9 +65,9 @@ export const WhyMe: React.FC = () => {
             description="Detailed breakdown of software solutions, tracking triggers, and workflow automations engineered to increase retention, recovery rates, and efficiency."
           />
 
-          <div className="automation-grid">
+          <div className="automation-grid reveal">
             {PORTFOLIO_DATA.automations.map((item, idx) => (
-              <div key={idx} className="glass-card automation-card reveal">
+              <div key={idx} className="glass-card automation-card">
                 <h3 className="automation-title">{item.title}</h3>
 
                 <div className="automation-detail">
@@ -110,9 +110,9 @@ export const WhyMe: React.FC = () => {
             description="Direct recommendations and reviews from e-commerce merchants, founders, and operations leaders."
           />
 
-          <div className="testimonials-grid">
+          <div className="testimonials-grid reveal">
             {PORTFOLIO_DATA.recommendations.map((item, idx) => (
-              <div key={`li-${idx}`} className="glass-card testimonial-card reveal">
+              <div key={`li-${idx}`} className="glass-card testimonial-card">
                 <div className="testimonial-topline">
                   <div></div>
                   <div className="linkedin-stamp" aria-label="LinkedIn recommendation">
@@ -132,7 +132,7 @@ export const WhyMe: React.FC = () => {
             ))}
 
             {PORTFOLIO_DATA.testimonials.map((item, idx) => (
-              <div key={idx} className="glass-card testimonial-card reveal">
+              <div key={idx} className="glass-card testimonial-card">
                 <div className="testimonial-topline">
                   <div className="testimonial-rating" aria-label={`Rating: ${item.rating} stars`}>
                     {Array.from({ length: item.rating }).map((_, rIdx) => (
@@ -149,7 +149,7 @@ export const WhyMe: React.FC = () => {
                   dangerouslySetInnerHTML={{ __html: item.quote }}
                 />
                 <div className="testimonial-client">{item.client}</div>
-                <div className="testimonial-meta">{item.country} • {item.duration} • {item.date}</div>
+                <div className="testimonial-meta">{item.country}</div>
               </div>
             ))}
 

@@ -193,12 +193,12 @@ export const Home: React.FC = () => {
             description="A brief preview of automated solutions built to streamline customer operations and proactively prevent churn."
           />
 
-          <div className="automation-grid" style={{ marginBottom: "40px" }}>
+          <div className="automation-grid reveal" style={{ marginBottom: "40px" }}>
             {[
               PORTFOLIO_DATA.automations[0], // Integration-led expansion -> $50K+ MRR
               PORTFOLIO_DATA.automations[1], // Predictive health scoring -> <2% churn
             ].map((item, idx) => (
-              <div key={idx} className="glass-card automation-card reveal">
+              <div key={idx} className="glass-card automation-card">
                 <h3 className="automation-title">{item.title}</h3>
                 <div className="automation-detail">
                   <span className="automation-lbl">Challenge:</span>
@@ -240,8 +240,8 @@ export const Home: React.FC = () => {
             description="Evolving from a Computer Science Engineering graduate to Business Analyst, Technical Analyst, and now scaling Customer Success leadership."
           />
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "20px", maxWidth: "800px", margin: "0 auto 40px" }}>
-            <div className="glass-card reveal" style={{ padding: "20px 30px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "20px", maxWidth: "800px", margin: "0 auto 40px" }} className="reveal">
+            <div className="glass-card" style={{ padding: "20px 30px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px" }}>
               <div>
                 <span className="timeline-meta">QuickReply.ai • 2023–Present</span>
                 <h3 style={{ fontSize: "1.25rem", margin: "4px 0" }}>Head of Customer Success</h3>
@@ -249,7 +249,7 @@ export const Home: React.FC = () => {
               <span className="timeline-date-badge" style={{ margin: 0 }}>Active Role</span>
             </div>
 
-            <div className="glass-card reveal" style={{ padding: "20px 30px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px" }}>
+            <div className="glass-card" style={{ padding: "20px 30px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px" }}>
               <div>
                 <span className="timeline-meta">QuickReply.ai • 2022–2023</span>
                 <h3 style={{ fontSize: "1.25rem", margin: "4px 0" }}>Technical Business Analyst</h3>

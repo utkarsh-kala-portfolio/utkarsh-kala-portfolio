@@ -49,22 +49,10 @@ export const ContactModal: React.FC = () => {
       trackContactSubmit("email", topic);
       const subject = `Portfolio Inquiry: ${topic}`;
       const emailBody = `Hey Utkarsh,\n\nI came across your portfolio via ${currentUrl}\n\n${message}`;
-
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      );
-
-      if (isMobile) {
-        const mailtoUrl = `mailto:utkarsh.kala.9@gmail.com?subject=${encodeURIComponent(
-          subject
-        )}&body=${encodeURIComponent(emailBody)}`;
-        window.location.href = mailtoUrl;
-      } else {
-        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
-          "utkarsh.kala.9@gmail.com"
-        )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
-        window.open(gmailUrl, "_blank", "noopener,noreferrer");
-      }
+      const mailtoUrl = `mailto:utkarsh.kala.9@gmail.com?subject=${encodeURIComponent(
+        subject
+      )}&body=${encodeURIComponent(emailBody)}`;
+      window.location.href = mailtoUrl;
     }
 
     closeModal();
@@ -115,7 +103,7 @@ export const ContactModal: React.FC = () => {
             </button>
             <a
               href="https://www.linkedin.com/in/utkarshkala/"
-              className="btn btn-secondary"
+              className="btn btn-linkedin"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackOutboundClick("LinkedIn", "https://www.linkedin.com/in/utkarshkala/", "Contact Modal Link Grid")}
@@ -128,7 +116,7 @@ export const ContactModal: React.FC = () => {
                 openModal('email');
                 trackContactOpen('email', 'Contact Modal Link Grid');
               }}
-              className="btn btn-secondary"
+              className="btn btn-email"
               aria-label="Email me"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -139,13 +127,6 @@ export const ContactModal: React.FC = () => {
       </div>
     );
   }
-
-  const currentUrl = typeof window !== "undefined" ? window.location.href : "";
-  const subject = `Portfolio Inquiry: ${topic}`;
-  const emailBody = `Hey Utkarsh,\n\nI came across your portfolio via ${currentUrl}\n\n${message}`;
-  const mailtoUrl = `mailto:utkarsh.kala.9@gmail.com?subject=${encodeURIComponent(
-    subject
-  )}&body=${encodeURIComponent(emailBody)}`;
 
   // WhatsApp / Email form view
   return (
@@ -223,35 +204,6 @@ export const ContactModal: React.FC = () => {
               </>
             )}
           </button>
-
-          {contactType === "email" && (
-            <p className="modal-form-fallback">
-              Not using Gmail?{" "}
-              <a
-                href={mailtoUrl}
-                onClick={(e) => {
-                  if (!message.trim()) {
-                    e.preventDefault();
-                    const textarea = document.getElementById("message");
-                    if (textarea) {
-                      textarea.focus();
-                      (textarea as HTMLTextAreaElement).reportValidity();
-                    }
-                    return;
-                  }
-                  trackContactSubmit("email", topic);
-                  setTimeout(() => {
-                    closeModal();
-                    setMessage("");
-                    setTopic(TOPICS[0]);
-                  }, 100);
-                }}
-                className="fallback-link"
-              >
-                Open default email client
-              </a>
-            </p>
-          )}
         </form>
       </div>
     </div>

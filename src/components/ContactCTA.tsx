@@ -10,9 +10,9 @@ export const ContactCTA: React.FC<ContactCTAProps> = ({ topContent }) => {
   const { openModal } = useContactModal();
 
   return (
-    <section className="section contact-section">
+    <section className="section contact-section reveal">
       <div className="container">
-        <div className={`glass-card contact-card reveal active ${topContent ? "merged" : ""}`}>
+        <div className={`glass-card contact-card ${topContent ? "merged" : ""}`}>
           {topContent && <div className="notfound-top-content">{topContent}</div>}
           <span className="section-tag">Get in Touch</span>
           <h2 className="contact-title">Let’s build customer systems that compound.</h2>
@@ -42,7 +42,7 @@ export const ContactCTA: React.FC<ContactCTAProps> = ({ topContent }) => {
             </button>
             <a
               href="https://www.linkedin.com/in/utkarshkala/"
-              className="btn btn-secondary"
+              className="btn btn-linkedin"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackOutboundClick("LinkedIn", "https://www.linkedin.com/in/utkarshkala/", "Contact CTA Section")}
@@ -55,7 +55,7 @@ export const ContactCTA: React.FC<ContactCTAProps> = ({ topContent }) => {
                 openModal('email');
                 trackContactOpen('email', 'Contact CTA Section');
               }}
-              className="btn btn-secondary"
+              className="btn btn-email"
               aria-label="Email me"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
