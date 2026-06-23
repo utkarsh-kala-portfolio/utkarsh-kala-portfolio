@@ -261,6 +261,18 @@ export const PORTFOLIO_DATA: PortfolioData = {
 
   automations: [
     {
+      title: "$50K+ MRR Generated Through Integration-Led Expansion",
+      problem: "Enterprise customers required custom integrations and workflow enhancements before expanding usage.",
+      system: "Created a pilot-to-production framework with Product and Engineering teams to rapidly validate and deploy customer-requested integrations.",
+      impact: [
+        "Generated **$50K+ in new MRR opportunities**",
+        "Accelerated delivery of strategic integrations",
+        "Improved cross-functional execution between CS, Product, and Engineering",
+        "Increased enterprise expansion potential"
+      ],
+      tags: ["Revenue Expansion", "Product Collaboration", "Enterprise Integrations"]
+    },
+    {
       title: "<2% Gross Revenue Churn Through Predictive Customer Health Scoring",
       problem: "Customer risk was often identified only after escalations occurred, limiting the team's ability to intervene proactively.",
       system: "Designed a customer health framework that combined product adoption, platform usage, SLA adherence, engagement signals, and customer sentiment into a unified health score.",
@@ -271,6 +283,29 @@ export const PORTFOLIO_DATA: PortfolioData = {
         "Created a repeatable framework for retention forecasting"
       ],
       tags: ["Customer Retention", "Health Scoring", "Churn Forecasting"]
+    },
+    {
+      title: "Enterprise Onboarding Automation at Scale",
+      problem: "Enterprise onboarding required extensive coordination, resulting in delays and inconsistent implementation experiences.",
+      system: "Designed onboarding workflows, ownership frameworks, milestone tracking, and SLA monitoring systems to streamline implementation.",
+      impact: [
+        "Accelerated enterprise onboarding timelines",
+        "Improved onboarding consistency",
+        "Reduced implementation bottlenecks",
+        "Faster customer time-to-value"
+      ],
+      tags: ["Enterprise Onboarding", "Implementation Management", "Process Automation"]
+    }, {
+      title: "Automated Recovery Workflows for High-Risk Accounts",
+      problem: "Customer recovery efforts varied significantly across CSMs, leading to inconsistent retention outcomes.",
+      system: "Built automated retention playbooks, risk-based follow-up sequences, escalation paths, and recovery roadmaps.",
+      impact: [
+        "Standardized customer recovery processes",
+        "Improved accountability across retention initiatives",
+        "Reduced reliance on manual intervention",
+        "Increased consistency in at-risk account management"
+      ],
+      tags: ["Retention Automation", "Playbooks", "Customer Recovery"]
     },
     {
       title: "900+ Accounts Managed Through a Custom CRM Visibility Platform",
@@ -295,43 +330,8 @@ export const PORTFOLIO_DATA: PortfolioData = {
         "Improved customer support consistency"
       ],
       tags: ["Support Operations", "SLA Management", "CSAT", "Workflow Automation"]
-    },
-    {
-      title: "$50K+ MRR Generated Through Integration-Led Expansion",
-      problem: "Enterprise customers required custom integrations and workflow enhancements before expanding usage.",
-      system: "Created a pilot-to-production framework with Product and Engineering teams to rapidly validate and deploy customer-requested integrations.",
-      impact: [
-        "Generated **$50K+ in new MRR opportunities**",
-        "Accelerated delivery of strategic integrations",
-        "Improved cross-functional execution between CS, Product, and Engineering",
-        "Increased enterprise expansion potential"
-      ],
-      tags: ["Revenue Expansion", "Product Collaboration", "Enterprise Integrations"]
-    },
-    {
-      title: "Automated Recovery Workflows for High-Risk Accounts",
-      problem: "Customer recovery efforts varied significantly across CSMs, leading to inconsistent retention outcomes.",
-      system: "Built automated retention playbooks, risk-based follow-up sequences, escalation paths, and recovery roadmaps.",
-      impact: [
-        "Standardized customer recovery processes",
-        "Improved accountability across retention initiatives",
-        "Reduced reliance on manual intervention",
-        "Increased consistency in at-risk account management"
-      ],
-      tags: ["Retention Automation", "Playbooks", "Customer Recovery"]
-    },
-    {
-      title: "Enterprise Onboarding Automation at Scale",
-      problem: "Enterprise onboarding required extensive coordination, resulting in delays and inconsistent implementation experiences.",
-      system: "Designed onboarding workflows, ownership frameworks, milestone tracking, and SLA monitoring systems to streamline implementation.",
-      impact: [
-        "Accelerated enterprise onboarding timelines",
-        "Improved onboarding consistency",
-        "Reduced implementation bottlenecks",
-        "Faster customer time-to-value"
-      ],
-      tags: ["Enterprise Onboarding", "Implementation Management", "Process Automation"]
     }
+
   ],
 
   testimonials: [

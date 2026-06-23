@@ -55,23 +55,13 @@ export const Home: React.FC = () => {
         <div className="container">
           <div className="hero-grid">
             <div className="hero-content">
-              <div
-                className="signature-badge"
-                onClick={() => {
-                  document.getElementById("kala-jaadu")?.scrollIntoView({ behavior: "smooth" });
-                  trackCTAClick("Kala Jaadu Badge", "Hero Badge");
-                }}
-                style={{ cursor: "pointer" }}
-                role="button"
-                tabIndex={0}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
-                <span>The Kala Jaadu Effect - complex customer problems work in my hands</span>
-              </div>
+              <h1 className="hero-title">
+                Bridging Customer Success + Product + Engineering + Revenue Teams
+              </h1>
 
-              <h1 className="hero-title">I build retention systems where Customer Success, Product, and Engineering work as one.</h1>
-
-              <p className="hero-subtitle">Founding team member and Head of Customer Success at QuickReply.ai, helping SaaS and commerce teams turn customer conversations, integrations, onboarding, support, and automation into measurable growth.</p>
+              <p className="hero-subtitle">
+                I help SaaS businesses reduce churn, scale operations, and turn integrations into revenue by diagnosing problems deeply, automating what repeats, and owning outcomes end-to-end.
+              </p>
 
               <div className="hero-ctas">
                 <button
@@ -112,71 +102,132 @@ export const Home: React.FC = () => {
           {/* Hero metric cards */}
           <div className="hero-metrics-grid reveal">
             <MetricCard target="$2.5M+" label="ARR Managed" />
-            <MetricCard target="120%" label="Average NRR" className="green-theme" />
             <MetricCard target="220%" label="Peak NRR" />
             <MetricCard target="<2%" label="Gross Churn" className="green-theme" />
+            <MetricCard target="$50K+" label="MRR Generated" className="green-theme" />
           </div>
         </div>
       </section>
 
-      {/* Strategic Pillars */}
-      <section id="what-i-do" className="section" style={{ borderTop: "1px solid rgba(255, 255, 255, 0.05)" }}>
+      {/* Methodology & The Kala Jaadu Effect */}
+      <section id="kala-jaadu" className="section" style={{ borderTop: "1px solid rgba(255, 255, 255, 0.05)" }}>
         <div className="container">
           <SectionHeader
-            tagText="Strategic Pillars"
-            title="Customer Success engineered for retention, expansion, and scale."
-            description={renderFormattedText("Over the last 5 years, I've built customer success systems that helped maintain **<2% Gross Revenue Churn**, support **900+ customer accounts**, improve support operations by **40%**, and generate **$50K+ MRR** through integration-led expansion initiatives.")}
+            tagText="Methodology"
+            title="The &ldquo;Kala Jaadu&rdquo; Effect"
+            description={
+              <>
+                Somewhere along the journey, my teammates started calling me <strong>&ldquo;Kala Jaadugar&rdquo; (The Black Magician)</strong> - not because problems disappeared magically, but because complex customer, integration, and operational challenges had a pattern: they would eventually turn into scalable systems, automated workflows, and measurable business outcomes.
+              </>
+            }
           />
 
-          <div className="what-grid">
-            <div className="glass-card what-card reveal">
-              <div className="what-card-icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+          <div className="kj-container">
+            {/* Left Card: Impact Visual */}
+            <div className="kj-visual reveal" style={{ padding: "40px 32px" }}>
+              <div className="kj-circle kj-photo-logo" style={{ transform: "none", border: "4px solid var(--ink)", margin: "0 auto 16px" }}>
+                <img src="/assets/profile/home-display.png" alt="Utkarsh Kala" />
               </div>
-              <h3 className="what-card-title">&lt;2% Gross Revenue Churn</h3>
-              <p className="what-card-desc">Built customer health frameworks, risk detection systems, and retention playbooks that enabled proactive intervention before renewal risk materialized.</p>
+              <p style={{ color: "var(--accent-blue)", fontSize: "0.85rem", fontWeight: "700", letterSpacing: "0.05em", marginBottom: "20px" }}>
+                The nickname stayed — and so did the approach!
+              </p>
+
+              <div style={{ borderTop: "2px dashed rgba(15, 23, 42, 0.1)", paddingTop: "20px", textAlign: "left" }}>
+                <h4 style={{ color: "var(--text-bright)", fontSize: "1rem", fontWeight: "700", marginBottom: "16px" }}>Impact Delivered</h4>
+                <ul style={{ listStyleType: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "12px" }}>
+                  <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "0.9rem", color: "var(--text-main)" }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
+                    <span><strong>$50K+ MRR</strong> Generated Through Integration-Led Expansion</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "0.9rem", color: "var(--text-main)" }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
+                    <span><strong>&lt;2%</strong> Gross Revenue Churn Through Predictive Customer Health Scoring</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "0.9rem", color: "var(--text-main)" }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
+                    <span><strong>40%</strong> Increase in Support Operations Efficiency</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "0.9rem", color: "var(--text-main)" }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
+                    <span><strong>900+</strong> Accounts Managed Through Automated Recovery Workflows</span>
+                  </li>
+                </ul>
+              </div>
             </div>
 
-            <div className="glass-card what-card reveal">
-              <div className="what-card-icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+            {/* Right Column: Methodology Cards */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "20px" }} className="reveal">
+              <div className="glass-card">
+                <h3 style={{ fontSize: "1.2rem", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>1. Diagnose Before Designing</h3>
+                <p style={{ color: "var(--text-main)", fontSize: "0.95rem", lineHeight: "1.6" }}>
+                  Every problem starts with understanding the bigger picture - customer workflows, APIs, integrations, data movement, adoption patterns, and operational gaps. The goal is never to fix symptoms; it's to uncover the root cause.
+                </p>
               </div>
-              <h3 className="what-card-title">900+ Accounts Managed at Scale</h3>
-              <p className="what-card-desc">Designed CRM workflows, portfolio visibility systems, and operational automations that allowed leadership and CSMs to manage growth without increasing operational complexity.</p>
-            </div>
-
-            <div className="glass-card what-card reveal">
-              <div className="what-card-icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></svg>
+              <div className="glass-card">
+                <h3 style={{ fontSize: "1.2rem", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>2. Automate What Doesn't Scale</h3>
+                <p style={{ color: "var(--text-main)", fontSize: "0.95rem", lineHeight: "1.6" }}>
+                  If a problem keeps repeating, it's a signal to build a system. From health scoring and churn prediction to CRM workflows and onboarding automation, the focus is on creating repeatable processes that create leverage.
+                </p>
               </div>
-              <h3 className="what-card-title">40% Increase in Support Efficiency</h3>
-              <p className="what-card-desc">Implemented automated routing, SLA monitoring, ownership frameworks, and self-service processes that reduced manual effort and improved customer experience.</p>
-            </div>
-
-            <div className="glass-card what-card reveal">
-              <div className="what-card-icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg>
+              <div className="glass-card">
+                <h3 style={{ fontSize: "1.2rem", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>3. Own the Outcome End-to-End</h3>
+                <p style={{ color: "var(--text-main)", fontSize: "0.95rem", lineHeight: "1.6" }}>
+                  The best solutions happen at the intersection of teams. I work as the bridge between Customers, Customer Success, Product, Engineering, and Revenue teams - taking challenges from discovery to implementation to measurable impact.
+                </p>
               </div>
-              <h3 className="what-card-title">$50K+ MRR Expansion Pipeline</h3>
-              <p className="what-card-desc">Partnered with Product and Engineering to deliver custom integrations, enterprise pilots, and customer-led features that unlocked new revenue opportunities.</p>
-            </div>
-
-            <div className="glass-card what-card reveal">
-              <div className="what-card-icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
-              </div>
-              <h3 className="what-card-title">Faster Enterprise Time-to-Value</h3>
-              <p className="what-card-desc">Built onboarding frameworks, implementation workflows, and accountability systems that accelerated adoption and improved customer outcomes.</p>
-            </div>
-
-            <div className="glass-card what-card reveal">
-              <div className="what-card-icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></svg>
-              </div>
-              <h3 className="what-card-title">Customer Success + Product + RevOps</h3>
-              <p className="what-card-desc">Operating at the intersection of customer needs, technical solutions, product strategy, and revenue growth to create systems that scale beyond individual contributors.</p>
             </div>
           </div>
+
+          <p className="portfolio-note reveal active" style={{ marginTop: "40px", textAlign: "center" }}>
+            That became the "Kala Jaadu Effect" - diving deep into complexity, finding clarity, and turning problems into scalable systems.
+          </p>
+        </div>
+      </section>
+
+      {/* Case Studies Preview */}
+      <section className="section" style={{ borderTop: "1px solid rgba(255, 255, 255, 0.05)" }}>
+        <div className="container">
+          <SectionHeader
+            tagText="Case Studies"
+            title="Peek into Automations"
+            description="A brief preview of automated solutions built to streamline customer operations and proactively prevent churn."
+          />
+
+          <div className="automation-grid" style={{ marginBottom: "40px" }}>
+            {[
+              PORTFOLIO_DATA.automations[0], // Integration-led expansion -> $50K+ MRR
+              PORTFOLIO_DATA.automations[1], // Predictive health scoring -> <2% churn
+            ].map((item, idx) => (
+              <div key={idx} className="glass-card automation-card reveal">
+                <h3 className="automation-title">{item.title}</h3>
+                <div className="automation-detail">
+                  <span className="automation-lbl">Challenge:</span>
+                  <span className="automation-val">{item.problem}</span>
+                </div>
+                <div className="automation-detail">
+                  <span className="automation-lbl">Solution:</span>
+                  <span className="automation-val">{item.system}</span>
+                </div>
+                <div className="automation-detail">
+                  <span className="automation-lbl">Impact:</span>
+                  <ul className="automation-impact-list">
+                    {item.impact.map((bullet, bIdx) => (
+                      <li key={bIdx} className="automation-val">
+                        {renderFormattedText(bullet)}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="automation-tags">
+                  {item.tags.map((tag, tIdx) => (
+                    <span key={tIdx} className="automation-tag">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <SectionCTA to="/why-me" text="View All Case Studies" />
         </div>
       </section>
 
@@ -247,144 +298,6 @@ export const Home: React.FC = () => {
           />
 
           <SectionCTA to="/customers" text="View All Customers" />
-        </div>
-      </section>
-
-      {/* Case Studies Preview */}
-      <section className="section" style={{ borderTop: "1px solid rgba(255, 255, 255, 0.05)" }}>
-        <div className="container">
-          <SectionHeader
-            tagText="Peek into Automations"
-            title="Automation that protects revenue."
-            description="A brief preview of automated solutions built to streamline customer operations and proactively prevent churn."
-          />
-
-          <div className="automation-grid" style={{ marginBottom: "40px" }}>
-            {PORTFOLIO_DATA.automations.slice(0, 2).map((item, idx) => (
-              <div key={idx} className="glass-card automation-card reveal">
-                <h3 className="automation-title">{item.title}</h3>
-                <div className="automation-detail">
-                  <span className="automation-lbl">Challenge:</span>
-                  <span className="automation-val">{item.problem}</span>
-                </div>
-                <div className="automation-detail">
-                  <span className="automation-lbl">Solution:</span>
-                  <span className="automation-val">{item.system}</span>
-                </div>
-                <div className="automation-detail">
-                  <span className="automation-lbl">Impact:</span>
-                  <ul className="automation-impact-list">
-                    {item.impact.map((bullet, bIdx) => (
-                      <li key={bIdx} className="automation-val">
-                        {renderFormattedText(bullet)}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="automation-tags">
-                  {item.tags.map((tag, tIdx) => (
-                    <span key={tIdx} className="automation-tag">{tag}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <SectionCTA to="/why-me" text="View All Case Studies" />
-        </div>
-      </section>
-
-      {/* The Kala Jaadu Effect */}
-      <section id="kala-jaadu" className="section" style={{ borderTop: "1px solid rgba(255, 255, 255, 0.05)" }}>
-        <div className="container">
-          <SectionHeader
-            tagText="Methodology"
-            title='The "Kala Jaadu" Effect'
-            description={renderFormattedText("Somewhere along the journey, my teammates started calling me **\"Kala Jaadu\" (The Black Magician)** - not because problems disappeared magically, but because complex customer, integration, and operational challenges had a pattern: they would eventually turn into scalable systems, automated workflows, and measurable business outcomes. The nickname stayed. So did the approach.")}
-          />
-
-          <div className="kj-container">
-            <div className="kj-visual reveal">
-              <div className="kj-circle kj-photo-logo">
-                <img src="/assets/profile/home-display.png" alt="Utkarsh Kala" />
-              </div>
-              <p style={{ color: "var(--accent-blue)", fontSize: "0.9rem", fontWeight: "700", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "20px" }}>
-                Revenue & Retention Engine
-              </p>
-
-              <div style={{ borderTop: "1px solid rgba(255, 255, 255, 0.08)", paddingTop: "20px", textAlign: "left" }}>
-                <h4 style={{ color: "var(--text-bright)", fontSize: "1rem", fontWeight: "700", marginBottom: "12px" }}>Impact Delivered</h4>
-                <ul style={{ listStyleType: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
-                  <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "0.9rem", color: "var(--text-muted)" }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
-                    <span><strong>&lt;2%</strong> Gross Revenue Churn</span>
-                  </li>
-                  <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "0.9rem", color: "var(--text-muted)" }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
-                    <span><strong>900+</strong> Customer Accounts Managed at Scale</span>
-                  </li>
-                  <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "0.9rem", color: "var(--text-muted)" }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
-                    <span><strong>40%</strong> Support Operations Efficiency Improvement</span>
-                  </li>
-                  <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "0.9rem", color: "var(--text-muted)" }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
-                    <span><strong>$50K+ MRR</strong> Generated Through Expansion & Integrations</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: "24px" }} className="reveal">
-              <div className="kj-card">
-                <h3>1. Diagnose Before Designing</h3>
-                <p>Every problem starts with understanding the bigger picture - customer workflows, APIs, integrations, data movement, adoption patterns, and operational gaps. The goal is never to fix symptoms; it's to uncover the root cause.</p>
-              </div>
-              <div className="kj-card">
-                <h3>2. Automate What Doesn't Scale</h3>
-                <p>If a problem keeps repeating, it's a signal to build a system. From health scoring and churn prediction to CRM workflows and onboarding automation, the focus is on creating repeatable processes that create leverage.</p>
-              </div>
-              <div className="kj-card">
-                <h3>3. Own the Outcome End-to-End</h3>
-                <p>The best solutions happen at the intersection of teams. I work as the bridge between Customers, Customer Success, Product, Engineering, and Revenue teams - taking challenges from discovery to implementation to measurable impact.</p>
-              </div>
-            </div>
-          </div>
-
-          <p className="portfolio-note reveal" style={{ marginTop: "40px", textAlign: "center" }}>
-            That became the "Kala Jaadu Effect" - diving deep into complexity, finding clarity, and turning problems into scalable systems.
-          </p>
-        </div>
-      </section>
-
-      {/* Operating Principles */}
-      <section className="section" style={{ borderTop: "1px solid rgba(255, 255, 255, 0.05)" }}>
-        <div className="container">
-          <SectionHeader
-            tagText="Execution Rules"
-            title="Operating Principles"
-            description="The core guidelines that drive decisions, execution, and client management across the SaaS life cycle."
-          />
-
-          <div className="principles-grid">
-            <div className="glass-card principle-card reveal">
-              <div className="principle-num">01</div>
-              <h3 className="principle-title">Customer Interest First (Scaled)</h3>
-              <p className="principle-desc">Focus humans on high-leverage relationships and scoping, while delegating routine tracking, setup, and alerts to robust automation workflows.</p>
-            </div>
-
-            <div className="glass-card principle-card reveal">
-              <div className="principle-num">02</div>
-              <h3 className="principle-title">Data-driven Churn Indicators</h3>
-              <p className="principle-desc">Never wait for a cancellation request. Build proactive notification rules monitoring API usage drops, checkout skips, and SLA violations.</p>
-            </div>
-
-            <div className="glass-card principle-card reveal">
-              <div className="principle-num">03</div>
-              <h3 className="principle-title">Engineering-Grade Operations</h3>
-              <p className="principle-desc">Treat internal customer success platforms, CRM dashboards, and integration flows with the same testing, backup, and documentation standards as code.</p>
-            </div>
-          </div>
         </div>
       </section>
 
