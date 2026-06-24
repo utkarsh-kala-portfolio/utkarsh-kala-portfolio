@@ -41,6 +41,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const mailOptions = {
     from: `"Utkarsh Kala" <${gmailEmail}>`,
     to: email,
+    cc: "utkarsh.kala.9@gmail.com",
     subject: "Requested CV - Utkarsh Kala",
     html: `
       <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px;">
