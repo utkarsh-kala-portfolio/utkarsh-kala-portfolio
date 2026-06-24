@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useContactModal } from "../context/ContactModalContext";
 import { trackContactSubmit, trackContactOpen, trackOutboundClick } from "../analytics/analytics";
+import { RequestCV } from "./RequestCV";
 
 const TOPICS = [
   "Hiring",
@@ -17,10 +18,30 @@ const TOPICS = [
   "Partnerships",
 ];
 
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+const triggerEmail = (to: string, subject: string, body: string) => {
+  if (isMobile) {
+    const mailtoUrl = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoUrl;
+  } else {
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(gmailUrl, "_blank", "noopener,noreferrer");
+  }
+};
+
 export const ContactModal: React.FC = () => {
   const { isOpen, closeModal, contactType, openModal } = useContactModal();
   const [topic, setTopic] = useState(TOPICS[0]);
   const [message, setMessage] = useState("");
+
+  const handleClose = () => {
+    closeModal();
+    setTimeout(() => {
+      setMessage("");
+      setTopic(TOPICS[0]);
+    }, 300);
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -49,26 +70,23 @@ export const ContactModal: React.FC = () => {
       trackContactSubmit("email", topic);
       const subject = `Portfolio Inquiry: ${topic}`;
       const emailBody = `Hey Utkarsh,\n\nI came across your portfolio via ${currentUrl}\n\n${message}`;
-      const mailtoUrl = `mailto:utkarsh.kala.9@gmail.com?subject=${encodeURIComponent(
-        subject
-      )}&body=${encodeURIComponent(emailBody)}`;
-      window.location.href = mailtoUrl;
+      triggerEmail("utkarsh.kala.9@gmail.com", subject, emailBody);
     }
 
-    closeModal();
-    setMessage(""); // reset message
-    setTopic(TOPICS[0]);
+    handleClose();
   };
+
+
 
   // "Connect" hub view — shows all contact options
   if (contactType === "connect") {
     return (
-      <div className={`contact-modal-overlay ${isOpen ? "open" : ""}`} onClick={closeModal}>
+      <div className={`contact-modal-overlay ${isOpen ? "open" : ""}`} onClick={handleClose}>
         <div
           className={`glass-card contact-modal-card ${isOpen ? "open" : ""}`}
           onClick={(e) => e.stopPropagation()}
         >
-          <button className="modal-close-btn" onClick={closeModal} aria-label="Close modal">
+          <button className="modal-close-btn" onClick={handleClose} aria-label="Close modal">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -128,14 +146,19 @@ export const ContactModal: React.FC = () => {
     );
   }
 
+  // "Download CV" form view
+  if (contactType === "cv") {
+    return <RequestCV isOpen={isOpen} onClose={handleClose} />;
+  }
+
   // WhatsApp / Email form view
   return (
-    <div className={`contact-modal-overlay ${isOpen ? "open" : ""}`} onClick={closeModal}>
+    <div className={`contact-modal-overlay ${isOpen ? "open" : ""}`} onClick={handleClose}>
       <div
         className={`glass-card contact-modal-card ${isOpen ? "open" : ""}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <button className="modal-close-btn" onClick={closeModal} aria-label="Close modal">
+        <button className="modal-close-btn" onClick={handleClose} aria-label="Close modal">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>

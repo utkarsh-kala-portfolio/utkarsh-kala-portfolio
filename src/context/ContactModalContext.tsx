@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, type ReactNode } from "react";
 
-type ContactType = "whatsapp" | "email" | "connect" | null;
+type ContactType = "whatsapp" | "email" | "connect" | "cv" | null;
 
 interface ContactModalContextProps {
   isOpen: boolean;

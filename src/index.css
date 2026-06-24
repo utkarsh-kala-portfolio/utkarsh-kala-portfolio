@@ -631,18 +631,18 @@ h1.section-title {
 .node-flowchart {
   width: 100%;
   max-width: 480px;
-  aspect-ratio: 460/420;
-  background: var(--paper);
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, #F8FAFC 0%, #EEF2FF 100%);
   border: var(--border);
   border-radius: 20px;
   padding: 10px;
-  box-shadow: var(--shadow);
+  box-shadow: 6px 6px 0 var(--accent-indigo);
   transition: transform var(--transition-fast) var(--ease-spring), box-shadow var(--transition-fast) var(--ease-spring);
 }
 
 .node-flowchart:hover {
   transform: translate(-4px, -4px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 10px 10px 0 var(--accent-indigo);
 }
 
 /* Hero Metrics */

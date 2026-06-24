@@ -56,7 +56,7 @@ export const Home: React.FC = () => {
           <div className="hero-grid">
             <div className="hero-content">
               <h1 className="hero-title">
-                Bridging Customer Success + Product + Engineering + Revenue
+                Bridging Customer Success + Product + Engineering
               </h1>
 
               <p className="hero-subtitle">

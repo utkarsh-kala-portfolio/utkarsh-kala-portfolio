@@ -11,7 +11,7 @@ export const Flowchart: React.FC = () => {
     container.innerHTML = "";
 
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("viewBox", "0 0 460 420");
+    svg.setAttribute("viewBox", "0 0 460 460");
     svg.setAttribute("width", "100%");
     svg.setAttribute("height", "100%");
     svg.style.overflow = "visible";
@@ -42,21 +42,22 @@ export const Flowchart: React.FC = () => {
     }
 
     const nodes: Record<string, FlowNode> = {
-      cs: { x: 140, y: 60, label: "Customer Success", color: "#3b82f6" },
-      prod: { x: 140, y: 130, label: "Product Scoping", color: "#3b82f6" },
-      eng: { x: 140, y: 200, label: "Engineering", color: "#3b82f6" },
-      auto: { x: 140, y: 270, label: "CS Automation", color: "#3b82f6" },
-      rev: { x: 140, y: 340, label: "Rev Operations", color: "#3b82f6" },
-      hub: { x: 240, y: 200, label: "Retention Engine", color: "#84cc16", isHub: true },
-      nrr: { x: 340, y: 80, label: "NRR Growth", color: "#10b981" },
-      churn: { x: 340, y: 160, label: "Churn Reduction", color: "#10b981" },
-      eff: { x: 340, y: 240, label: "Team Efficiency", color: "#10b981" },
-      stick: { x: 340, y: 320, label: "Product Stickiness", color: "#10b981" },
+      cs: { x: 60, y: 50, label: "Customer Success", color: "#3b82f6" },
+      prod: { x: 145, y: 95, label: "Product Strategy", color: "#3b82f6" },
+      eng: { x: 230, y: 50, label: "Engineering", color: "#3b82f6" },
+      auto: { x: 315, y: 95, label: "Automation", color: "#3b82f6" },
+      rev: { x: 400, y: 50, label: "Revenue Operations", color: "#3b82f6" },
+      hub: { x: 230, y: 230, label: "Growth Engine", color: "#84cc16", isHub: true },
+      nrr: { x: 60, y: 365, label: "↑ NRR Growth", color: "#10b981" },
+      churn: { x: 230, y: 365, label: "↓ Churn Reduction", color: "#10b981" },
+      adopt: { x: 145, y: 410, label: "↑ Product Adoption", color: "#10b981" },
+      exp: { x: 315, y: 410, label: "↑ Expansion Revenue", color: "#10b981" },
+      eff: { x: 400, y: 365, label: "↑ Team Efficiency", color: "#10b981" },
     };
 
     const drawLine = (from: FlowNode, to: FlowNode, index: number) => {
       const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      const d = `M ${from.x} ${from.y} C ${(from.x + to.x) / 2} ${from.y}, ${(from.x + to.x) / 2} ${to.y}, ${to.x} ${to.y}`;
+      const d = `M ${from.x} ${from.y} C ${from.x} ${(from.y + to.y) / 2}, ${to.x} ${(from.y + to.y) / 2}, ${to.x} ${to.y}`;
       p.setAttribute("d", d);
       p.setAttribute("fill", "none");
       p.setAttribute("stroke", "rgba(15, 23, 42, 0.15)");
@@ -88,8 +89,9 @@ export const Flowchart: React.FC = () => {
     // Output lines (from Hub to outcomes)
     drawLine(nodes.hub, nodes.nrr, 1);
     drawLine(nodes.hub, nodes.churn, 2);
-    drawLine(nodes.hub, nodes.eff, 3);
-    drawLine(nodes.hub, nodes.stick, 4);
+    drawLine(nodes.hub, nodes.adopt, 3);
+    drawLine(nodes.hub, nodes.exp, 4);
+    drawLine(nodes.hub, nodes.eff, 5);
 
     // Inject SVG animation style locally
     const style = document.createElement("style");
@@ -114,9 +116,10 @@ export const Flowchart: React.FC = () => {
       const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
 
       if (node.isHub) {
-        // Center the Retention Engine label inside a sleek glowing badge
-        const rectW = 120;
-        const rectH = 28;
+        // Center the Growth Engine label inside a sleek glowing badge
+        // Center the Growth Engine label inside a sleek glowing badge
+        const rectW = 130;
+        const rectH = 32;
 
         // Soft lime-green glow effect for the hub badge
         const pillGlow = document.createElementNS("http://www.w3.org/2000/svg", "rect");
@@ -127,8 +130,8 @@ export const Flowchart: React.FC = () => {
         pillGlow.setAttribute("fill", node.color);
         pillGlow.setAttribute("opacity", "0.25");
         pillGlow.setAttribute("filter", "url(#glow-green)");
-        pillGlow.setAttribute("rx", "14");
-        pillGlow.setAttribute("ry", "14");
+        pillGlow.setAttribute("rx", "16");
+        pillGlow.setAttribute("ry", "16");
         group.appendChild(pillGlow);
 
         // Solid background pill matching container background with lime-green border
@@ -140,8 +143,8 @@ export const Flowchart: React.FC = () => {
         pill.setAttribute("fill", "var(--paper)");
         pill.setAttribute("stroke", node.color);
         pill.setAttribute("stroke-width", "2");
-        pill.setAttribute("rx", "14");
-        pill.setAttribute("ry", "14");
+        pill.setAttribute("rx", "16");
+        pill.setAttribute("ry", "16");
         pill.classList.add("flow-node");
         group.appendChild(pill);
       } else {
@@ -167,21 +170,43 @@ export const Flowchart: React.FC = () => {
 
       if (node.isHub) {
         text.setAttribute("x", node.x.toString());
-        text.setAttribute("y", (node.y + 4.5).toString()); // Center text vertically in the 28px tall pill
+        text.setAttribute("y", (node.y + 5).toString()); // Center text vertically in the 32px tall pill
         text.setAttribute("fill", "var(--accent-indigo)");
-        text.setAttribute("font-size", "11px");
+        text.setAttribute("font-size", "15px");
         text.setAttribute("text-anchor", "middle");
       } else {
-        text.setAttribute("x", (node.x + (node.x > 200 ? 15 : -15)).toString());
-        text.setAttribute("y", (node.y + 4).toString());
+        text.setAttribute("x", node.x.toString());
+        text.setAttribute("y", (node.y < 200 ? node.y - 16 : node.y + 24).toString());
         text.setAttribute("fill", "var(--ink)");
-        text.setAttribute("font-size", "10px");
-        text.setAttribute("text-anchor", node.x > 200 ? "start" : "end");
+        text.setAttribute("font-size", "13px");
+        text.setAttribute("text-anchor", "middle");
       }
 
       text.setAttribute("font-family", "var(--font-family-display)");
       text.setAttribute("font-weight", "700");
-      text.textContent = node.label;
+      if (node.label.startsWith("↑")) {
+        const arrowSpan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+        arrowSpan.textContent = "↑ ";
+        arrowSpan.setAttribute("fill", "#10b981"); // Green
+        arrowSpan.setAttribute("font-size", "16px"); // Slightly bigger
+        text.appendChild(arrowSpan);
+
+        const textSpan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+        textSpan.textContent = node.label.substring(2);
+        text.appendChild(textSpan);
+      } else if (node.label.startsWith("↓")) {
+        const arrowSpan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+        arrowSpan.textContent = "↓ ";
+        arrowSpan.setAttribute("fill", "#ef4444"); // Red
+        arrowSpan.setAttribute("font-size", "16px"); // Slightly bigger
+        text.appendChild(arrowSpan);
+
+        const textSpan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+        textSpan.textContent = node.label.substring(2);
+        text.appendChild(textSpan);
+      } else {
+        text.textContent = node.label;
+      }
       group.appendChild(text);
       svg.appendChild(group);
     });
