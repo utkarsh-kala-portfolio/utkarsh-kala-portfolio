@@ -2,21 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useContactModal } from "../context/ContactModalContext";
 import { trackContactSubmit, trackContactOpen, trackOutboundClick } from "../analytics/analytics";
 import { RequestCV } from "./RequestCV";
-
-const TOPICS = [
-  "Hiring",
-  "CS Leadership",
-  "Customer Success",
-  "RevOps",
-  "Automation",
-  "Integrations",
-  "Consulting",
-  "Advisory",
-  "Fractional CS",
-  "Growth Strategy",
-  "Retention",
-  "Partnerships",
-];
+import { PORTFOLIO_DATA } from "../data/portfolioData";
 
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
@@ -32,14 +18,14 @@ const triggerEmail = (to: string, subject: string, body: string) => {
 
 export const ContactModal: React.FC = () => {
   const { isOpen, closeModal, contactType, openModal } = useContactModal();
-  const [topic, setTopic] = useState(TOPICS[0]);
+  const [topic, setTopic] = useState(PORTFOLIO_DATA.topics[0]);
   const [message, setMessage] = useState("");
 
   const handleClose = () => {
     closeModal();
     setTimeout(() => {
       setMessage("");
-      setTopic(TOPICS[0]);
+      setTopic(PORTFOLIO_DATA.topics[0]);
     }, 300);
   };
 
@@ -182,7 +168,7 @@ export const ContactModal: React.FC = () => {
                 onChange={(e) => setTopic(e.target.value)}
                 className="form-control form-select"
               >
-                {TOPICS.map((t) => (
+                {PORTFOLIO_DATA.topics.map((t) => (
                   <option key={t} value={t}>
                     {t}
                   </option>

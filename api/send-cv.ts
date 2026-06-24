@@ -15,10 +15,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ success: false, error: "Method not allowed" });
   }
 
-  const { email } = req.body;
+  const { email, name, topic } = req.body;
 
   if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
     return res.status(400).json({ success: false, error: "Invalid email address" });
+  }
+
+  if (!name || typeof name !== "string" || name.trim().length === 0) {
+    return res.status(400).json({ success: false, error: "Invalid name" });
+  }
+
+  if (!topic || typeof topic !== "string" || topic.trim().length === 0) {
+    return res.status(400).json({ success: false, error: "Invalid topic" });
   }
 
   const gmailEmail = process.env.GMAIL_EMAIL || "utkarsh.kala.9@gmail.com";
@@ -42,11 +50,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     from: `"Utkarsh Kala" <${gmailEmail}>`,
     to: email,
     cc: "utkarsh.kala.9@gmail.com",
-    subject: "Requested CV - Utkarsh Kala",
+    subject: `Requested CV: ${topic} - Utkarsh Kala`,
     html: `
       <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px;">
-        <h2 style="color: #4f46e5;">Hello,</h2>
-        <p>Thank you for requesting a copy of my CV from my portfolio website (<a href="https://utkarshkala.in" style="color: #4f46e5; text-decoration: none;">utkarshkala.in</a>).</p>
+        <h2 style="color: #4f46e5;">Hello ${name},</h2>
+        <p>Thank you for requesting a copy of my CV from my portfolio website (<a href="https://utkarshkala.in" style="color: #4f46e5; text-decoration: none;">utkarshkala.in</a>) regarding your interest in <strong>${topic}</strong>.</p>
         <p>You can download and view my CV directly by clicking the button below:</p>
         <div style="text-align: center; margin: 30px 0;">
           <a href="${downloadLink}" style="background-color: #4f46e5; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">Download CV (PDF)</a>

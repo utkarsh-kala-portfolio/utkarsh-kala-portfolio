@@ -55,6 +55,7 @@ export interface PortfolioData {
   brandLogoMap: Record<string, string>;
   techStackLogos: Record<string, string>;
   simpleIconMappings: Record<string, string>;
+  topics: string[];
 }
 
 export const PORTFOLIO_DATA: PortfolioData = {
@@ -588,5 +589,19 @@ export const PORTFOLIO_DATA: PortfolioData = {
     "judge.me": "judgeme",
     "odoo": "odoo",
     "lms": "canvaslms"
-  }
+  },
+  topics: [
+    "Hiring",
+    "CS Leadership",
+    "Customer Success",
+    "RevOps",
+    "Automation",
+    "Integrations",
+    "Consulting",
+    "Advisory",
+    "Fractional CS",
+    "Growth Strategy",
+    "Retention",
+    "Partnerships"
+  ]
 };
