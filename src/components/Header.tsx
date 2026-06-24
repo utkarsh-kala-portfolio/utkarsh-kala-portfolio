@@ -27,18 +27,58 @@ export const Header: React.FC = () => {
   return (
     <header className={`header ${scrolled ? "scrolled" : ""}`}>
       <div className="container">
-        <Link
-          to="/"
-          className="logo-link"
-          aria-label="Utkarsh Kala Home"
-          onClick={() => {
-            setNavOpen(false);
-            trackNavClick("Logo Home Link");
-          }}
-        >
-          <div className="logo-symbol" aria-hidden="true">UK</div>
-          <span className="logo-text">Utkarsh Kala</span>
-        </Link>
+        <div className="header-logo-wrapper">
+          <Link
+            to="/"
+            className="logo-link"
+            aria-label="Utkarsh Kala Home"
+            onClick={() => {
+              setNavOpen(false);
+              trackNavClick("Logo Home Link");
+            }}
+          >
+            <div className="logo-symbol" aria-hidden="true" style={{ overflow: "hidden", padding: 0 }}>
+              <img
+                src="/assets/profile/header-logo.png"
+                alt="Utkarsh Kala"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block"
+                }}
+              />
+            </div>
+            <span className="logo-text">Utkarsh Kala</span>
+          </Link>
+
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              openModal('cv');
+              trackContactOpen('cv', 'Header Logo CV Button');
+            }}
+            className="btn btn-primary"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              padding: "4px 10px",
+              fontSize: "0.75rem",
+              fontWeight: "600",
+              minHeight: "28px"
+            }}
+            aria-label="Request CV"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download CV
+          </button>
+        </div>
 
         <button
           className={`nav-toggle ${navOpen ? "open" : ""}`}
