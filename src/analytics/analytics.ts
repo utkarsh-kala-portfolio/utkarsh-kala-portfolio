@@ -24,7 +24,7 @@
  */
 
 import { initDataLayer, pushToDataLayer } from "./gtm";
-import { initMixpanel, trackMixpanel } from "./mixpanel";
+import { initMixpanel, trackMixpanel, identifyMixpanel } from "./mixpanel";
 
 const OPT_OUT_KEY = "uk_disable_tracking";
 
@@ -76,6 +76,14 @@ export function trackEvent(
 
   // 2. Push to Mixpanel directly
   trackMixpanel(eventName, properties);
+}
+
+/**
+ * Identify a user in Mixpanel
+ */
+export function identifyUser(userId: string): void {
+  if (isOwnerOptedOut()) return;
+  identifyMixpanel(userId);
 }
 
 // ─── Pre-defined Event Helpers ──────────────────────────────────

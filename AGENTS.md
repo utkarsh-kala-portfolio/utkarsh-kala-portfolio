@@ -86,6 +86,9 @@ These are the Mixpanel events currently tracked in this project. **All new Mixpa
 | `contact_submit` | Form submission to WhatsApp or Email | `contact_type`, `topic`, `page_path` | `src/components/ContactModal.tsx` |
 | `outbound_click` | Clicking an external resource (e.g. Phone, LinkedIn) | `link_label`, `link_url`, `source`, `page_path` | `src/components/ContactModal.tsx`, `src/components/ContactCTA.tsx`, `src/components/Footer.tsx` |
 | `cta_click` | Clicking any CTA button (Hero, Section, etc.) | `cta_label`, `section`, `page_path` | `src/pages/Home.tsx`, `src/components/SectionCTA.tsx` |
+| `linkedin_login_started` | Clicking LinkedIn login button (Real or Simulated) | `login_type`, `page_path` | `src/pages/LinkedInAuth.tsx` |
+| `linkedin_login_completed` | Successful LinkedIn login callback | `login_type`, `page_path` | `src/pages/LinkedInAuth.tsx` |
+| `linkedin_logout_completed` | Clicking LinkedIn logout/disconnect button | `page_path` | `src/pages/LinkedInAuth.tsx` |
 
 ---
 

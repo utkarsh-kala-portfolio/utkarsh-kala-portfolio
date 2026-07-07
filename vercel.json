@@ -1,11 +1,12 @@
 {
+  "devCommand": "npm run vite-dev",
   "rewrites": [
     {
       "source": "/api/:path*",
       "destination": "/api/:path*"
     },
     {
-      "source": "/((?!api/).*)",
+      "source": "/((?!api/|.*\\.[a-zA-Z0-9]+$|@vite|@react-refresh).*)",
       "destination": "/"
     }
   ]

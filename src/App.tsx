@@ -9,6 +9,7 @@ import { Journey } from "./pages/Journey";
 import { Customers } from "./pages/Customers";
 import { Stack } from "./pages/Stack";
 import { WhyMe } from "./pages/WhyMe";
+import { LinkedInAuth } from "./pages/LinkedInAuth";
 
 import { NotFound } from "./pages/NotFound";
 import { ContactModalProvider } from "./context/ContactModalContext";
@@ -36,6 +37,7 @@ function App() {
           <Route path="/customers" element={<Customers />} />
           <Route path="/stack" element={<Stack />} />
           <Route path="/why-me" element={<WhyMe />} />
+          <Route path="/linked-in-auth" element={<LinkedInAuth />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

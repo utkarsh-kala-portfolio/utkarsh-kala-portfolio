@@ -24,6 +24,27 @@ export const Header: React.FC = () => {
 
   const toggleNav = () => setNavOpen(!navOpen);
 
+  const [liUser, setLiUser] = useState<{ name: string; picture: string } | null>(null);
+
+  useEffect(() => {
+    const checkLiAuth = () => {
+      const isAuth = localStorage.getItem("uk_li_authorized") === "true";
+      if (isAuth) {
+        setLiUser({
+          name: localStorage.getItem("uk_li_given_name") || localStorage.getItem("uk_li_name")?.split(" ")[0] || "User",
+          picture: localStorage.getItem("uk_li_picture") || ""
+        });
+      } else {
+        setLiUser(null);
+      }
+    };
+
+    checkLiAuth();
+
+    window.addEventListener("storage", checkLiAuth);
+    return () => window.removeEventListener("storage", checkLiAuth);
+  }, []);
+
   return (
     <header className={`header ${scrolled ? "scrolled" : ""}`}>
       <div className="container">
@@ -144,6 +165,47 @@ export const Header: React.FC = () => {
           >
             <LetterHop text="Why Me?" />
           </NavLink>
+
+          {liUser && (
+            <NavLink
+              to="/linked-in-auth"
+              className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+              onClick={() => {
+                setNavOpen(false);
+                trackNavClick("Header LinkedIn Profile Link");
+              }}
+              style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
+            >
+              {liUser.picture ? (
+                <div style={{ position: "relative", width: "24px", height: "24px", display: "inline-block" }}>
+                  <img
+                    src={liUser.picture}
+                    alt={liUser.name}
+                    style={{ width: "24px", height: "24px", borderRadius: "50%", border: "1.5px solid var(--ink)", objectFit: "cover", display: "block" }}
+                  />
+                  <span style={{ position: "absolute", bottom: "-1px", right: "-1px", width: "8px", height: "8px", borderRadius: "50%", background: "var(--accent-green)", border: "1px solid var(--ink)", display: "block" }} />
+                </div>
+              ) : (
+                <span style={{
+                  width: "24px",
+                  height: "24px",
+                  borderRadius: "50%",
+                  background: "var(--accent-indigo)",
+                  color: "var(--paper)",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "0.75rem",
+                  fontWeight: "bold",
+                  border: "1.5px solid var(--ink)"
+                }}>
+                  {liUser.name[0]}
+                </span>
+              )}
+              <span>{liUser.name}</span>
+            </NavLink>
+          )}
+
           <button
             className="btn btn-secondary nav-cta"
             onClick={() => {
