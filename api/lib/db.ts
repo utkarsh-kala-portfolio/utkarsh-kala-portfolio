@@ -25,10 +25,13 @@ try {
   console.error("Failed to load .env.local manually in DB helper:", err);
 }
 
-const uri = process.env.uk_portfolio_MONGODB_URI;
+const uri =
+  process.env.uk_portfolio_MONGODB_URI ||
+  process.env.MONGODB_URI ||
+  process.env.MONGO_URI;
 
 if (!uri) {
-  throw new Error("Please define the uk_portfolio_MONGODB_URI environment variable inside .env.local");
+  throw new Error("Please define uk_portfolio_MONGODB_URI or MONGODB_URI inside .env.local / Vercel env vars");
 }
 
 const dbName = process.env.MONGODB_DB || "portfolio";

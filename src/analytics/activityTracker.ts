@@ -18,6 +18,31 @@ let pageEntryTime = Date.now();
 let sectionEntryTimes: Record<string, number> = {};
 let trackedScrollDepths: Record<number, boolean> = {};
 
+function dispatchAnalyticsRequest(endpoint: string, payload: Record<string, any>): void {
+  fetch(endpoint, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+    keepalive: true,
+  })
+    .then(async (response) => {
+      if (!response.ok) {
+        console.warn(`First-party analytics request failed: ${endpoint}`, response.status);
+        return;
+      }
+
+      try {
+        const result = await response.json();
+        if (result && result.success === false) {
+          console.warn(`First-party analytics API rejected request: ${endpoint}`, result.error || result);
+        }
+      } catch {
+        // Some keepalive responses may be unavailable during navigation.
+      }
+    })
+    .catch((err) => console.warn(`Failed to dispatch first-party analytics request: ${endpoint}`, err));
+}
+
 // Helper: Generate UUID
 function generateUUID(): string {
   if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
@@ -148,13 +173,7 @@ export async function trackActivityEvent(
       host: window.location.host,
     };
 
-    // Send payload using keepalive fetch for high delivery odds during page leaves
-    fetch("/api/analytics/event", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(eventData),
-      keepalive: true,
-    }).catch((err) => console.warn("Failed to dispatch first-party analytics event:", err));
+    dispatchAnalyticsRequest("/api/analytics/event", eventData);
 
   } catch (err) {
     console.warn("Analytics activity tracker error:", err);
@@ -407,12 +426,7 @@ function setupUnloadTracking(): void {
         host: window.location.host,
       };
 
-      fetch("/api/analytics/event", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(exitEventData),
-        keepalive: true,
-      });
+      dispatchAnalyticsRequest("/api/analytics/event", exitEventData);
 
       // 2. Terminate session
       const sessEndData = {
@@ -421,12 +435,7 @@ function setupUnloadTracking(): void {
         timestamp: now,
       };
 
-      fetch("/api/analytics/session/end", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(sessEndData),
-        keepalive: true,
-      });
+      dispatchAnalyticsRequest("/api/analytics/session-end", sessEndData);
     }
   };
 

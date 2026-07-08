@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { trackEvent, identifyUser } from "../analytics/analytics";
 
@@ -7,6 +7,7 @@ export const LinkedInToast: React.FC = () => {
   const [visible, setVisible] = useState(false);
   const [successName, setSuccessName] = useState<string | null>(null);
   const [loginStarted, setLoginStarted] = useState(false);
+  const wasAuthorizedRef = useRef(localStorage.getItem("uk_li_authorized") === "true");
 
   useEffect(() => {
     let cleanupTimer: (() => void) | undefined;
@@ -18,25 +19,27 @@ export const LinkedInToast: React.FC = () => {
       const isAuthPage = location.pathname === "/linked-in-auth";
 
       if (isAuthorized) {
+        const justConnected = !wasAuthorizedRef.current || loginStarted;
+        wasAuthorizedRef.current = true;
         setVisible(false);
-        // Only trigger success banner if this tab started the login
-        if (loginStarted) {
+
+        if (justConnected) {
           setLoginStarted(false);
           const givenName =
             localStorage.getItem("uk_li_given_name") ||
             localStorage.getItem("uk_li_name")?.split(" ")[0] ||
             "User";
           setSuccessName(givenName);
-          const t = setTimeout(() => {
-            setSuccessName(null);
-          }, 3000);
-          cleanupTimer = () => clearTimeout(t);
         }
       } else if (!isDismissed && !isAuthPage) {
+        wasAuthorizedRef.current = false;
+        setSuccessName(null);
         // Show after a small delay to feel less intrusive
         const t = setTimeout(() => setVisible(true), 2000);
         cleanupTimer = () => clearTimeout(t);
       } else {
+        wasAuthorizedRef.current = false;
+        setSuccessName(null);
         setVisible(false);
       }
     };
@@ -50,6 +53,16 @@ export const LinkedInToast: React.FC = () => {
       if (cleanupTimer) cleanupTimer();
     };
   }, [location.pathname, loginStarted]);
+
+  useEffect(() => {
+    if (!successName) return;
+
+    const t = window.setTimeout(() => {
+      setSuccessName(null);
+    }, 3000);
+
+    return () => window.clearTimeout(t);
+  }, [successName]);
 
   useEffect(() => {
     // Setup message listener for the popup OAuth callback as a backup channel

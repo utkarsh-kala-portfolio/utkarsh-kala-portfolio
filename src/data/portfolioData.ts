@@ -623,19 +623,14 @@ export const PORTFOLIO_DATA: PortfolioData = {
   },
   topics: [
     "Hiring",
-    "Product Strategy",
+    "Product Adoption",
     "AI Workflows",
     "Technical Strategy",
-    "CS Leadership",
+    "Revenue Systems",
     "Customer Success",
     "RevOps",
     "Automation",
     "Integrations",
-    "Consulting",
-    "Advisory",
-    "Fractional CS",
-    "Growth Strategy",
-    "Retention",
-    "Partnerships"
+    "Strategic Advisory"
   ]
 };
