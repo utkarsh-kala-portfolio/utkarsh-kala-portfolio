@@ -25,28 +25,36 @@ try {
   console.error("Failed to load .env.local manually in DB helper:", err);
 }
 
-const uri =
-  process.env.uk_portfolio_MONGODB_URI ||
-  process.env.MONGODB_URI ||
-  process.env.MONGO_URI;
-
-if (!uri) {
-  throw new Error("Please define uk_portfolio_MONGODB_URI or MONGODB_URI inside .env.local / Vercel env vars");
-}
-
-const dbName = process.env.MONGODB_DB || "portfolio";
-
 let cachedClient: MongoClient | null = null;
 let cachedDb: Db | null = null;
+
+function getMongoUri(): string {
+  const uri =
+    process.env.uk_portfolio_MONGODB_URI ||
+    process.env.MONGODB_URI ||
+    process.env.MONGO_URI;
+
+  if (!uri) {
+    throw new Error("Missing MongoDB connection string. Define uk_portfolio_MONGODB_URI or MONGODB_URI in Vercel environment variables.");
+  }
+
+  return uri;
+}
+
+function getMongoDbName(): string {
+  return process.env.uk_portfolio_MONGODB_DB || process.env.MONGODB_DB || "portfolio";
+}
 
 export async function connectToDatabase(): Promise<{ client: MongoClient; db: Db }> {
   if (cachedClient && cachedDb) {
     return { client: cachedClient, db: cachedDb };
   }
 
-  const client = new MongoClient(uri!);
+  const client = new MongoClient(getMongoUri(), {
+    serverSelectionTimeoutMS: 5000,
+  });
   await client.connect();
-  const db = client.db(dbName);
+  const db = client.db(getMongoDbName());
 
   cachedClient = client;
   cachedDb = db;
