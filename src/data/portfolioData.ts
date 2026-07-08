@@ -18,7 +18,7 @@ export interface StackCategory {
   items: string[];
 }
 
-export interface CustomerIndustry {
+export interface ClientIndustry {
   industry: string;
   brands: string[];
 }
@@ -48,7 +48,7 @@ export interface PortfolioData {
   journeyItems: JourneyItem[];
   coreStrengths: CoreStrength[];
   stackCategories: StackCategory[];
-  customerPortfolio: CustomerIndustry[];
+  clientPortfolio: ClientIndustry[];
   automations: AutomationItem[];
   testimonials: TestimonialItem[];
   recommendations: RecommendationItem[];
@@ -64,55 +64,55 @@ export const PORTFOLIO_DATA: PortfolioData = {
       date: "September 2000",
       location: "Kotdwara, Uttarakhand",
       title: "Building ambition from day one",
-      description: "Raised in a small town with a simple belief: meaningful growth comes from consistency, curiosity, and taking ownership of opportunities."
+      description: "Raised in a small town with a belief that meaningful growth comes from consistency, curiosity, and ownership."
     },
     {
       date: "2003–2018",
       location: "St. Joseph's Convent School",
       title: "First lesson in leadership",
-      description: "Set a goal to become Head Boy and achieved it through persistence, accountability, and earning the trust of peers and teachers—an early foundation for leading teams and driving outcomes."
+      description: "Set a goal to become Head Boy and achieved it through persistence, accountability, and the trust of peers and teachers."
     },
     {
       date: "2018–2022",
       location: "HNB Garhwal University",
       title: "Building a technical foundation",
-      description: "Pursued Computer Science & Engineering with a focus on applying technology to solve real-world business problems beyond the classroom."
+      description: "Pursued Computer Science & Engineering with a focus on applying technology to solve real-world business problems."
     },
     {
       date: "2021",
       location: "QuickReply.ai",
       title: "Turning learning into execution",
-      description: "Started working while pursuing a degree, balancing academics and professional responsibilities to gain hands-on SaaS, customer, and business experience early in my career."
+      description: "Started working while completing my degree, gaining hands-on SaaS, customer, product, and business experience early in my career."
     },
     {
       date: "2021",
       location: "HNB Garhwal University",
-      title: "Applying technology to improve accessibility",
-      description: "Developed a machine-learning-powered virtual university experience aimed at helping prospective students explore the campus remotely and make more informed decisions."
+      title: "Applying technology to accessibility",
+      description: "Developed a machine-learning-powered virtual university experience to help prospective students explore campus remotely and make informed decisions."
     },
     {
       date: "2021–2022",
       location: "QuickReply.ai",
       title: "Business Analyst",
-      description: "Understanding what drives customer growth. Focused on customer workflows, product adoption, and business outcomes to identify the factors that influence retention, engagement, and long-term value."
+      description: "Mapped customer workflows, campaign goals, onboarding needs, and product adoption patterns across high-growth brands."
     },
     {
       date: "2022–2023",
       location: "QuickReply.ai",
       title: "Technical Business Analyst",
-      description: "Bridging customers, product, and technology. Led solution design, integrations, and technical consulting initiatives that translated customer requirements into scalable product outcomes."
+      description: "Bridged customers, Product, and Engineering by translating requirements into technical workflows, integrations, API troubleshooting, and scalable implementation systems."
     },
     {
       date: "2023–Present",
       location: "QuickReply.ai",
       title: "Head of Customer Success",
-      description: "Scaling revenue through customer success. Built and scaled Customer Success operations across enterprise accounts, developing automation systems, retention frameworks, onboarding processes, and expansion strategies that helped maintain <2% gross revenue churn, improve operational efficiency, and generate $50K+ MRR in growth opportunities."
+      description: "Scaled post-sale systems across enterprise accounts, building customer intelligence, retention, onboarding, automation, and expansion frameworks that sustained <2% gross churn, improved efficiency by 40%, and generated $50K+ MRR in growth opportunities."
     },
     {
       date: "Today",
       location: "Present Focus",
-      title: "Customer Success Leader | Revenue Operator | Automation Builder",
-      description: "Focused on helping SaaS companies grow after the sale by combining Customer Success, RevOps, AI automation, and technical problem-solving to increase retention, expansion, and operational scale."
+      title: "Business Systems Architect | Product Adoption | AI Workflows | Revenue Strategy",
+      description: "Building the bridge between business strategy, product adoption, AI workflows, technical integrations, customer intelligence, and revenue systems."
     }
   ],
 
@@ -126,6 +126,13 @@ export const PORTFOLIO_DATA: PortfolioData = {
   ],
 
   stackCategories: [
+    // {
+    //   id: "ai",
+    //   name: "AI & Automation",
+    //   items: [
+    //     "OpenAI", "Claude", "Gemini"
+    //   ]
+    // },
     {
       id: "commerce",
       name: "Commerce & Checkout",
@@ -203,7 +210,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     }
   ],
 
-  customerPortfolio: [
+  clientPortfolio: [
     {
       industry: "Sports & Entertainment",
       brands: ["Gujarat Titans", "AAFT University", "NasAcademy"]
@@ -267,77 +274,101 @@ export const PORTFOLIO_DATA: PortfolioData = {
 
   automations: [
     {
-      title: "$50K+ MRR Generated Through Integration-Led Expansion",
-      problem: "Enterprise customers required custom integrations and workflow enhancements before expanding usage.",
-      system: "Created a pilot-to-production framework with Product and Engineering teams to rapidly validate and deploy customer-requested integrations.",
+      title: "Integration-Led Revenue Engine",
+      problem: "Enterprise customers needed custom integrations and workflow enhancements before expanding usage.",
+      system: "Created a pilot-to-production framework with Product and Engineering to validate customer-requested integrations, assess business impact, map technical feasibility, and move high-value workflows into production.",
       impact: [
-        "Generated **$50K+ in new MRR opportunities**",
+        "Generated **$50K+ MRR** expansion opportunities",
         "Accelerated delivery of strategic integrations",
-        "Improved cross-functional execution between CS, Product, and Engineering",
+        "Improved CS / Product / Engineering execution",
         "Increased enterprise expansion potential"
       ],
-      tags: ["Revenue Expansion", "Product Collaboration", "Enterprise Integrations"]
+      tags: ["Revenue Expansion", "Enterprise Integrations", "Product Collaboration", "Technical Strategy"]
     },
     {
-      title: "<2% Gross Revenue Churn Through Predictive Customer Health Scoring",
-      problem: "Customer risk was often identified only after escalations occurred, limiting the team's ability to intervene proactively.",
-      system: "Designed a customer health framework that combined product adoption, platform usage, SLA adherence, engagement signals, and customer sentiment into a unified health score.",
+      title: "AI Workflow & Recommendation System",
+      problem: "GenAI-based eCommerce product mapping and recommendation outputs needed better consistency, retrieval quality, and lower hallucination risk.",
+      system: "Improved prompts, restructured the RAG knowledge base, and designed a multi-agent flow separating pre-analysis, knowledge gathering, and message formatting.",
+      impact: [
+        "Improved recommendation consistency",
+        "Reduced hallucination risk",
+        "Improved output quality",
+        "Created a more reliable AI-assisted recommendation workflow"
+      ],
+      tags: ["AI Workflows", "RAG", "Prompt Engineering", "Multi-Agent Systems"]
+    },
+    {
+      title: "Predictive Customer Health / Revenue Protection Engine",
+      problem: "Customer risk was often identified only after escalations occurred, limiting proactive intervention.",
+      system: "Designed a health framework combining product adoption, platform usage, SLA adherence, engagement signals, customer sentiment, and commercial risk into a unified health score.",
       impact: [
         "Maintained **Gross Revenue Churn below 2%**",
         "Enabled proactive intervention before renewal risk materialized",
-        "Improved CSM prioritization across the customer portfolio",
-        "Created a repeatable framework for retention forecasting"
+        "Improved CSM prioritization across the portfolio",
+        "Created repeatable retention forecasting"
       ],
-      tags: ["Customer Retention", "Health Scoring", "Churn Forecasting"]
+      tags: ["Customer Intelligence", "Health Scoring", "Churn Forecasting", "Revenue Protection"]
     },
     {
-      title: "Enterprise Onboarding Automation at Scale",
-      problem: "Enterprise onboarding required extensive coordination, resulting in delays and inconsistent implementation experiences.",
-      system: "Designed onboarding workflows, ownership frameworks, milestone tracking, and SLA monitoring systems to streamline implementation.",
+      title: "Customer Intelligence Platform",
+      problem: "Leadership lacked real-time visibility into account health, customer happiness, adoption, risk, and portfolio trends across a rapidly growing customer base.",
+      system: "Built an internal CRM and dashboard layer featuring live customer tracking, health indexing, happiness trends, portfolio risk monitoring, SLA visibility, and leadership reporting.",
       impact: [
-        "Accelerated enterprise onboarding timelines",
+        "Visibility across **900+ customer accounts**",
+        "Reduced manual portfolio reviews by **60%**",
+        "Accelerated at-risk account identification",
+        "Improved forecasting and management decision-making"
+      ],
+      tags: ["Operational Intelligence", "CRM Systems", "Portfolio Visibility", "Executive Dashboards"]
+    },
+    {
+      title: "Product Feedback Intelligence Loop",
+      problem: "Customer feedback often existed as isolated feature requests without structured prioritization.",
+      system: "Created a feedback loop to identify recurring business patterns, validate commercial value, define implementation requirements, and prioritize Product / Engineering investment.",
+      impact: [
+        "Improved roadmap-quality input",
+        "Reduced noise in feature requests",
+        "Connected customer pain to revenue and adoption impact",
+        "Improved Product / Engineering alignment"
+      ],
+      tags: ["Product Strategy", "Customer Discovery", "Roadmap Influence", "Product Operations"]
+    },
+    {
+      title: "Enterprise Onboarding Architecture",
+      problem: "Enterprise onboarding required extensive coordination, causing delays and inconsistent implementation experiences.",
+      system: "Designed onboarding workflows, ownership frameworks, milestone tracking, SLA monitoring, implementation checklists, and escalation paths.",
+      impact: [
+        "Accelerated onboarding timelines",
         "Improved onboarding consistency",
         "Reduced implementation bottlenecks",
         "Faster customer time-to-value"
       ],
-      tags: ["Enterprise Onboarding", "Implementation Management", "Process Automation"]
-    }, {
-      title: "Automated Recovery Workflows for High-Risk Accounts",
-      problem: "Customer recovery efforts varied significantly across CSMs, leading to inconsistent retention outcomes.",
-      system: "Built automated retention playbooks, risk-based follow-up sequences, escalation paths, and recovery roadmaps.",
+      tags: ["Enterprise Onboarding", "Workflow Architecture", "Implementation Systems", "Time-to-Value"]
+    },
+    {
+      title: "Customer Recovery Operating System",
+      problem: "Recovery efforts varied across CSMs, creating inconsistent retention outcomes for high-risk customers.",
+      system: "Built automated retention playbooks, risk-based follow-up sequences, escalation paths, customer recovery templates, and recovery roadmaps.",
       impact: [
-        "Standardized customer recovery processes",
+        "Standardized recovery process",
         "Improved accountability across retention initiatives",
         "Reduced reliance on manual intervention",
         "Increased consistency in at-risk account management"
       ],
-      tags: ["Retention Automation", "Playbooks", "Customer Recovery"]
+      tags: ["Retention Automation", "Recovery Playbooks", "Customer Success Systems"]
     },
     {
-      title: "900+ Accounts Managed Through a Custom CRM Visibility Platform",
-      problem: "Leadership lacked real-time visibility into account health, customer happiness, and portfolio risk across a rapidly growing customer base.",
-      system: "Built an internal CRM and operational dashboard layer featuring live customer tracking, health indexing, happiness trends, and risk monitoring.",
-      impact: [
-        "Improved visibility across **900+ customer accounts**",
-        "Reduced manual portfolio reviews by **60%**",
-        "Accelerated identification of at-risk customers",
-        "Improved forecasting and management decision-making"
-      ],
-      tags: ["CRM Development", "Customer Health", "CS Operations", "Reporting Automation"]
-    },
-    {
-      title: "40% Increase in Support Operations Efficiency",
+      title: "Support Operations Engine",
       problem: "Support tickets lacked structured ownership, consistent routing, SLA monitoring, and scalable documentation.",
-      system: "Implemented automated ticket routing, CSM assignment workflows, SLA tracking, escalation triggers, and self-service documentation processes.",
+      system: "Implemented automated ticket routing, CSM assignment workflows, SLA tracking, escalation triggers, ownership models, and self-serve documentation processes.",
       impact: [
-        "Improved support efficiency by **40%**",
-        "Reduced manual ticket assignment effort",
-        "Increased SLA compliance visibility",
+        "Improved support operations efficiency by **40%**",
+        "Reduced manual ticket assignment",
+        "Increased SLA visibility",
         "Improved customer support consistency"
       ],
-      tags: ["Support Operations", "SLA Management", "CSAT", "Workflow Automation"]
+      tags: ["Support Operations", "SLA Management", "Workflow Automation", "Documentation Systems"]
     }
-
   ],
 
   testimonials: [
@@ -592,6 +623,9 @@ export const PORTFOLIO_DATA: PortfolioData = {
   },
   topics: [
     "Hiring",
+    "Product Strategy",
+    "AI Workflows",
+    "Technical Strategy",
     "CS Leadership",
     "Customer Success",
     "RevOps",

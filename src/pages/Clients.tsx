@@ -33,9 +33,9 @@ const getBrandLogo = (brandName: string): string | null => {
   return logoFile ? `${customerLogoBasePath}/${logoFile}` : null;
 };
 
-export const Customers: React.FC = () => {
-  // Map customer portfolio to HubCategory array
-  const categories: HubCategory[] = PORTFOLIO_DATA.customerPortfolio.map((c) => ({
+export const Clients: React.FC = () => {
+  // Map client portfolio to HubCategory array
+  const categories: HubCategory[] = PORTFOLIO_DATA.clientPortfolio.map((c) => ({
     id: c.industry.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
     name: c.industry,
     items: c.brands,
@@ -88,7 +88,7 @@ export const Customers: React.FC = () => {
       <FilteredHub
         tagText="Client Portfolio"
         title="Brands and institutions across industries."
-        description="A cross-industry customer portfolio spanning D2C, education, healthcare, real estate, sports, wellness, food, finance, and enterprise services."
+        description="Supported enterprise and high-growth accounts across D2C, education, healthcare, sports, lifestyle, FMCG, spirituality, technology, real estate, and international commerce."
         searchPlaceholder="Search brand name..."
         categories={categories}
         renderCard={renderCard}
@@ -104,7 +104,7 @@ export const Customers: React.FC = () => {
 
       {/* CTA to view complete integration stack */}
       <SectionCTA
-        to="/stack"
+        to="/saas-toolkit"
         text="View Complete Integration Stack"
         style={{ marginTop: "-10px", marginBottom: "60px" }}
         className="active"

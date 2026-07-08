@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { trackContactSubmit } from "../analytics/analytics";
 import { PORTFOLIO_DATA } from "../data/portfolioData";
 
@@ -13,6 +13,21 @@ export const RequestCV: React.FC<RequestCVProps> = ({ isOpen, onClose }) => {
   const [cvTopic, setCvTopic] = useState(PORTFOLIO_DATA.topics[0]);
   const [isCvSubmitted, setIsCvSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      const storedName = localStorage.getItem("uk_li_name") || "";
+      const storedEmail = localStorage.getItem("uk_li_email") || "";
+      if (storedName) {
+        setCvName(storedName);
+      }
+      if (storedEmail) {
+        setCvEmail(storedEmail);
+      }
+    }
+  }, [isOpen]);
+
 
   const handleClose = () => {
     onClose();
@@ -22,28 +37,42 @@ export const RequestCV: React.FC<RequestCVProps> = ({ isOpen, onClose }) => {
       setCvTopic(PORTFOLIO_DATA.topics[0]);
       setIsCvSubmitted(false);
       setIsSending(false);
+      setErrorMsg(null);
     }, 300);
   };
 
   const handleCvSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    setErrorMsg(null);
     trackContactSubmit("cv", cvTopic);
     setIsSending(true);
 
     try {
-      await fetch("/api/send-cv", {
+      const response = await fetch("/api/send-cv", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email: cvEmail, name: cvName, topic: cvTopic }),
+        body: JSON.stringify({ email: cvEmail, name: cvName, topic: cvTopic, pageUrl: window.location.href }),
       });
-    } catch (err) {
+      
+      let data;
+      try {
+        data = await response.json();
+      } catch (jsonErr) {
+        throw new Error("Invalid response from server");
+      }
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || "Failed to send email");
+      }
+      
+      setIsCvSubmitted(true);
+    } catch (err: any) {
       console.error("Failed to trigger automated CV email:", err);
+      setErrorMsg(err.message || "Failed to send email. Please check your configuration.");
     } finally {
       setIsSending(false);
-      setIsCvSubmitted(true);
     }
   };
 
@@ -127,6 +156,12 @@ export const RequestCV: React.FC<RequestCVProps> = ({ isOpen, onClose }) => {
                   </select>
                 </div>
               </div>
+
+              {errorMsg && (
+                <div style={{ color: "#ef4444", fontSize: "0.85rem", marginTop: "12px", textAlign: "center", fontWeight: "600" }}>
+                  ⚠️ {errorMsg}
+                </div>
+              )}
 
               <button
                 type="submit"

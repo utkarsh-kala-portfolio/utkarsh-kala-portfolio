@@ -33,13 +33,13 @@ export const WhyMe: React.FC = () => {
 
   return (
     <main style={{ paddingTop: "calc(var(--header-height) + 40px)" }}>
-      <section className="section" style={{ paddingBottom: "20px" }}>
+      <section className="section">
         <div className="container">
-          <div className="why-hero-grid">
+          <div className="why-hero-grid" style={{ marginBottom: "60px" }}>
             <SectionHeader
-              tagText="Proof & Systems"
-              title="Why Me?"
-              description="A practical record of retention systems, automation workflows, and customer outcomes built across SaaS, commerce, support, and revenue operations."
+              tagText="Systems Portfolio"
+              title="Systems I've Built"
+              description="A detailed breakdown of workflow, revenue, product, AI, and operational systems built to turn customer problems into measurable business outcomes."
               isMainHeader={true}
               className="why-hero-copy"
             />
@@ -54,16 +54,6 @@ export const WhyMe: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="section" style={{ paddingTop: "0" }}>
-        <div className="container">
-          <SectionHeader
-            tagText="Systems & Workflows"
-            title="Automation that protects revenue."
-            description="Detailed breakdown of software solutions, tracking triggers, and workflow automations engineered to increase retention, recovery rates, and efficiency."
-          />
 
           <div className="automation-grid reveal">
             {PORTFOLIO_DATA.automations.map((item, idx) => (
@@ -106,8 +96,8 @@ export const WhyMe: React.FC = () => {
         <div className="container">
           <SectionHeader
             tagText="What People Say"
-            title="Don't take my word for it."
-            description="Direct recommendations and reviews from e-commerce merchants, founders, and operations leaders."
+            title="What leaders and partners say."
+            description="Direct recommendations and reviews from founders, operations leaders, and enterprise partners."
           />
 
           <div className="testimonials-grid reveal">

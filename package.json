@@ -8,10 +8,12 @@
     "vite-dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "export": "node scripts/generate-export.js"
   },
   "dependencies": {
     "mixpanel-browser": "^2.80.0",
+    "mongodb": "^7.5.0",
     "nodemailer": "^9.0.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
@@ -19,6 +21,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@types/mongodb": "^4.0.6",
     "@types/node": "^24.12.3",
     "@types/nodemailer": "^8.0.1",
     "@types/react": "^19.2.14",

@@ -15,9 +15,9 @@ export const ContactCTA: React.FC<ContactCTAProps> = ({ topContent }) => {
         <div className={`glass-card contact-card ${topContent ? "merged" : ""}`}>
           {topContent && <div className="notfound-top-content">{topContent}</div>}
           <span className="section-tag">Get in Touch</span>
-          <h2 className="contact-title">Let’s build customer systems that compound.</h2>
+          <h2 className="contact-title">Let's build systems that compound.</h2>
           <p className="contact-desc">
-            Whether you are hiring for leadership, exploring consulting, discussing SaaS growth, or building a customer success engine that scales - I’m open to conversations.
+            Whether you're hiring for strategy, exploring consulting, discussing AI workflows, or building systems that scale adoption, retention, and revenue — I'm open to conversations.
           </p>
 
           <div className="contact-links-grid">

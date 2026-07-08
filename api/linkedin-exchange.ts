@@ -122,13 +122,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(200).json({
       success: true,
       data: {
-        id: userInfo.sub,
+        sub: userInfo.sub,
         name: userInfo.name,
         given_name: userInfo.given_name || userInfo.name.split(" ")[0] || "",
         family_name: userInfo.family_name || userInfo.name.split(" ").slice(1).join(" ") || "",
         email: userInfo.email || "",
         picture: userInfo.picture || "",
-        access_token: accessToken,
       }
     });
   } catch (error) {

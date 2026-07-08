@@ -55,56 +55,90 @@ export const Home: React.FC = () => {
         <div className="container">
           <div className="hero-grid">
             <div className="hero-content">
-              <h1 className="hero-title">
-                Bridging Customer Success + Product + Engineering
+              <h1 className="hero-title" style={{ lineHeight: "1.25" }}>
+                Building Systems <br />
+                <span style={{ color: "var(--text-muted)", fontSize: "0.8em", fontWeight: "500", display: "inline-block", margin: "4px 0" }}>That Convert</span> <br />
+                <span style={{
+                  background: "linear-gradient(to right, #ef4444, var(--accent-coral))",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  fontWeight: "800"
+                }}>Customer Problems</span> <br />
+                <span style={{ color: "var(--text-muted)", fontSize: "0.8em", fontWeight: "500", display: "inline-block", margin: "4px 0" }}>into</span> <br />
+                <span style={{ display: "block", marginTop: "10px" }}>
+                  <span style={{ display: "block", marginBottom: "6px" }}>
+                    <span style={{ color: "var(--accent-green)", marginRight: "8px", fontWeight: "800" }}>✓</span>
+                    <span style={{
+                      background: "linear-gradient(to right, var(--accent-indigo), var(--accent-blue))",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      fontWeight: "800"
+                    }}>
+                      Product Adoption
+                    </span>
+                  </span>
+                  <span style={{ display: "block", marginBottom: "6px" }}>
+                    <span style={{ color: "var(--accent-green)", marginRight: "8px", fontWeight: "800" }}>✓</span>
+                    <span style={{
+                      background: "linear-gradient(to right, var(--accent-indigo), var(--accent-blue))",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      fontWeight: "800"
+                    }}>
+                      Revenue Retention
+                    </span>
+                  </span>
+                  <span style={{ display: "block" }}>
+                    <span style={{ color: "var(--accent-green)", marginRight: "8px", fontWeight: "800" }}>✓</span>
+                    <span style={{
+                      background: "linear-gradient(to right, var(--accent-indigo), var(--accent-blue))",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      fontWeight: "800"
+                    }}>
+                      Scalable Growth
+                    </span>
+                  </span>
+                </span>
               </h1>
 
               <p className="hero-subtitle">
-                I help SaaS businesses reduce churn, scale operations, and turn integrations into revenue by diagnosing problems deeply, automating what repeats, and owning outcomes end-to-end.
+                I help SaaS companies convert customer signals into workflows, integrations, AI systems, and measurable revenue outcomes — by bridging business strategy, product thinking, technical execution, and customer intelligence.
               </p>
+            </div>
 
-              <div className="hero-ctas">
+            <div className="hero-visual" style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+              <Flowchart />
+              <div className="hero-ctas" style={{ width: "100%", maxWidth: "480px", justifyContent: "center" }}>
+                <Link
+                  to="/systems"
+                  className="btn btn-primary"
+                  onClick={() => trackCTAClick("Explore Systems", "Hero CTA")}
+                  data-track-id="hero-primary-cta"
+                >
+                  Explore Systems I've Built
+                </Link>
                 <button
                   onClick={() => {
                     openModal('connect');
                     trackContactOpen('connect', 'Hero CTA');
                   }}
-                  className="btn btn-primary"
+                  className="btn btn-secondary"
+                  data-track-id="hero-connect-cta"
                 >
                   Let's Connect
                 </button>
-                <Link
-                  to="/why-me"
-                  className="btn btn-secondary"
-                  onClick={() => trackCTAClick("View My Work", "Hero CTA")}
-                >
-                  View My Work
-                </Link>
-                <button
-                  onClick={() => {
-                    openModal('whatsapp');
-                    trackContactOpen('whatsapp', 'Hero CTA');
-                  }}
-                  className="btn btn-whatsapp"
-                  aria-label="WhatsApp me"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
-                  WhatsApp me
-                </button>
               </div>
-            </div>
-
-            <div className="hero-visual">
-              <Flowchart />
             </div>
           </div>
 
           {/* Hero metric cards */}
           <div className="hero-metrics-grid reveal">
-            <MetricCard target="$2.5M+" label="ARR Managed" />
-            <MetricCard target="220%" label="Peak NRR" />
+            <MetricCard target="$2.5M+" label="ARR Influenced" />
+            <MetricCard target="120%" label="Avg NRR" />
             <MetricCard target="<2%" label="Gross Churn" className="green-theme" />
-            <MetricCard target="$50K+" label="MRR Generated" className="green-theme" />
+            <MetricCard target="$50K+" label="MRR Expansion" className="green-theme" />
+            {/* <MetricCard target="900+" label="Accounts Overseen" /> */}
           </div>
         </div>
       </section>
@@ -117,7 +151,9 @@ export const Home: React.FC = () => {
             title="The &ldquo;Kala Jaadu&rdquo; Effect"
             description={
               <>
-                Somewhere along the journey, my teammates started calling me <strong>&ldquo;Kala Jaadugar&rdquo; (The Black Magician)</strong> - not because problems disappeared magically, but because complex customer, integration, and operational challenges had a pattern: they would eventually turn into scalable systems, automated workflows, and measurable business outcomes.
+                Somewhere along the journey, my teammates started calling me <strong>&ldquo;Kala Jaadugar&rdquo; (The Black Magician)</strong> — not because problems disappeared magically, but because complex business, integration, and operational challenges had a pattern: they would turn into scalable systems, automated workflows, and measurable revenue outcomes.
+                <br />
+                <strong style={{ display: "block", marginTop: "12px", color: "var(--accent-indigo)" }}>Diagnose → Design → Automate → Scale</strong>
               </>
             }
           />
@@ -137,19 +173,19 @@ export const Home: React.FC = () => {
                 <ul style={{ listStyleType: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "12px" }}>
                   <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "0.9rem", color: "var(--text-main)" }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
-                    <span><strong>$50K+ MRR</strong> Generated Through Integration-Led Expansion</span>
+                    <span><strong>$50K+ MRR</strong> Generated Through Integration-Led Revenue Engine</span>
                   </li>
                   <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "0.9rem", color: "var(--text-main)" }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
-                    <span><strong>&lt;2%</strong> Gross Revenue Churn Through Predictive Customer Health Scoring</span>
+                    <span><strong>&lt;2%</strong> Gross Revenue Churn Through Predictive Health Scoring</span>
                   </li>
                   <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "0.9rem", color: "var(--text-main)" }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
-                    <span><strong>40%</strong> Increase in Support Operations Efficiency</span>
+                    <span><strong>40%</strong> Support Operations Efficiency Improvement</span>
                   </li>
                   <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "0.9rem", color: "var(--text-main)" }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
-                    <span><strong>900+</strong> Accounts Managed Through Automated Recovery Workflows</span>
+                    <span><strong>900+</strong> Accounts Managed Through Customer Intelligence Platform</span>
                   </li>
                 </ul>
               </div>
@@ -160,26 +196,38 @@ export const Home: React.FC = () => {
               <div className="glass-card">
                 <h3 style={{ fontSize: "1.2rem", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>1. Diagnose Before Designing</h3>
                 <p style={{ color: "var(--text-main)", fontSize: "0.95rem", lineHeight: "1.6" }}>
-                  Every problem starts with understanding the bigger picture - customer workflows, APIs, integrations, data movement, adoption patterns, and operational gaps. The goal is never to fix symptoms; it's to uncover the root cause.
+                  Understand the business problem, broken workflow, stakeholder pain, APIs, data movement, ownership gaps, and measurable outcome before building.
                 </p>
               </div>
               <div className="glass-card">
-                <h3 style={{ fontSize: "1.2rem", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>2. Automate What Doesn't Scale</h3>
+                <h3 style={{ fontSize: "1.2rem", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>2. Translate Business Into Workflows</h3>
                 <p style={{ color: "var(--text-main)", fontSize: "0.95rem", lineHeight: "1.6" }}>
-                  If a problem keeps repeating, it's a signal to build a system. From health scoring and churn prediction to CRM workflows and onboarding automation, the focus is on creating repeatable processes that create leverage.
+                  Convert customer requirements into product opportunities, technical workflows, integration logic, adoption journeys, or operating models.
                 </p>
               </div>
               <div className="glass-card">
-                <h3 style={{ fontSize: "1.2rem", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>3. Own the Outcome End-to-End</h3>
+                <h3 style={{ fontSize: "1.2rem", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>3. Automate What Doesn't Scale</h3>
                 <p style={{ color: "var(--text-main)", fontSize: "0.95rem", lineHeight: "1.6" }}>
-                  The best solutions happen at the intersection of teams. I work as the bridge between Customers, Customer Success, Product, Engineering, and Revenue teams - taking challenges from discovery to implementation to measurable impact.
+                  Build repeatable triggers, dashboards, health scores, recovery workflows, SLA systems, playbooks, and AI-assisted processes.
+                </p>
+              </div>
+              <div className="glass-card">
+                <h3 style={{ fontSize: "1.2rem", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>4. Own Outcomes End-to-End</h3>
+                <p style={{ color: "var(--text-main)", fontSize: "0.95rem", lineHeight: "1.6" }}>
+                  Operate across Product, Engineering, Revenue, CS, Support, and enterprise stakeholders until the solution creates measurable business impact.
+                </p>
+              </div>
+              <div className="glass-card">
+                <h3 style={{ fontSize: "1.2rem", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>5. Scale the System</h3>
+                <p style={{ color: "var(--text-main)", fontSize: "0.95rem", lineHeight: "1.6" }}>
+                  Turn one-off fixes into reusable frameworks, product feedback loops, onboarding models, customer intelligence systems, and revenue workflows.
                 </p>
               </div>
             </div>
           </div>
 
           <p className="portfolio-note reveal active" style={{ marginTop: "40px", textAlign: "center" }}>
-            That became the "Kala Jaadu Effect" - diving deep into complexity, finding clarity, and turning problems into scalable systems.
+            That became the "Kala Jaadu Effect" — <strong>Signal → Insight → Workflow → Revenue.</strong>
           </p>
         </div>
       </section>
@@ -188,9 +236,9 @@ export const Home: React.FC = () => {
       <section className="section" style={{ borderTop: "1px solid rgba(255, 255, 255, 0.05)" }}>
         <div className="container">
           <SectionHeader
-            tagText="Case Studies"
-            title="Peek into Automations"
-            description="A brief preview of automated solutions built to streamline customer operations and proactively prevent churn."
+            tagText="Systems Preview"
+            title="Systems That Protect Revenue"
+            description="A preview of workflow, revenue, and operational systems designed to turn customer problems into measurable business outcomes."
           />
 
           <div className="automation-grid reveal" style={{ marginBottom: "40px" }}>
@@ -227,7 +275,7 @@ export const Home: React.FC = () => {
             ))}
           </div>
 
-          <SectionCTA to="/why-me" text="View All Case Studies" />
+          <SectionCTA to="/systems" text="View All Systems" />
         </div>
       </section>
 
@@ -237,7 +285,7 @@ export const Home: React.FC = () => {
           <SectionHeader
             tagText="Journey Summary"
             title="A path built on technical excellence."
-            description="Evolving from a Computer Science Engineering graduate to Business Analyst, Technical Analyst, and now scaling Customer Success leadership."
+            description="From Computer Science Engineering to Business Analyst, Technical Analyst, and now scaling business strategy and post-sale systems leadership."
           />
 
           <div style={{ display: "flex", flexDirection: "column", gap: "20px", maxWidth: "800px", margin: "0 auto 40px" }} className="reveal">
@@ -273,7 +321,7 @@ export const Home: React.FC = () => {
 
           <LogoMarquee logos={techStackBannerLogos} animationDurationSeconds={techStackBannerDurationSeconds} />
 
-          <SectionCTA to="/stack" text="Explore Complete SaaS Toolkit" style={{ marginBottom: "40px" }} />
+          <SectionCTA to="/saas-toolkit" text="Explore Complete SaaS Toolkit" style={{ marginBottom: "40px" }} />
 
           <div className="stack-highlights reveal" style={{ marginBottom: "40px" }}>
             {PORTFOLIO_DATA.coreStrengths.slice(0, 4).map((str, idx) => (
@@ -297,7 +345,7 @@ export const Home: React.FC = () => {
             animationDurationSeconds={customerBannerDurationSeconds}
           />
 
-          <SectionCTA to="/customers" text="View All Customers" />
+          <SectionCTA to="/clients" text="View All Clients" />
         </div>
       </section>
 

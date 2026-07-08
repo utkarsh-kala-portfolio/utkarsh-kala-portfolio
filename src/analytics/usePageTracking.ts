@@ -12,9 +12,12 @@ import { trackPageView } from "./analytics";
 const PAGE_TITLES: Record<string, string> = {
   "/": "Home",
   "/journey": "Journey",
-  "/customers": "Customers",
+  "/clients": "Clients",
+  "/customers": "Clients",
+  "/saas-toolkit": "SaaS Toolkit",
   "/stack": "SaaS Toolkit",
-  "/why-me": "Why Me",
+  "/why-me": "Systems",
+  "/systems": "Systems",
 };
 
 export function usePageTracking(): void {

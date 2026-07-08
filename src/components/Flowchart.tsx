@@ -42,17 +42,17 @@ export const Flowchart: React.FC = () => {
     }
 
     const nodes: Record<string, FlowNode> = {
-      cs: { x: 60, y: 50, label: "Customer Success", color: "#3b82f6" },
-      prod: { x: 145, y: 95, label: "Product Strategy", color: "#3b82f6" },
+      cs: { x: 60, y: 50, label: "Business Strategy", color: "#3b82f6" },
+      prod: { x: 145, y: 95, label: "Product Thinking", color: "#3b82f6" },
       eng: { x: 230, y: 50, label: "Engineering", color: "#3b82f6" },
-      auto: { x: 315, y: 95, label: "Automation", color: "#3b82f6" },
+      auto: { x: 315, y: 95, label: "AI Workflows", color: "#3b82f6" },
       rev: { x: 400, y: 50, label: "Revenue Operations", color: "#3b82f6" },
-      hub: { x: 230, y: 230, label: "Growth Engine", color: "#84cc16", isHub: true },
+      hub: { x: 230, y: 230, label: "Systems Engine", color: "#84cc16", isHub: true },
       nrr: { x: 60, y: 365, label: "↑ NRR Growth", color: "#10b981" },
       churn: { x: 230, y: 365, label: "↓ Churn Reduction", color: "#10b981" },
       adopt: { x: 145, y: 410, label: "↑ Product Adoption", color: "#10b981" },
       exp: { x: 315, y: 410, label: "↑ Expansion Revenue", color: "#10b981" },
-      eff: { x: 400, y: 365, label: "↑ Team Efficiency", color: "#10b981" },
+      eff: { x: 400, y: 365, label: "↑ Operational Scale", color: "#10b981" },
     };
 
     const drawLine = (from: FlowNode, to: FlowNode, index: number) => {

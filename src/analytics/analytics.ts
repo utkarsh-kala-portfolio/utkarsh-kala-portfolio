@@ -25,6 +25,7 @@
 
 import { initDataLayer, pushToDataLayer } from "./gtm";
 import { initMixpanel, trackMixpanel, identifyMixpanel } from "./mixpanel";
+import { initActivityTracker, trackActivityPageView, identifyLinkedInProfile } from "./activityTracker";
 
 const OPT_OUT_KEY = "uk_disable_tracking";
 
@@ -61,6 +62,7 @@ export function initAnalytics(): void {
 
   initDataLayer();
   initMixpanel();
+  initActivityTracker();
 }
 
 // ─── Unified Event Tracking ─────────────────────────────────────
@@ -79,11 +81,14 @@ export function trackEvent(
 }
 
 /**
- * Identify a user in Mixpanel
+ * Identify a user in Mixpanel and first-party database
  */
-export function identifyUser(userId: string): void {
+export function identifyUser(userId: string, profileData?: any): void {
   if (isOwnerOptedOut()) return;
   identifyMixpanel(userId);
+  if (profileData) {
+    identifyLinkedInProfile(profileData);
+  }
 }
 
 // ─── Pre-defined Event Helpers ──────────────────────────────────
@@ -95,6 +100,7 @@ export function trackPageView(path: string, title: string): void {
     page_title: title,
     page_location: window.location.href,
   });
+  trackActivityPageView(path);
 }
 
 /** Contact modal opened */

@@ -1437,7 +1437,7 @@ h1.section-title {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
-  align-items: center;
+  align-items: start;
 }
 
 .kj-visual {
@@ -1447,6 +1447,13 @@ h1.section-title {
   padding: 40px;
   text-align: center;
   box-shadow: var(--shadow);
+}
+
+@media (min-width: 1025px) {
+  .kj-visual {
+    position: sticky;
+    top: calc(var(--header-height) + 40px);
+  }
 }
 
 .kj-visual div[style*="border-top"] {
@@ -2608,4 +2615,127 @@ h1.section-title {
 .linkedin-popup-actions {
   display: flex;
   gap: 12px;
+}
+
+/* --- LINKEDIN TOAST BANNER --- */
+.linkedin-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 350px;
+  background: var(--paper);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  border-radius: 12px;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+  pointer-events: none;
+}
+
+.linkedin-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+@media (max-width: 480px) {
+  .linkedin-toast {
+    width: calc(100% - 32px);
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+}
+
+.linkedin-toast-content {
+  padding: 16px;
+  position: relative;
+}
+
+.linkedin-toast-close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 400;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+  line-height: 1;
+  padding: 4px;
+}
+
+.linkedin-toast-close-btn:hover {
+  color: var(--accent-coral);
+}
+
+.linkedin-toast-icon {
+  background: #0A66C2;
+  color: var(--paper);
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.linkedin-toast-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.linkedin-toast-btn-connect {
+  background: #0A66C2 !important;
+  color: var(--paper) !important;
+  padding: 6px 12px !important;
+  font-size: 0.8rem !important;
+  min-height: 36px !important;
+  justify-content: center;
+  flex: 1;
+}
+
+.linkedin-toast-btn-connect:hover {
+  background: #084d93 !important;
+}
+
+.linkedin-toast-btn-simulate {
+  background: var(--accent-yellow) !important;
+  color: var(--ink) !important;
+  padding: 6px 12px !important;
+  font-size: 0.8rem !important;
+  min-height: 36px !important;
+  justify-content: center;
+  flex: 1;
+}
+
+/* Success layout */
+.linkedin-toast-success-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+}
+
+.linkedin-success-checkmark {
+  background: var(--accent-green);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.1rem;
+  box-shadow: 1.5px 1.5px 0 var(--ink);
 }

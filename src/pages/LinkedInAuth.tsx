@@ -3,13 +3,13 @@ import { SectionHeader } from "../components/SectionHeader";
 import { trackEvent, identifyUser } from "../analytics/analytics";
 
 interface LinkedInProfile {
-  id: string;
+  sub: string;
   name: string;
   given_name: string;
   family_name: string;
   email: string;
   picture: string;
-  access_token: string;
+  linkedin_url?: string;
 }
 
 export const LinkedInAuth: React.FC = () => {
@@ -25,6 +25,9 @@ export const LinkedInAuth: React.FC = () => {
   // Popup-specific states
   const [params, setParams] = useState<URLSearchParams | null>(null);
   const [simulatedProfile, setSimulatedProfile] = useState<LinkedInProfile | null>(null);
+
+  // Ref to prevent double-execution of single-use auth code exchange in StrictMode
+  const exchangeStarted = React.useRef(false);
 
   // ----------------------------------------------------
   // Main Effect
@@ -52,6 +55,8 @@ export const LinkedInAuth: React.FC = () => {
 
       // Handle real code exchange in popup
       if (code) {
+        if (exchangeStarted.current) return;
+        exchangeStarted.current = true;
         handlePopupCodeExchange(code);
         return;
       }
@@ -80,8 +85,8 @@ export const LinkedInAuth: React.FC = () => {
         setProfile(authData);
         setStatus("success");
         setErrorMsg(null);
-        // Identify in Mixpanel
-        identifyUser(authData.id);
+        // Identify in Mixpanel and first-party database
+        identifyUser(authData.sub, authData);
         // Dispatch storage event to trigger Header render updates instantly
         window.dispatchEvent(new Event("storage"));
       } else if (event.data?.type === "linkedin-auth-error") {
@@ -93,22 +98,31 @@ export const LinkedInAuth: React.FC = () => {
     window.addEventListener("message", handlePopupMessage);
 
     // Initial check if we already have local storage credentials
-    const isAuthorized = localStorage.getItem("uk_li_authorized") === "true";
-    if (isAuthorized) {
-      setProfile({
-        id: localStorage.getItem("uk_li_id") || "",
-        name: localStorage.getItem("uk_li_name") || "",
-        given_name: localStorage.getItem("uk_li_given_name") || "",
-        family_name: localStorage.getItem("uk_li_family_name") || "",
-        email: localStorage.getItem("uk_li_email") || "",
-        picture: localStorage.getItem("uk_li_picture") || "",
-        access_token: localStorage.getItem("uk_li_access_token") || "",
-      });
-      setStatus("success");
-    }
+    const checkLocalStorage = () => {
+      const isAuthorized = localStorage.getItem("uk_li_authorized") === "true";
+      if (isAuthorized) {
+        setProfile({
+          sub: localStorage.getItem("uk_li_sub") || "",
+          name: localStorage.getItem("uk_li_name") || "",
+          given_name: localStorage.getItem("uk_li_given_name") || "",
+          family_name: localStorage.getItem("uk_li_family_name") || "",
+          email: localStorage.getItem("uk_li_email") || "",
+          picture: localStorage.getItem("uk_li_picture") || "",
+          linkedin_url: localStorage.getItem("uk_li_linkedin_url") || undefined,
+        });
+        setStatus("success");
+      } else {
+        setProfile(null);
+        setStatus("idle");
+      }
+    };
+
+    checkLocalStorage();
+    window.addEventListener("storage", checkLocalStorage);
 
     return () => {
       window.removeEventListener("message", handlePopupMessage);
+      window.removeEventListener("storage", checkLocalStorage);
     };
   }, [isPopup]);
 
@@ -116,7 +130,7 @@ export const LinkedInAuth: React.FC = () => {
   // Popup Action Helpers
   // ----------------------------------------------------
   const handlePopupRealRedirect = () => {
-    const clientId = import.meta.env.VITE_LINKEDIN_CLIENT_ID || "86tabl99wgmifm";
+    const clientId = import.meta.env.VITE_LINKEDIN_CLIENT_ID;
     if (!clientId) {
       window.opener.postMessage(
         {
@@ -161,13 +175,15 @@ export const LinkedInAuth: React.FC = () => {
       if (response.ok && result.success) {
         const data = result.data;
         // Save to localStorage inside popup scope (shared origin)
-        localStorage.setItem("uk_li_id", data.id);
+        localStorage.setItem("uk_li_sub", data.sub);
         localStorage.setItem("uk_li_name", data.name);
         localStorage.setItem("uk_li_given_name", data.given_name);
         localStorage.setItem("uk_li_family_name", data.family_name);
         localStorage.setItem("uk_li_email", data.email);
         localStorage.setItem("uk_li_picture", data.picture);
-        localStorage.setItem("uk_li_access_token", data.access_token);
+        if (data.linkedin_url) {
+          localStorage.setItem("uk_li_linkedin_url", data.linkedin_url);
+        }
         localStorage.setItem("uk_li_authorized", "true");
 
         // Message parent window success
@@ -198,13 +214,13 @@ export const LinkedInAuth: React.FC = () => {
     // Generate a mock profile for simulation
     const mockId = "li_sim_" + Math.random().toString(36).substring(2, 9);
     setSimulatedProfile({
-      id: mockId,
+      sub: mockId,
       name: "Jane Doe (Simulated)",
       given_name: "Jane",
       family_name: "Doe",
       email: "jane.doe.simulated@linkedin.com",
       picture: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150",
-      access_token: "simulated_token_" + Math.random().toString(36).substring(2, 15),
+      linkedin_url: "https://www.linkedin.com/in/jane-doe-simulation",
     });
   };
 
@@ -212,13 +228,15 @@ export const LinkedInAuth: React.FC = () => {
     if (!simulatedProfile) return;
 
     // Save to localStorage inside popup scope (shared origin)
-    localStorage.setItem("uk_li_id", simulatedProfile.id);
+    localStorage.setItem("uk_li_sub", simulatedProfile.sub);
     localStorage.setItem("uk_li_name", simulatedProfile.name);
     localStorage.setItem("uk_li_given_name", simulatedProfile.given_name);
     localStorage.setItem("uk_li_family_name", simulatedProfile.family_name);
     localStorage.setItem("uk_li_email", simulatedProfile.email);
     localStorage.setItem("uk_li_picture", simulatedProfile.picture);
-    localStorage.setItem("uk_li_access_token", simulatedProfile.access_token);
+    if (simulatedProfile.linkedin_url) {
+      localStorage.setItem("uk_li_linkedin_url", simulatedProfile.linkedin_url);
+    }
     localStorage.setItem("uk_li_authorized", "true");
 
     // Message parent
@@ -513,8 +531,13 @@ export const LinkedInAuth: React.FC = () => {
                         {profile.email || "No email retrieved"}
                       </p>
                       <p style={{ color: "var(--text-muted)", fontSize: "0.85rem", marginTop: "4px" }}>
-                        ID: <code>{profile.id}</code>
+                        Sub (Subject ID): <code>{profile.sub}</code>
                       </p>
+                      {profile.linkedin_url && (
+                        <p style={{ color: "var(--text-muted)", fontSize: "0.85rem", marginTop: "4px" }}>
+                          Profile URL: <a href={profile.linkedin_url} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent-indigo)", textDecoration: "underline" }}>{profile.linkedin_url}</a>
+                        </p>
+                      )}
                     </div>
 
                     <button

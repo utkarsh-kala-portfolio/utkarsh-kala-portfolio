@@ -44,7 +44,7 @@ const getStackIcon = (itemName: string): string | null => {
   return null;
 };
 
-export const Stack: React.FC = () => {
+export const SaaSToolkit: React.FC = () => {
   // Map stack categories to HubCategory array
   const categories: HubCategory[] = PORTFOLIO_DATA.stackCategories.map((c) => ({
     id: c.id,
@@ -99,7 +99,7 @@ export const Stack: React.FC = () => {
       <FilteredHub
         tagText="Integrations & Tools"
         title="The Complete SaaS Toolkit"
-        description="Every system and technology I have operated and integrated across SaaS, billing, reviews, analytics, messaging, and commerce systems."
+        description="Every system and technology I've operated and integrated across SaaS, commerce, CRM, messaging, analytics, AI workflows, and automation."
         searchPlaceholder="Search tool name..."
         categories={categories}
         renderCard={renderCard}
@@ -123,17 +123,17 @@ export const Stack: React.FC = () => {
 
       </FilteredHub>
 
-      {/* Customer Logo Banner below the filtered list */}
+      {/* Client Logo Banner below the filtered list */}
       <LogoMarquee
         logos={customerBannerLogos}
         title="Trusted by Growth Brands"
         animationDurationSeconds={customerBannerDurationSeconds}
       />
 
-      {/* CTA to view complete customers */}
+      {/* CTA to view complete clients */}
       <SectionCTA
-        to="/customers"
-        text="View All Customers"
+        to="/clients"
+        text="View All Clients"
         style={{ marginTop: "-10px", marginBottom: "60px" }}
         className="active"
       />

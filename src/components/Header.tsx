@@ -91,11 +91,12 @@ export const Header: React.FC = () => {
               minHeight: "28px"
             }}
             aria-label="Request CV"
+            data-track-id="nav-logo-request-cv"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
             </svg>
             Download CV
           </button>
@@ -126,7 +127,7 @@ export const Header: React.FC = () => {
             <LetterHop text="Home" />
           </NavLink>
           <NavLink
-            to="/stack"
+            to="/saas-toolkit"
             className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
             onClick={() => {
               setNavOpen(false);
@@ -136,14 +137,14 @@ export const Header: React.FC = () => {
             <LetterHop text="SaaS Toolkit" />
           </NavLink>
           <NavLink
-            to="/customers"
+            to="/clients"
             className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
             onClick={() => {
               setNavOpen(false);
-              trackNavClick("Customers Link");
+              trackNavClick("Clients Link");
             }}
           >
-            <LetterHop text="Customers" />
+            <LetterHop text="Clients" />
           </NavLink>
           <NavLink
             to="/journey"
@@ -156,25 +157,26 @@ export const Header: React.FC = () => {
             <LetterHop text="Journey" />
           </NavLink>
           <NavLink
-            to="/why-me"
+            to="/systems"
             className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
             onClick={() => {
               setNavOpen(false);
-              trackNavClick("Why Me Link");
+              trackNavClick("Systems Link");
             }}
           >
-            <LetterHop text="Why Me?" />
+            <LetterHop text="Systems" />
           </NavLink>
 
           {liUser && (
-            <NavLink
-              to="/linked-in-auth"
-              className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
-              onClick={() => {
-                setNavOpen(false);
-                trackNavClick("Header LinkedIn Profile Link");
+            <div
+              className="nav-link"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "8px",
+                cursor: "default"
               }}
-              style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
             >
               {liUser.picture ? (
                 <div style={{ position: "relative", width: "24px", height: "24px", display: "inline-block" }}>
@@ -202,8 +204,7 @@ export const Header: React.FC = () => {
                   {liUser.name[0]}
                 </span>
               )}
-              <span>{liUser.name}</span>
-            </NavLink>
+            </div>
           )}
 
           <button
@@ -213,6 +214,7 @@ export const Header: React.FC = () => {
               openModal('connect');
               trackContactOpen('connect', 'Header CTA');
             }}
+            data-track-id="nav-connect-cta"
           >
             Let's Connect
           </button>
