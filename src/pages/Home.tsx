@@ -162,7 +162,15 @@ export const Home: React.FC = () => {
             {/* Left Card: Impact Visual */}
             <div className="kj-visual reveal" style={{ padding: "40px 32px" }}>
               <div className="kj-circle kj-photo-logo" style={{ transform: "none", border: "4px solid var(--ink)", margin: "0 auto 16px" }}>
-                <img src="/assets/profile/home-display.png" alt="Utkarsh Kala" />
+                <img
+                  src="/assets/profile/home-display.png"
+                  alt="Utkarsh Kala"
+                  width="116"
+                  height="116"
+                  loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
+                />
               </div>
               <p style={{ color: "var(--accent-blue)", fontSize: "0.85rem", fontWeight: "700", letterSpacing: "0.05em", marginBottom: "20px" }}>
                 The nickname stayed - and so did the approach!

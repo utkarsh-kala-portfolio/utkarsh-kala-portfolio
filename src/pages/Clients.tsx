@@ -2,6 +2,7 @@ import React from "react";
 import { PORTFOLIO_DATA } from "../data/portfolioData";
 import { ContactCTA } from "../components/ContactCTA";
 import { FilteredHub, type HubCategory } from "../components/FilteredHub";
+import { LazyLogoImage } from "../components/LazyLogoImage";
 import { LogoMarquee } from "../components/LogoMarquee";
 import { SectionCTA } from "../components/SectionCTA";
 import {
@@ -44,36 +45,16 @@ export const Clients: React.FC = () => {
   const renderCard = (brand: string) => {
     const logoSrc = getBrandLogo(brand);
 
-    /** On image load failure, swap to the fallback icon */
-    const handleImgError = (e: React.SyntheticEvent<HTMLImageElement>) => {
-      const img = e.currentTarget;
-      const wrap = img.closest(".brand-logo-wrap") as HTMLElement | null;
-      if (wrap) {
-        img.style.display = "none";
-        // Only inject fallback once
-        if (!wrap.querySelector("svg")) {
-          const ns = "http://www.w3.org/2000/svg";
-          const svg = document.createElementNS(ns, "svg");
-          svg.setAttribute("width", "20");
-          svg.setAttribute("height", "20");
-          svg.setAttribute("viewBox", "0 0 24 24");
-          svg.setAttribute("fill", "none");
-          svg.setAttribute("stroke", "currentColor");
-          svg.setAttribute("stroke-width", "2.5");
-          svg.setAttribute("stroke-linecap", "round");
-          svg.setAttribute("stroke-linejoin", "round");
-          svg.style.color = "var(--accent-green)";
-          svg.innerHTML = '<path d="m12 3-10 5 10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/>';
-          wrap.appendChild(svg);
-        }
-      }
-    };
-
     return (
       <div className="brand-card">
         <div className="brand-logo-wrap">
           {logoSrc ? (
-            <img src={logoSrc} alt={brand} className="brand-logo-img" onError={handleImgError} />
+            <LazyLogoImage
+              src={logoSrc}
+              alt={brand}
+              className="brand-logo-img"
+              fallback={<BriefcaseIcon />}
+            />
           ) : (
             <BriefcaseIcon />
           )}

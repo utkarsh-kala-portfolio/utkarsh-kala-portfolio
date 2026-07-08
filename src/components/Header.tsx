@@ -62,6 +62,11 @@ export const Header: React.FC = () => {
               <img
                 src="/assets/profile/header-logo.png"
                 alt="Utkarsh Kala"
+                width="44"
+                height="44"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
                 style={{
                   width: "100%",
                   height: "100%",
@@ -183,6 +188,11 @@ export const Header: React.FC = () => {
                   <img
                     src={liUser.picture}
                     alt={liUser.name}
+                    width="24"
+                    height="24"
+                    loading="lazy"
+                    decoding="async"
+                    fetchPriority="low"
                     style={{ width: "24px", height: "24px", borderRadius: "50%", border: "1.5px solid var(--ink)", objectFit: "cover", display: "block" }}
                   />
                   <span style={{ position: "absolute", bottom: "-1px", right: "-1px", width: "8px", height: "8px", borderRadius: "50%", background: "var(--accent-green)", border: "1px solid var(--ink)", display: "block" }} />

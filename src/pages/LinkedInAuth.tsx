@@ -385,7 +385,14 @@ export const LinkedInAuth: React.FC = () => {
             </div>
 
             <div className="linkedin-simulation-profile-preview">
-              <img src={simulatedProfile.picture} alt="Profile" className="preview-avatar" />
+              <img
+                src={simulatedProfile.picture}
+                alt="Profile"
+                className="preview-avatar"
+                loading="lazy"
+                decoding="async"
+                fetchPriority="low"
+              />
               <div className="preview-info">
                 <span className="preview-name">{simulatedProfile.name}</span>
                 <span className="preview-meta">Simulated Account Credentials</span>
@@ -507,7 +514,14 @@ export const LinkedInAuth: React.FC = () => {
                   <div className="linkedin-profile-card">
                     <div className="linkedin-avatar-wrapper">
                       {profile.picture ? (
-                        <img src={profile.picture} alt={profile.name} className="linkedin-avatar-img" />
+                        <img
+                          src={profile.picture}
+                          alt={profile.name}
+                          className="linkedin-avatar-img"
+                          loading="lazy"
+                          decoding="async"
+                          fetchPriority="low"
+                        />
                       ) : (
                         <div className="linkedin-avatar-placeholder">
                           {profile.given_name[0] || "U"}

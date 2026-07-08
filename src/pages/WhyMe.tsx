@@ -50,6 +50,9 @@ export const WhyMe: React.FC = () => {
                   src="/assets/profile/why-me-display.png"
                   alt="Utkarsh Kala speaking at Founder's Day"
                   className="display-photo"
+                  loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
                 />
               </div>
             </div>

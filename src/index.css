@@ -902,6 +902,33 @@ h1.section-title {
   flex-shrink: 0;
 }
 
+.async-logo-shell {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.async-logo-shell .brand-logo-img,
+.async-logo-shell .marquee-logo-img {
+  grid-area: 1 / 1;
+  opacity: 0;
+}
+
+.async-logo-shell.loaded .brand-logo-img,
+.async-logo-shell.loaded .marquee-logo-img {
+  opacity: 1;
+}
+
+.async-logo-fallback {
+  grid-area: 1 / 1;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+}
+
 .brand-logo-wrap svg {
   width: 72px;
   height: 72px;
