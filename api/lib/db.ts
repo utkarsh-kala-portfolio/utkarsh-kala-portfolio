@@ -31,6 +31,8 @@ if (!uri) {
   throw new Error("Please define the uk_portfolio_MONGODB_URI environment variable inside .env.local");
 }
 
+const dbName = process.env.MONGODB_DB || "portfolio";
+
 let cachedClient: MongoClient | null = null;
 let cachedDb: Db | null = null;
 
@@ -41,7 +43,7 @@ export async function connectToDatabase(): Promise<{ client: MongoClient; db: Db
 
   const client = new MongoClient(uri!);
   await client.connect();
-  const db = client.db();
+  const db = client.db(dbName);
 
   cachedClient = client;
   cachedDb = db;
