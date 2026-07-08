@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { LazyLogoImage } from "./LazyLogoImage";
  
 interface LogoMarqueeProps {
@@ -8,8 +8,49 @@ interface LogoMarqueeProps {
 }
 
 export const LogoMarquee: React.FC<LogoMarqueeProps> = ({ logos, title, animationDurationSeconds = 60 }) => {
+  const [loadedLogos, setLoadedLogos] = useState<string[]>([]);
+
+  useEffect(() => {
+    let active = true;
+    const seenLoaded = new Set<string>();
+
+    logos.forEach((logo) => {
+      const image = new Image();
+
+      image.onload = () => {
+        if (!active || seenLoaded.has(logo)) {
+          return;
+        }
+
+        seenLoaded.add(logo);
+        setLoadedLogos((currentLogos) =>
+          currentLogos.includes(logo) ? currentLogos : [...currentLogos, logo]
+        );
+      };
+
+      image.onerror = () => {
+        seenLoaded.delete(logo);
+      };
+
+      image.src = logo;
+    });
+
+    return () => {
+      active = false;
+    };
+  }, [logos]);
+
+  const visibleLogos = useMemo(() => {
+    const loadedSet = new Set(loadedLogos);
+    return logos.filter((logo) => loadedSet.has(logo));
+  }, [loadedLogos, logos]);
+
   // Duplicate logos array to guarantee width for smooth continuous animation
-  const repeatedLogos = [...logos, ...logos];
+  const repeatedLogos = [...visibleLogos, ...visibleLogos];
+
+  if (visibleLogos.length === 0) {
+    return null;
+  }
  
   return (
     <section className="section" style={{ paddingTop: "0px", paddingBottom: "30px" }}>
