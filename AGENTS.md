@@ -156,3 +156,10 @@ Whenever creating, modifying, or testing any feature:
 - [ ] Test the viewport layout using mobile responsiveness tools.
 - [ ] Test critical CTA actions on a simulated touch device (e.g., Chrome DevTools device mode) or physical device to ensure native app redirection is smooth and does not result in blank tabs or unexpected browser redirects.
 - [ ] Verify that analytics tracking fires identically on both platforms without duplication or omission.
+
+---
+
+# Zero Errors & Warnings Rule
+
+To maintain high software quality and user experience, follow this mandatory constraint at all times:
+- **No Console Errors or Warnings**: All React DOM attribute warnings, TypeScript errors, Vite compilation warnings, and network/runtime exceptions must be completely resolved. All code must run smoothly on both desktop and mobile viewports with no developer console errors.

@@ -14,6 +14,7 @@ export const RequestCV: React.FC<RequestCVProps> = ({ isOpen, onClose }) => {
   const [isCvSubmitted, setIsCvSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [cvMode, setCvMode] = useState<"email" | "download">("email");
 
   useEffect(() => {
     if (isOpen) {
@@ -38,6 +39,7 @@ export const RequestCV: React.FC<RequestCVProps> = ({ isOpen, onClose }) => {
       setIsCvSubmitted(false);
       setIsSending(false);
       setErrorMsg(null);
+      setCvMode("email");
     }, 300);
   };
 
@@ -76,6 +78,20 @@ export const RequestCV: React.FC<RequestCVProps> = ({ isOpen, onClose }) => {
     }
   };
 
+  const handleDirectDownload = () => {
+    trackContactSubmit("cv", "Direct Download");
+    
+    // Trigger download programmatically
+    const link = document.createElement("a");
+    link.href = "/Utkarsh_Kala_CV.pdf";
+    link.download = "Utkarsh_Kala_CV.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    setIsCvSubmitted(true);
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -93,97 +109,183 @@ export const RequestCV: React.FC<RequestCVProps> = ({ isOpen, onClose }) => {
 
         {!isCvSubmitted ? (
           <>
-            <span className="section-tag" style={{ marginBottom: "12px" }}>Download CV</span>
-            <h3 className="modal-title">Hello! Glad you're interested in my background.</h3>
-            <p className="modal-subtitle">
-              Enter your details below, and I'll send you a copy of my CV right away.
-            </p>
-
-            <form onSubmit={handleCvSubmit} className="contact-form">
-              <div className="form-group">
-                <label htmlFor="cv-name" className="form-label">
-                  Your name
-                </label>
-                <input
-                  type="text"
-                  id="cv-name"
-                  name="name"
-                  value={cvName}
-                  onChange={(e) => setCvName(e.target.value)}
-                  placeholder="John Doe"
-                  required
-                  className="form-control"
-                  style={{ width: "100%" }}
-                  autoComplete="name"
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="cv-email" className="form-label">
-                  Email address
-                </label>
-                <input
-                  type="email"
-                  id="cv-email"
-                  name="email"
-                  value={cvEmail}
-                  onChange={(e) => setCvEmail(e.target.value)}
-                  placeholder="you@example.com"
-                  required
-                  className="form-control"
-                  style={{ width: "100%" }}
-                  autoComplete="email"
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="cv-topic" className="form-label">
-                  Topic of interest
-                </label>
-                <div className="custom-select-wrapper">
-                  <select
-                    id="cv-topic"
-                    name="topic"
-                    value={cvTopic}
-                    onChange={(e) => setCvTopic(e.target.value)}
-                    className="form-control form-select"
-                  >
-                    {PORTFOLIO_DATA.topics.map((t) => (
-                      <option key={t} value={t}>
-                        {t}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              {errorMsg && (
-                <div style={{ color: "#ef4444", fontSize: "0.85rem", marginTop: "12px", textAlign: "center", fontWeight: "600" }}>
-                  ⚠️ {errorMsg}
-                </div>
-              )}
-
+            <span className="section-tag" style={{ marginBottom: "12px" }}>Get CV</span>
+            <h3 className="modal-title" style={{ marginBottom: "20px" }}>Hello! Glad you're interested in my background.</h3>
+            
+            {/* Toggle Mode Segmented Control */}
+            <div className="cv-mode-selector" style={{
+              display: "flex",
+              background: "rgba(15, 23, 42, 0.05)",
+              padding: "4px",
+              borderRadius: "8px",
+              marginBottom: "24px",
+              border: "1px solid rgba(15, 23, 42, 0.1)"
+            }}>
               <button
-                type="submit"
-                className="btn btn-primary w-full mt-4"
-                disabled={isSending}
+                type="button"
+                className={`cv-mode-btn ${cvMode === "email" ? "active" : ""}`}
+                onClick={() => setCvMode("email")}
+                style={{
+                  flex: 1,
+                  padding: "10px 16px",
+                  borderRadius: "6px",
+                  border: "none",
+                  fontWeight: 600,
+                  fontSize: "0.85rem",
+                  cursor: "pointer",
+                  transition: "all var(--transition-fast)",
+                  background: cvMode === "email" ? "var(--ink)" : "transparent",
+                  color: cvMode === "email" ? "var(--paper)" : "var(--text-muted)",
+                }}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" style={{ marginRight: "8px", display: "inline" }}>
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                  <polyline points="7 10 12 15 17 10"/>
-                  <line x1="12" y1="15" x2="12" y2="3"/>
-                </svg>
-                {isSending ? "Sending..." : "Get CV"}
+                Request on Email
               </button>
-            </form>
+              <button
+                type="button"
+                className={`cv-mode-btn ${cvMode === "download" ? "active" : ""}`}
+                onClick={() => setCvMode("download")}
+                style={{
+                  flex: 1,
+                  padding: "10px 16px",
+                  borderRadius: "6px",
+                  border: "none",
+                  fontWeight: 600,
+                  fontSize: "0.85rem",
+                  cursor: "pointer",
+                  transition: "all var(--transition-fast)",
+                  background: cvMode === "download" ? "var(--ink)" : "transparent",
+                  color: cvMode === "download" ? "var(--paper)" : "var(--text-muted)",
+                }}
+              >
+                Download Now
+              </button>
+            </div>
+
+            {cvMode === "email" ? (
+              <>
+                <p className="modal-subtitle" style={{ marginBottom: "20px" }}>
+                  Enter your details below, and I'll send you a copy of my CV right away.
+                </p>
+
+                <form onSubmit={handleCvSubmit} className="contact-form">
+                  <div className="form-group">
+                    <label htmlFor="cv-name" className="form-label">
+                      Your name
+                    </label>
+                    <input
+                      type="text"
+                      id="cv-name"
+                      name="name"
+                      value={cvName}
+                      onChange={(e) => setCvName(e.target.value)}
+                      placeholder="John Doe"
+                      required
+                      className="form-control"
+                      style={{ width: "100%" }}
+                      autoComplete="name"
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="cv-email" className="form-label">
+                      Email address
+                    </label>
+                    <input
+                      type="email"
+                      id="cv-email"
+                      name="email"
+                      value={cvEmail}
+                      onChange={(e) => setCvEmail(e.target.value)}
+                      placeholder="you@example.com"
+                      required
+                      className="form-control"
+                      style={{ width: "100%" }}
+                      autoComplete="email"
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="cv-topic" className="form-label">
+                      Topic of interest
+                    </label>
+                    <div className="custom-select-wrapper">
+                      <select
+                        id="cv-topic"
+                        name="topic"
+                        value={cvTopic}
+                        onChange={(e) => setCvTopic(e.target.value)}
+                        className="form-control form-select"
+                      >
+                        {PORTFOLIO_DATA.topics.map((t) => (
+                          <option key={t} value={t}>
+                            {t}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  {errorMsg && (
+                    <div style={{ color: "#ef4444", fontSize: "0.85rem", marginTop: "12px", textAlign: "center", fontWeight: "600" }}>
+                      ⚠️ {errorMsg}
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    className="btn btn-primary w-full mt-4"
+                    disabled={isSending}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" style={{ marginRight: "8px", display: "inline" }}>
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                      <polyline points="7 10 12 15 17 10"/>
+                      <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    {isSending ? "Sending..." : "Get CV"}
+                  </button>
+                </form>
+              </>
+            ) : (
+              <>
+                <p className="modal-subtitle" style={{ marginBottom: "24px" }}>
+                  Get a copy of my CV immediately by clicking the button below.
+                </p>
+
+                <button
+                  type="button"
+                  onClick={handleDirectDownload}
+                  className="btn btn-primary w-full"
+                  style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "14px 20px" }}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" style={{ marginRight: "10px" }}>
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                  Download CV (PDF)
+                </button>
+              </>
+            )}
           </>
         ) : (
           <div style={{ textAlign: "center", padding: "10px 0" }}>
-            <span className="section-tag" style={{ marginBottom: "12px", display: "inline-block", background: "rgba(16, 185, 129, 0.15)", color: "var(--accent-green)" }}>Sent Successfully</span>
-            <h3 className="modal-title" style={{ marginBottom: "10px" }}>CV is on the Way!</h3>
-            <p className="modal-subtitle" style={{ marginBottom: "24px" }}>
-              Hey <strong>{cvName}</strong>, an automated email has been sent to <strong>{cvEmail}</strong> containing the link to download my CV regarding your interest in <strong>{cvTopic}</strong>. Please check your inbox (and spam folder) in a few moments.
-            </p>
+            {cvMode === "email" ? (
+              <>
+                <span className="section-tag" style={{ marginBottom: "12px", display: "inline-block", background: "rgba(16, 185, 129, 0.15)", color: "var(--accent-green)" }}>Sent Successfully</span>
+                <h3 className="modal-title" style={{ marginBottom: "10px" }}>CV is on the Way!</h3>
+                <p className="modal-subtitle" style={{ marginBottom: "24px" }}>
+                  Hey <strong>{cvName}</strong>, an automated email has been sent to <strong>{cvEmail}</strong> containing the link to download my CV regarding your interest in <strong>{cvTopic}</strong>. Please check your inbox (and spam folder) in a few moments.
+                </p>
+              </>
+            ) : (
+              <>
+                <span className="section-tag" style={{ marginBottom: "12px", display: "inline-block", background: "rgba(16, 185, 129, 0.15)", color: "var(--accent-green)" }}>Download Started</span>
+                <h3 className="modal-title" style={{ marginBottom: "10px" }}>Thank You!</h3>
+                <p className="modal-subtitle" style={{ marginBottom: "24px" }}>
+                  The CV download has started. Feel free to reach out if you have any questions or want to discuss scaling your customer support channels!
+                </p>
+              </>
+            )}
             <button onClick={handleClose} className="btn btn-primary">
               Done
             </button>

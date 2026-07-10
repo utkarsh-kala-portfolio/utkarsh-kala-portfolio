@@ -1,13 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { trackEvent, identifyUser } from "../analytics/analytics";
+import { LINKEDIN_TOAST_CONFIG } from "../config/linkedinToastConfig";
 
 export const LinkedInToast: React.FC = () => {
   const location = useLocation();
   const [visible, setVisible] = useState(false);
   const [successName, setSuccessName] = useState<string | null>(null);
   const [loginStarted, setLoginStarted] = useState(false);
+  const [dismissedThisPage, setDismissedThisPage] = useState(false);
   const wasAuthorizedRef = useRef(localStorage.getItem("uk_li_authorized") === "true");
+
+  useEffect(() => {
+    // Reset page-level dismissal when route changes
+    setDismissedThisPage(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     let cleanupTimer: (() => void) | undefined;
@@ -15,7 +22,9 @@ export const LinkedInToast: React.FC = () => {
     // Check if we should display the prompt
     const checkVisibility = () => {
       const isAuthorized = localStorage.getItem("uk_li_authorized") === "true";
-      const isDismissed = localStorage.getItem("uk_li_prompt_dismissed") === "true";
+      const isDismissed = LINKEDIN_TOAST_CONFIG.dismissPermanently
+        ? localStorage.getItem("uk_li_prompt_dismissed") === "true"
+        : dismissedThisPage;
       const isAuthPage = location.pathname === "/linked-in-auth";
 
       if (isAuthorized) {
@@ -34,8 +43,9 @@ export const LinkedInToast: React.FC = () => {
       } else if (!isDismissed && !isAuthPage) {
         wasAuthorizedRef.current = false;
         setSuccessName(null);
-        // Show after a small delay to feel less intrusive
-        const t = setTimeout(() => setVisible(true), 2000);
+        // Show after configured delay activity to feel less intrusive
+        const delayMs = LINKEDIN_TOAST_CONFIG.delaySeconds * 1000;
+        const t = setTimeout(() => setVisible(true), delayMs);
         cleanupTimer = () => clearTimeout(t);
       } else {
         wasAuthorizedRef.current = false;
@@ -46,13 +56,24 @@ export const LinkedInToast: React.FC = () => {
 
     checkVisibility();
 
-    // Listen for storage changes (e.g. if logged in/out elsewhere)
+    // Listen for changes when active/inactive or storage modifications
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        checkVisibility();
+      }
+    };
+
     window.addEventListener("storage", checkVisibility);
+    window.addEventListener("focus", checkVisibility);
+    window.addEventListener("visibilitychange", handleVisibilityChange);
+
     return () => {
       window.removeEventListener("storage", checkVisibility);
+      window.removeEventListener("focus", checkVisibility);
+      window.removeEventListener("visibilitychange", handleVisibilityChange);
       if (cleanupTimer) cleanupTimer();
     };
-  }, [location.pathname, loginStarted]);
+  }, [location.pathname, loginStarted, dismissedThisPage]);
 
   useEffect(() => {
     if (!successName) return;
@@ -105,7 +126,11 @@ export const LinkedInToast: React.FC = () => {
   }, []);
 
   const handleDismiss = () => {
-    localStorage.setItem("uk_li_prompt_dismissed", "true");
+    if (LINKEDIN_TOAST_CONFIG.dismissPermanently) {
+      localStorage.setItem("uk_li_prompt_dismissed", "true");
+    } else {
+      setDismissedThisPage(true);
+    }
     setVisible(false);
   };
 

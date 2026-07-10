@@ -180,19 +180,19 @@ export const Home: React.FC = () => {
                 <h4 style={{ color: "var(--text-bright)", fontSize: "1rem", fontWeight: "700", marginBottom: "16px" }}>Impact Delivered</h4>
                 <ul style={{ listStyleType: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "12px" }}>
                   <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "0.9rem", color: "var(--text-main)" }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent-green)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
                     <span><strong>$50K+ MRR</strong> Generated Through Integration-Led Revenue Engine</span>
                   </li>
                   <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "0.9rem", color: "var(--text-main)" }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent-green)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
                     <span><strong>&lt;2%</strong> Gross Revenue Churn Through Predictive Health Scoring</span>
                   </li>
                   <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "0.9rem", color: "var(--text-main)" }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent-green)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
                     <span><strong>40%</strong> Support Operations Efficiency Improvement</span>
                   </li>
                   <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "0.9rem", color: "var(--text-main)" }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent-green)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
                     <span><strong>900+</strong> Accounts Managed Through Customer Intelligence Platform</span>
                   </li>
                 </ul>
@@ -249,12 +249,12 @@ export const Home: React.FC = () => {
             description="A preview of workflow, revenue, and operational systems designed to turn customer problems into measurable business outcomes."
           />
 
-          <div className="automation-grid reveal" style={{ marginBottom: "40px" }}>
+          <div className="automation-grid" style={{ marginBottom: "40px" }}>
             {[
               PORTFOLIO_DATA.automations[0], // Integration-led expansion -> $50K+ MRR
               PORTFOLIO_DATA.automations[1], // Predictive health scoring -> <2% churn
             ].map((item, idx) => (
-              <div key={idx} className="glass-card automation-card">
+              <div key={idx} className="glass-card automation-card reveal">
                 <h3 className="automation-title">{item.title}</h3>
                 <div className="automation-detail">
                   <span className="automation-lbl">Challenge:</span>

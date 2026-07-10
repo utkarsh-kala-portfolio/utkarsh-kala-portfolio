@@ -58,9 +58,9 @@ export const WhyMe: React.FC = () => {
             </div>
           </div>
 
-          <div className="automation-grid reveal">
+          <div className="automation-grid">
             {PORTFOLIO_DATA.automations.map((item, idx) => (
-              <div key={idx} className="glass-card automation-card">
+              <div key={idx} className="glass-card automation-card reveal">
                 <h3 className="automation-title">{item.title}</h3>
 
                 <div className="automation-detail">
@@ -103,9 +103,9 @@ export const WhyMe: React.FC = () => {
             description="Direct recommendations and reviews from founders, operations leaders, and enterprise partners."
           />
 
-          <div className="testimonials-grid reveal">
+          <div className="testimonials-grid">
             {PORTFOLIO_DATA.recommendations.map((item, idx) => (
-              <div key={`li-${idx}`} className="glass-card testimonial-card">
+              <div key={`li-${idx}`} className="glass-card testimonial-card reveal">
                 <div className="testimonial-topline">
                   <div></div>
                   <div className="linkedin-stamp" aria-label="LinkedIn recommendation">
@@ -125,7 +125,7 @@ export const WhyMe: React.FC = () => {
             ))}
 
             {PORTFOLIO_DATA.testimonials.map((item, idx) => (
-              <div key={idx} className="glass-card testimonial-card">
+              <div key={idx} className="glass-card testimonial-card reveal">
                 <div className="testimonial-topline">
                   <div className="testimonial-rating" aria-label={`Rating: ${item.rating} stars`}>
                     {Array.from({ length: item.rating }).map((_, rIdx) => (
