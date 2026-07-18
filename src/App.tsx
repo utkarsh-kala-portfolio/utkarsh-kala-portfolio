@@ -6,7 +6,6 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { Home } from "./pages/Home";
 import { Journey } from "./pages/Journey";
-import { Clients } from "./pages/Clients";
 import { SaaSToolkit } from "./pages/SaaSToolkit";
 import { WhyMe } from "./pages/WhyMe";
 import { LinkedInAuth } from "./pages/LinkedInAuth";
@@ -35,8 +34,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/journey" element={<Journey />} />
-          <Route path="/clients" element={<Clients />} />
-          <Route path="/customers" element={<Clients />} />
           <Route path="/saas-toolkit" element={<SaaSToolkit />} />
           <Route path="/stack" element={<SaaSToolkit />} />
           <Route path="/why-me" element={<WhyMe />} />

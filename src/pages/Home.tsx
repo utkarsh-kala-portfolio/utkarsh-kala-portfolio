@@ -10,8 +10,6 @@ import { SectionHeader } from "../components/SectionHeader";
 import { SectionCTA } from "../components/SectionCTA";
 import { trackCTAClick, trackContactOpen } from "../analytics/analytics";
 import {
-  customerBannerDurationSeconds,
-  customerBannerLogos,
   techStackBannerLogos,
   techStackBannerDurationSeconds,
 } from "../data/logoBanners";
@@ -343,17 +341,7 @@ export const Home: React.FC = () => {
             ))}
           </div>
 
-          <SectionHeader
-            tagText="Trusted by Teams That Scale"
-            style={{ marginTop: "56px", marginBottom: "24px" }}
-          />
 
-          <LogoMarquee
-            logos={customerBannerLogos}
-            animationDurationSeconds={customerBannerDurationSeconds}
-          />
-
-          <SectionCTA to="/clients" text="View All Clients" />
         </div>
       </section>
 

@@ -3,11 +3,8 @@ import { PORTFOLIO_DATA } from "../data/portfolioData";
 import { ContactCTA } from "../components/ContactCTA";
 import { FilteredHub, type HubCategory } from "../components/FilteredHub";
 import { LazyLogoImage } from "../components/LazyLogoImage";
-import { LogoMarquee } from "../components/LogoMarquee";
-import { SectionCTA } from "../components/SectionCTA";
+
 import {
-  customerBannerDurationSeconds,
-  customerBannerLogos,
   techStackLogoBasePath,
 } from "../data/logoBanners";
 
@@ -104,20 +101,7 @@ export const SaaSToolkit: React.FC = () => {
 
       </FilteredHub>
 
-      {/* Client Logo Banner below the filtered list */}
-      <LogoMarquee
-        logos={customerBannerLogos}
-        title="Trusted by Growth Brands"
-        animationDurationSeconds={customerBannerDurationSeconds}
-      />
 
-      {/* CTA to view complete clients */}
-      <SectionCTA
-        to="/clients"
-        text="View All Clients"
-        style={{ marginTop: "-10px", marginBottom: "60px" }}
-        className="active"
-      />
 
       <ContactCTA />
     </>

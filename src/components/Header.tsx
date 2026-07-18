@@ -141,16 +141,7 @@ export const Header: React.FC = () => {
           >
             <LetterHop text="SaaS Toolkit" />
           </NavLink>
-          <NavLink
-            to="/clients"
-            className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
-            onClick={() => {
-              setNavOpen(false);
-              trackNavClick("Clients Link");
-            }}
-          >
-            <LetterHop text="Clients" />
-          </NavLink>
+
           <NavLink
             to="/journey"
             className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}

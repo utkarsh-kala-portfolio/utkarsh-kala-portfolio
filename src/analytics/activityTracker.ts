@@ -27,20 +27,21 @@ function dispatchAnalyticsRequest(endpoint: string, payload: Record<string, any>
   })
     .then(async (response) => {
       if (!response.ok) {
-        console.warn(`First-party analytics request failed: ${endpoint}`, response.status);
         return;
       }
 
       try {
         const result = await response.json();
         if (result && result.success === false) {
-          console.warn(`First-party analytics API rejected request: ${endpoint}`, result.error || result);
+          // Silent fallback
         }
       } catch {
         // Some keepalive responses may be unavailable during navigation.
       }
     })
-    .catch((err) => console.warn(`Failed to dispatch first-party analytics request: ${endpoint}`, err));
+    .catch(() => {
+      // Silent error fallback
+    });
 }
 
 // Helper: Generate UUID
@@ -176,7 +177,7 @@ export async function trackActivityEvent(
     dispatchAnalyticsRequest("/api/analytics/event", eventData);
 
   } catch (err) {
-    console.warn("Analytics activity tracker error:", err);
+    // Silent catch
   }
 }
 
@@ -207,7 +208,7 @@ export async function identifyLinkedInProfile(profileData: any): Promise<void> {
       }
     }
   } catch (err) {
-    console.warn("Failed to submit identity to analytics endpoint:", err);
+    // Silent catch
   }
 }
 

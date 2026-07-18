@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ContactCTA } from "../components/ContactCTA";
 
 export const NotFound: React.FC = () => {
+  useEffect(() => {
+    // Automatically activate reveal animation for NotFound content
+    const revealElements = document.querySelectorAll(".reveal");
+    revealElements.forEach((el) => el.classList.add("active"));
+  }, []);
+
   const topContent = (
     <>
       <div className="notfound-top">
